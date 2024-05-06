@@ -10,4 +10,5 @@ class Graph
     std::vector<Node>& getNodes();
     private:
     std::vector<Node> nodes;
+    std::vector<bool> hasRoutes;
 };
