@@ -37,7 +37,7 @@ void Node::setDistance(int nodeID, int distance)
         distances[nodeID] = distance;
         return;
     }
-    while (distances.size() < nodeID)
+    while (distances.size() - 1 < nodeID)
     {
         distances.push_back(__INT_MAX__);
         nextNodes.push_back(-1);
