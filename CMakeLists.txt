@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.28)
 project(RoutesOnWEITI)
 
-add_library(graph ./src/node.cpp)
+add_library(graph ./src/node.cpp ./src/graph.cpp)
 target_include_directories(graph PRIVATE ./include)
 
-add_executable(graph_tests ./test/test_node.cpp)
+add_executable(graph_tests ./test/test_node.cpp ./test/test_graph.cpp)
 
 include(FetchContent)
 FetchContent_Declare(
