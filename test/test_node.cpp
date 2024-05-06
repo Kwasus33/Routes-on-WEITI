@@ -17,14 +17,12 @@ TEST(NodeTest, GetDistances)
 
 TEST(NodeTest, GetNextNodes)
 {
-    std::vector<int> distances = {1, 2, 3};
+    std::vector<int> distances = {1, 0, 3, __INT_MAX__};
     Node node(1, distances);
     std::vector<int> nextNodes = node.getNextNodes();
     EXPECT_EQ(nextNodes.size(), distances.size());
-    for (int i = 0; i < nextNodes.size(); i++)
-    {
-        EXPECT_EQ(nextNodes[i], -1);
-    }
+    std::vector<int> result = {0, 1, 2, -1};
+    EXPECT_EQ(node.getNextNodes(), result);
 }
 
 TEST(NodeTest, SetDistance)

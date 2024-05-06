@@ -3,7 +3,15 @@
 Node::Node(int ID, std::vector<int> dist) : ID(ID), distances(dist) {
     while (nextNodes.size() != distances.size())
     {
-        nextNodes.push_back(-1);
+        int currentIndex = nextNodes.size();
+        if (distances[currentIndex] != __INT_MAX__)
+        {
+            nextNodes.push_back(currentIndex);
+        }
+        else
+        {
+            nextNodes.push_back(-1);
+        }
     }
 }
 
