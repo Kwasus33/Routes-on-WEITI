@@ -11,7 +11,6 @@ include(FetchContent)
 FetchContent_Declare(
     SDL2
     URL https://www.libsdl.org/release/SDL2-2.0.14.tar.gz
-    URL_HASH SHA256=d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
 )
 FetchContent_MakeAvailable(SDL2)
 
@@ -29,3 +28,6 @@ include(GoogleTest)
 
 target_link_libraries(graph_tests PRIVATE GTest::gtest_main)
 gtest_discover_tests(graph_tests)
+
+add_executable(main src/main.cpp)
+target_link_libraries(main PRIVATE SDL2main SDL2-static)
