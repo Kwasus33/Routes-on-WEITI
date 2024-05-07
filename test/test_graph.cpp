@@ -79,4 +79,10 @@ TEST(GraphTest, TestDijkstraAlgorithm)
 
     EXPECT_EQ(resultDistances, testGraph.getNodes()[0].getDistances());
 
+    resultDistances = {6, 11, 14, 5, 0, 3, 1, 3, 5, 2};
+
+    testGraph.findRoutes(4);
+
+    EXPECT_EQ(resultDistances, testGraph.getNodes()[4].getDistances());
+
 }

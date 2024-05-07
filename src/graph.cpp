@@ -53,7 +53,7 @@ void Graph::changeRoute(int start, int end, int which, int distance)
     */
     while (start != end)
     {
-        Node &currentNode = nodes[start];
+        Node& currentNode = nodes[start];
         int nextNodeID = currentNode.getNextNodes()[end];
         currentNode.addRoute(which, distance, nextNodeID);
         distance -= currentNode.getDistances()[nextNodeID];
@@ -63,39 +63,51 @@ void Graph::changeRoute(int start, int end, int which, int distance)
 
 void Graph::findRoutes(int nodeID)
 {
+    // checks if graph has node of this ID
     if (nodeID >= nodes.size())
+    {
         throw std::invalid_argument("Index out of range");
-    Node &startingNode = this->getNodes()[nodeID];
+        return;
+    }
+
+    // Creates priority queue and reference to starting node
+    Node& startingNode = nodes[nodeID];
     std::deque<int> nodesQueue;
     nodesQueue.push_back(nodeID);
+    // creates container to mark Nodes as visited
     std::vector<bool> visited;
     while (visited.size() < nodes.size())
-    {
         visited.push_back(false);
-    }
+
+    // Main loop with responisbility of walking through the whole graph
     while (!nodesQueue.empty())
     {
+        // prioritize the queue basing on actual distance from source
         std::sort(nodesQueue.begin(), nodesQueue.end(), [&startingNode](int nodeOne, int nodeTwo)
-                  { return startingNode.getDistances()[nodeOne] < startingNode.getDistances()[nodeTwo];});
-            std::vector<int>
-                originDistances = startingNode.getDistances();
+                  {std::vector<int> distances = startingNode.getDistances(); return distances[nodeOne] < distances[nodeTwo]; });
+
+        std::vector<int> originDistances = startingNode.getDistances();
+
         Node &currentNode = nodes[nodesQueue.front()];
         nodesQueue.pop_front();
-        for (int i = 0; i < currentNode.getDistances().size(); ++i)
-        {
-            if (i == currentNode.getNextNodes()[i] && i != currentNode.getID())
-            {
-                if (!visited[i])
-                    nodesQueue.push_back(i);
 
-                if (originDistances[i] > originDistances[currentNode.getID()] + currentNode.getDistances()[i])
-                {
-                    this->changeRoute(nodeID, currentNode.getID(), i, originDistances[currentNode.getID()] + currentNode.getDistances()[i]);
-                }
+        // walk through all the routes available from this graph
+        for (int node = 0; node < currentNode.getDistances().size(); ++node)
+        {
+            if (node == currentNode.getNextNodes()[node] && node != currentNode.getID())
+            {
+                if (!visited[node])
+                    nodesQueue.push_back(node);
+
+                int new_distance = originDistances[currentNode.getID()] + currentNode.getDistances()[node];
+
+                if (originDistances[node] > new_distance)
+                    this->changeRoute(nodeID, currentNode.getID(), node, new_distance);
             }
         }
         visited[currentNode.getID()] = true;
     }
+    hasRoutes[nodeID] = true;
 }
 
 std::vector<Node> &Graph::getNodes()
