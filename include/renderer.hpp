@@ -1,11 +1,16 @@
 #pragma once
 
+#include "SDL.h"
 
-class renderer
+
+class Renderer
 {
 private:
+    int screenWidth, screenHeight;
+    SDL_Window* window;
+    SDL_Renderer* sdlRenderer;
     
 public:
-    renderer();
-    ~renderer();
+    Renderer(int screenWidth, int screenHeight);
+    ~Renderer();
 };
