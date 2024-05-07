@@ -75,18 +75,15 @@ void Graph::findRoutes(int nodeID)
     std::deque<int> nodesQueue;
     nodesQueue.push_back(nodeID);
     // creates container to mark Nodes as visited
-    std::vector<bool> visited;
-    while (visited.size() < nodes.size())
-        visited.push_back(false);
+    std::vector<bool> visited(nodes.size(), false);
 
     // Main loop with responisbility of walking through the whole graph
     while (!nodesQueue.empty())
     {
-        // prioritize the queue basing on actual distance from source
-        std::sort(nodesQueue.begin(), nodesQueue.end(), [&startingNode](int nodeOne, int nodeTwo)
-                  {std::vector<int> distances = startingNode.getDistances(); return distances[nodeOne] < distances[nodeTwo]; });
-
         std::vector<int> originDistances = startingNode.getDistances();
+        // prioritize the queue basing on actual distance from source
+        std::sort(nodesQueue.begin(), nodesQueue.end(), [&originDistances](int nodeOne, int nodeTwo)
+                  {return originDistances[nodeOne] < originDistances[nodeTwo]; });
 
         Node &currentNode = nodes[nodesQueue.front()];
         nodesQueue.pop_front();
