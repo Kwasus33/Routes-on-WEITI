@@ -7,6 +7,14 @@ target_include_directories(graph PRIVATE ./include)
 add_executable(graph_tests ./test/test_node.cpp ./test/test_graph.cpp)
 
 include(FetchContent)
+
+FetchContent_Declare(
+    SDL2
+    URL https://www.libsdl.org/release/SDL2-2.0.14.tar.gz
+    URL_HASH SHA256=d8215b571a581be1332d2106f8036fcb03d12a70bae01e20f424976d275432bc
+)
+FetchContent_MakeAvailable(SDL2)
+
 FetchContent_Declare(
     googletest
     URL https://github.com/google/googletest/archive/refs/heads/master.zip
