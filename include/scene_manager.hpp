@@ -6,4 +6,5 @@ private:
     
 public:
     SceneManager();
+    void Update();
 };
