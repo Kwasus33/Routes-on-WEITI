@@ -12,6 +12,7 @@ public:
     ProgramManager(int screenWidth, int screenHeight);
     ~ProgramManager();
     
+    void ProcessInput();
     void Update();
     void Render();
     bool IsRunning();

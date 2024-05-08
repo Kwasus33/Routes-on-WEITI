@@ -30,6 +30,23 @@ ProgramManager::~ProgramManager()
     SDL_Quit();
 }
 
+void ProgramManager::ProcessInput()
+{
+    SDL_Event event;
+
+    while (SDL_PollEvent(&event)) 
+    {
+        if (event.type == SDL_QUIT) 
+        {
+            isRunning = false;
+        } 
+        else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE) 
+        {
+            isRunning = false;
+        }
+    }
+}
+
 void ProgramManager::Update()
 {
     return;
