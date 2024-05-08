@@ -1,10 +1,9 @@
-#include "graphics_manager.hpp"
+#include "program_manager.hpp"
 
 #include <iostream>
 
-
-GraphicsManager::GraphicsManager(int screenWidth, int screenHeight) 
-    : screenWidth{screenWidth}, screenHeight{screenHeight}
+ProgramManager::ProgramManager(int screenWidth, int screenHeight) 
+    : screenWidth{screenWidth}, screenHeight{screenHeight}, isRunning{true}
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
@@ -24,9 +23,24 @@ GraphicsManager::GraphicsManager(int screenWidth, int screenHeight)
     SDL_RenderClear(renderer);
 }
 
-GraphicsManager::~GraphicsManager() 
+ProgramManager::~ProgramManager() 
 {
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
+}
+
+void ProgramManager::Update()
+{
+    return;
+}
+
+void ProgramManager::Render()
+{
+    return;
+}
+
+bool ProgramManager::IsRunning()
+{
+    return isRunning;
 }

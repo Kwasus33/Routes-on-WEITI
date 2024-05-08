@@ -1,7 +1,8 @@
-#include "graphics_manager.hpp" 
+#include "program_manager.hpp"
 
 int main(int argc, char *argv[])
 {
-    GraphicsManager graphics(200, 200);
+    ProgramManager program(200, 200);
+
     return 0;
 }
