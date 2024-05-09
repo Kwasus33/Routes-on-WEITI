@@ -54,7 +54,9 @@ void ProgramManager::Update()
 
 void ProgramManager::Render()
 {
-    return;
+    SDL_RenderClear(renderer);
+
+    SDL_RenderPresent(renderer);
 }
 
 bool ProgramManager::IsRunning()
