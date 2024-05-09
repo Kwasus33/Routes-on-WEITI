@@ -2,6 +2,7 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include <map>
 
 class ProgramManager
 {
@@ -9,6 +10,7 @@ class ProgramManager
     SDL_Window* window;
     SDL_Renderer* renderer;
     bool isRunning;
+    std::map<int, SDL_Texture*> floors;
 public:
     ProgramManager(int screenWidth, int screenHeight);
     ~ProgramManager();

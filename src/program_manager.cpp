@@ -5,6 +5,7 @@
 ProgramManager::ProgramManager(int screenWidth, int screenHeight) 
     : screenWidth{screenWidth}, screenHeight{screenHeight}, isRunning{true}
 {
+    // Setup window
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
         return;
@@ -19,8 +20,26 @@ ProgramManager::ProgramManager(int screenWidth, int screenHeight)
         std::cerr << "Renderer creation failed: " << SDL_GetError() << std::endl;
         return;
     }
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 255, 255, 200, 255);
     SDL_RenderClear(renderer);
+
+    // Load Textures
+    SDL_Surface* tmpSurface;
+    tmpSurface = IMG_Load("assets/Coyote_skeleton.png");
+    if(tmpSurface == nullptr) 
+    {
+        std::cerr << "Can't load image" << std::endl;
+        return;
+    }
+    floors[-1] = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+    tmpSurface = IMG_Load("assets/Capture.PNG");
+    if(tmpSurface == nullptr) 
+    {
+        std::cerr << "Can't load image" << std::endl;
+        return;
+    }
+    floors[0] = SDL_CreateTextureFromSurface(renderer, tmpSurface);
+    SDL_FreeSurface(tmpSurface);
 }
 
 ProgramManager::~ProgramManager() 
@@ -55,6 +74,8 @@ void ProgramManager::Update()
 void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
+
+    // SDL_RenderCopy(renderer, floors[-1], NULL, NULL);
 
     SDL_RenderPresent(renderer);
 }
