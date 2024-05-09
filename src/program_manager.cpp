@@ -25,14 +25,14 @@ ProgramManager::ProgramManager(int screenWidth, int screenHeight)
 
     // Load Textures
     SDL_Surface* tmpSurface;
-    tmpSurface = IMG_Load("assets/Coyote_skeleton.png");
+    tmpSurface = SDL_LoadBMP("assets/greenland_grid_velo.bmp");
     if(tmpSurface == nullptr) 
     {
         std::cerr << "Can't load image" << std::endl;
         return;
     }
     floors[-1] = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-    tmpSurface = IMG_Load("assets/Capture.PNG");
+    tmpSurface = SDL_LoadBMP("assets/dots.bmp");
     if(tmpSurface == nullptr) 
     {
         std::cerr << "Can't load image" << std::endl;
@@ -75,7 +75,7 @@ void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
 
-    // SDL_RenderCopy(renderer, floors[-1], NULL, NULL);
+    SDL_RenderCopy(renderer, floors[0], NULL, NULL);
 
     SDL_RenderPresent(renderer);
 }
