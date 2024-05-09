@@ -1,5 +1,7 @@
 #include "program_manager.hpp"
 
+#include <iostream>
+
 int main(int argc, char *argv[])
 {
     ProgramManager program(800, 600);
