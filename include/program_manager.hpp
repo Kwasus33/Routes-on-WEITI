@@ -9,8 +9,11 @@ class ProgramManager
     int screenWidth, screenHeight;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    bool isRunning;
+    bool isRunning = true;
     std::map<int, Floor> floors;
+    int viewedFloor = 0;
+    const int MAX_FLOOR = 0;
+    const int MIN_FLOOR = -1;
 public:
     ProgramManager(int screenWidth, int screenHeight);
     ~ProgramManager();

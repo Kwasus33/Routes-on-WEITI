@@ -3,7 +3,7 @@
 #include <iostream>
 
 ProgramManager::ProgramManager(int screenWidth, int screenHeight) 
-    : screenWidth{screenWidth}, screenHeight{screenHeight}, isRunning{true}
+    : screenWidth{screenWidth}, screenHeight{screenHeight}
 {
     // Setup window
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -36,7 +36,7 @@ void ProgramManager::Init()
     // Load Floors
     SDL_Surface* surface;
     SDL_Texture* texture;
-    SDL_Rect transform{0, 0, 32, 32};
+    SDL_Rect transform{0, 0, 100, 100};
 
     surface = SDL_LoadBMP("assets/greenland_grid_velo.bmp");
     if(surface == nullptr) 
@@ -54,7 +54,6 @@ void ProgramManager::Init()
         return;
     }
     texture = SDL_CreateTextureFromSurface(renderer, surface);
-    transform.y = 100;
     floors[0] = Floor(texture, transform);
 
     SDL_FreeSurface(surface);
@@ -74,6 +73,14 @@ void ProgramManager::ProcessInput()
         {
             isRunning = false;
         }
+        else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_DOWN) 
+        {
+            if(viewedFloor > MIN_FLOOR) viewedFloor -= 1;
+        }
+        else if (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_UP) 
+        {
+            if(viewedFloor < MAX_FLOOR) viewedFloor += 1;
+        }
     }
 }
 
@@ -86,10 +93,7 @@ void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
     
-    for(const auto& flr : floors)
-    {
-        SDL_RenderCopy(renderer, flr.second.texture, NULL, &flr.second.transform);
-    }
+    SDL_RenderCopy(renderer, floors[viewedFloor].texture, NULL, &floors[viewedFloor].transform);
 
     SDL_RenderPresent(renderer);
 }
