@@ -14,6 +14,7 @@ public:
     ProgramManager(int screenWidth, int screenHeight);
     ~ProgramManager();
     
+    void Init();
     void ProcessInput();
     void Update();
     void Render();

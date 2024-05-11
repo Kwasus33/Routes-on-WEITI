@@ -49,6 +49,11 @@ ProgramManager::~ProgramManager()
     SDL_Quit();
 }
 
+void ProgramManager::Init()
+{
+    
+}
+
 void ProgramManager::ProcessInput()
 {
     SDL_Event event;
