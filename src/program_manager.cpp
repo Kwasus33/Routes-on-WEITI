@@ -22,24 +22,6 @@ ProgramManager::ProgramManager(int screenWidth, int screenHeight)
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 200, 255);
     SDL_RenderClear(renderer);
-
-    // Load Textures
-    SDL_Surface* tmpSurface;
-    tmpSurface = SDL_LoadBMP("assets/greenland_grid_velo.bmp");
-    if(tmpSurface == nullptr) 
-    {
-        std::cerr << "Can't load image" << std::endl;
-        return;
-    }
-    floors[-1] = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-    tmpSurface = SDL_LoadBMP("assets/dots.bmp");
-    if(tmpSurface == nullptr) 
-    {
-        std::cerr << "Can't load image" << std::endl;
-        return;
-    }
-    floors[0] = SDL_CreateTextureFromSurface(renderer, tmpSurface);
-    SDL_FreeSurface(tmpSurface);
 }
 
 ProgramManager::~ProgramManager() 
@@ -51,7 +33,31 @@ ProgramManager::~ProgramManager()
 
 void ProgramManager::Init()
 {
-    
+    // Load Floors
+    SDL_Surface* surface;
+    SDL_Texture* texture;
+    SDL_Rect transform{0, 0, 32, 32};
+
+    surface = SDL_LoadBMP("assets/greenland_grid_velo.bmp");
+    if(surface == nullptr) 
+    {
+        std::cerr << "Can't load image" << std::endl;
+        return;
+    }
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    floors[-1] = Floor(texture, transform);
+
+    surface = SDL_LoadBMP("assets/dots.bmp");
+    if(surface == nullptr) 
+    {
+        std::cerr << "Can't load image" << std::endl;
+        return;
+    }
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    transform.y = 100;
+    floors[0] = Floor(texture, transform);
+
+    SDL_FreeSurface(surface);
 }
 
 void ProgramManager::ProcessInput()
@@ -79,9 +85,11 @@ void ProgramManager::Update()
 void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
-
-    SDL_Rect transform = {0, 0, 32, 32};
-    SDL_RenderCopy(renderer, floors[0], NULL, &transform);
+    
+    for(const auto& flr : floors)
+    {
+        SDL_RenderCopy(renderer, flr.second.texture, NULL, &flr.second.transform);
+    }
 
     SDL_RenderPresent(renderer);
 }

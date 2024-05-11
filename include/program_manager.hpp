@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDL.h"
+#include "floor.h"
 #include <map>
 
 class ProgramManager
@@ -9,7 +10,7 @@ class ProgramManager
     SDL_Window* window;
     SDL_Renderer* renderer;
     bool isRunning;
-    std::map<int, SDL_Texture*> floors;
+    std::map<int, Floor> floors;
 public:
     ProgramManager(int screenWidth, int screenHeight);
     ~ProgramManager();
