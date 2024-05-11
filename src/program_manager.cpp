@@ -75,7 +75,8 @@ void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
 
-    SDL_RenderCopy(renderer, floors[0], NULL, NULL);
+    SDL_Rect transform = {0, 0, 32, 32};
+    SDL_RenderCopy(renderer, floors[0], NULL, &transform);
 
     SDL_RenderPresent(renderer);
 }
