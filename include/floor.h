@@ -2,7 +2,7 @@
 
 #include "SDL.h"
 #include <vector>
-#include "Point.h"
+#include "point.h"
 
 struct Floor
 {

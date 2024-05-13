@@ -38,7 +38,7 @@ void ProgramManager::Init()
     SDL_Texture* texture;
     SDL_Rect transform{0, 0, 100, 100};
 
-    surface = SDL_LoadBMP("assets/greenland_grid_velo.bmp");
+    surface = SDL_LoadBMP("../assets/greenland_grid_velo.bmp");
     if(surface == nullptr) 
     {
         std::cerr << "Can't load image" << std::endl;
@@ -47,7 +47,7 @@ void ProgramManager::Init()
     texture = SDL_CreateTextureFromSurface(renderer, surface);
     floors[-1] = Floor(texture, transform);
 
-    surface = SDL_LoadBMP("assets/dots.bmp");
+    surface = SDL_LoadBMP("../assets/dots.bmp");
     if(surface == nullptr) 
     {
         std::cerr << "Can't load image" << std::endl;
