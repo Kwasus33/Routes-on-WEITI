@@ -107,6 +107,18 @@ void Graph::findRoutes(int nodeID)
     hasRoutes[nodeID] = true;
 }
 
+std::vector<int> Graph::getRoute(int start, int end)
+{
+    std::vector<int> result;
+    while (start != end)
+    {
+        result.push_back(start);
+        start = nodes[start].getNextNodes()[end];
+    }
+    result.push_back(end);
+    return result;
+}
+
 std::vector<Node> &Graph::getNodes()
 {
     return nodes;

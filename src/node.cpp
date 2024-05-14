@@ -1,4 +1,5 @@
 #include "node.hpp"
+#include <algorithm>
 
 Node::Node(int ID, std::vector<int> dist) : ID(ID), distances(dist) {
     while (nextNodes.size() != distances.size())
@@ -55,4 +56,19 @@ void Node::addRoute(int ID, int distance, int nextNode)
 {
     this->setDistance(ID, distance);
     this->setNextNode(ID, nextNode);
+}
+
+void Node::addClassroom(Classroom& new_classroom)
+{
+    classrooms.push_back(new_classroom);
+}
+
+std::vector<Classroom>& Node::getClassrooms()
+{
+    return classrooms;
+}
+
+bool Node::findClassroom(std::string& className)
+{
+    return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(), [&className](Classroom classroom){return className == classroom.getName();});
 }

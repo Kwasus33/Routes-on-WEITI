@@ -74,10 +74,12 @@ TEST(GraphTest, TestDijkstraAlgorithm)
     testGraph.addNode(node9);
 
     std::vector<int> resultDistances = {0, 5, 8, 1, 6, 7, 5, 3, 9, 4};
+    std::vector<int> resultNodes = {0, 3, 7, 9, 6, 4};
     
     testGraph.findRoutes(0);
 
     EXPECT_EQ(resultDistances, testGraph.getNodes()[0].getDistances());
+    EXPECT_EQ(resultNodes, testGraph.getRoute(0, 4));
 
     resultDistances = {6, 11, 14, 5, 0, 3, 1, 3, 5, 2};
 
