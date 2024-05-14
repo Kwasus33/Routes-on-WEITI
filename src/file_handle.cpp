@@ -1,10 +1,10 @@
-#include "../include/file_handle.hpp"
-#include "../build/_deps/jsonrapid-src/include/rapidjson/document.h"
+#include "file_handle.hpp"
 #include <sstream>
 #include <string>
 #include <iostream>
 
-using namespace rapidjson;
+// using namespace rapidjson;
+using namespace boost::json;
 
 
 csvReader::csvReader(): path(), data() {};
@@ -25,7 +25,7 @@ void csvReader::LoadFromFile(const std::string path) {
             addNode(line);
     }
     fp_in.close();
-}
+};
 
 void csvReader::addNode(std::string& line) {
     std::vector<std::string> values;
@@ -86,51 +86,97 @@ void jsonReader::LoadFromFile(const std::string path) {
     fp_in.close();
 
     // Parse the JSON content
-    Document document;
+    error_code ec;
 
-    if (document.Parse(jsonContent.c_str()).HasParseError()) {
-        std::cerr << "Error parsing the JSON." << std::endl;
+    auto jv = parse(jsonContent, ec);
+    
+    if (ec) {
+        std::cerr << "Error parsing the JSON: " << ec.message() << std::endl;
         return;
     }
 
-    // Access JSON array elements
-    if (!document.IsArray()) {
+    // Check if the parsed value is an array
+    if (!jv.is_array()) {
         std::cerr << "JSON content is not an array." << std::endl;
         return;
     }
 
-    addNodes(document);
+    addNodes(jv);
     return;
+
+    // std::ifstream fp_in(path); //opens file
+    // isReadPathValid(fp_in);
+
+    // // Read the JSON content into a string
+    // std::string jsonContent((std::istreambuf_iterator<char>(fp_in)), (std::istreambuf_iterator<char>()));
+
+    // // Close the file stream
+    // fp_in.close();
+
+    // // Parse the JSON content
+    // Document document;
+
+    // if (document.Parse(jsonContent.c_str()).HasParseError()) {
+    //     std::cerr << "Error parsing the JSON." << std::endl;
+    //     return;
+    // }
+
+    // // Access JSON array elements
+    // if (!document.IsArray()) {
+    //     std::cerr << "JSON content is not an array." << std::endl;
+    //     return;
+    // }
+
+    // addNodes(document);
+    // return;
 
 }
 // nie czyta pliku document.h z biblioteki rapidjson
 
-std::vector<Node> jsonReader::addNodes(Document document) {
+std::vector<Node> jsonReader::addNodes(auto jv) {
     
     std::vector<Node> Nodes;
-    std::vector<int> distancesVect;
     int id;
-    
+
     // Iterate over each object in the array
-    for (SizeType i = 0; i < document.Size(); i++) {
-        const Value& obj = document[i];
+    for (const auto& obj : jv.as_array()) {
+        std::vector<int> distancesVect;
 
         // Check if the object has an "id" field
-        if (obj.HasMember("id") && obj["id"].IsInt()) {
-            id = obj["id"].GetInt();
-        }
+        if (auto id = obj.at("id"); id.is_int64())
+            id = id.as_int64();
 
         // Check if the object has a "distances" field
-        if (obj.HasMember("distances") && obj["distances"].IsArray()) {
-            const Value& distances = obj["distances"];
-            for (SizeType j = 0; j < distances.Size(); j++)
-                if (distances[j].IsInt())
-                    distancesVect.push_back(distances[j].GetInt());
-        }
+        if (auto distances = obj.at("distances"); distances.is_array())
+            for (const auto& distance : distances.as_array())
+                if (distance.is_int64())
+                    distancesVect.push_back(distance.as_int64());
 
-        Nodes.push_back(Node(id, distancesVect));        
+        Nodes.push_back(Node(id, distancesVect));
     }
+    
     return Nodes;
+    
+    // // Iterate over each object in the array
+    // for (SizeType i = 0; i < document.Size(); i++) {
+    //     const Value& obj = document[i];
+
+    //     // Check if the object has an "id" field
+    //     if (obj.HasMember("id") && obj["id"].IsInt()) {
+    //         id = obj["id"].GetInt();
+    //     }
+
+    //     // Check if the object has a "distances" field
+    //     if (obj.HasMember("distances") && obj["distances"].IsArray()) {
+    //         const Value& distances = obj["distances"];
+    //         for (SizeType j = 0; j < distances.Size(); j++)
+    //             if (distances[j].IsInt())
+    //                 distancesVect.push_back(distances[j].GetInt());
+    //     }
+
+    //     Nodes.push_back(Node(id, distancesVect));        
+    // }
+    // return Nodes;
 }
 
 void jsonReader::isReadPathValid(const std::ifstream &fp) const{

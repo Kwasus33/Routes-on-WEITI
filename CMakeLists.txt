@@ -14,11 +14,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL2)
 
-FetchContent_Declare(
-    JsonRapid
-    URL https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz
-)
-FetchContent_MakeAvailable(JsonRapid)
+# FetchContent_Declare(
+#     BoostJson
+#     URL https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.5.tar.gz
+# )
+# FetchContent_MakeAvailable(BoostJson)
 
 FetchContent_Declare(
     googletest
@@ -39,10 +39,24 @@ add_library(program_manager STATIC ./src/program_manager.cpp)
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC SDL2main SDL2-static)
 
-add_library(file_handle STATIC ./src/file_handle.cpp)
-target_include_directories(file_handle PRIVATE ./include)
-target_link_libraries(file_handle PUBLIC rapidjson)
+# add_library(file_handle STATIC ./src/file_handle.cpp)
+# target_include_directories(file_handle PRIVATE ./include)
+# target_link_libraries(file_handle PUBLIC json)
 
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE program_manager)
 target_include_directories(main PRIVATE ./include)
+
+set(BOOST_INCLUDE_LIBRARIES json)
+set(BOOST_ENABLE_CMAKE ON)
+include(FetchContent)
+FetchContent_Declare(
+  Boost
+  GIT_REPOSITORY https://github.com/boostorg/boost.git
+  GIT_TAG boost-1.80.0
+)
+FetchContent_MakeAvailable(Boost)
+
+add_library(file_handle STATIC ./src/file_handle.cpp)
+target_include_directories(file_handle PRIVATE ./include)
+target_link_libraries(file_handle PUBLIC Boost::json)
