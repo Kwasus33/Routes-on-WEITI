@@ -2,6 +2,7 @@
 #include "node.hpp"
 #include "graph.hpp"
 #include <vector>
+#include "classroom.hpp"
 
 TEST(GraphTest, CreateGraph)
 {
@@ -73,6 +74,11 @@ TEST(GraphTest, TestDijkstraAlgorithm)
     testGraph.addNode(node8);
     testGraph.addNode(node9);
 
+    std::string className = "131";
+
+    Classroom class1(className);
+    testGraph.getNodes()[5].addClassroom(class1);
+
     std::vector<int> resultDistances = {0, 5, 8, 1, 6, 7, 5, 3, 9, 4};
     std::vector<int> resultNodes = {0, 3, 7, 9, 6, 4};
     
@@ -86,5 +92,10 @@ TEST(GraphTest, TestDijkstraAlgorithm)
     testGraph.findRoutes(4);
 
     EXPECT_EQ(resultDistances, testGraph.getNodes()[4].getDistances());
+
+    std::string failedSearch = "132";
+
+    EXPECT_EQ(testGraph.findClassroom(className), 5);
+    EXPECT_EQ(testGraph.findClassroom(failedSearch), -1);
 
 }

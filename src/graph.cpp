@@ -123,3 +123,13 @@ std::vector<Node> &Graph::getNodes()
 {
     return nodes;
 }
+
+int Graph::findClassroom(std::string& className)
+{
+    for (Node node : nodes)
+    {
+        if (node.findClassroom(className)) return node.getID();
+    }
+
+    return -1;
+}
