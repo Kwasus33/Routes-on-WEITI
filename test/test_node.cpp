@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "node.hpp"
+#include "classroom.hpp"
 
 TEST(NodeTest, GetID)
 {
@@ -48,4 +49,18 @@ TEST(NodeTest, AddRoute)
     node.addRoute(1, 5, 2);
     EXPECT_EQ(node.getDistances()[1], 5);
     EXPECT_EQ(node.getNextNodes()[1], 2);
+}
+
+TEST(NodeTest, AddClassroomm)
+{
+    std::vector<int> distances = {0, 1, 2};
+    Node node(0, distances);
+    Classroom class1("131");
+    node.addClassroom(class1);
+
+    std::string classNumber = "131";
+    std::string classNumber2 = "132";
+
+    EXPECT_TRUE(node.findClassroom(classNumber));
+    EXPECT_FALSE(node.findClassroom(classNumber2));
 }
