@@ -27,7 +27,7 @@ void csvReader::LoadFromFile(const std::string path) {
     fp_in.close();
 }
 
-Node csvReader::addNode(std::string& line) {
+void csvReader::addNode(std::string& line) {
     std::vector<std::string> values;
     std::vector<int> distances;
 
@@ -36,7 +36,7 @@ Node csvReader::addNode(std::string& line) {
 
     try {
         // while (end != std::string::npos) {
-        while (end != '\n') {
+        while (line[end] != '\n') {
             values.push_back(line.substr(start, end - start));
             start = end + 1;
             end = line.find(',', start);
@@ -45,21 +45,18 @@ Node csvReader::addNode(std::string& line) {
 
         int id = stoi(values.at(0));
         
-        int i = 1;
-        while (i < size(values)) {  
+        for(size_t i = 1; i < values.size(); ++i) {
             distances.push_back(stoi(values.at(i)));      
-            ++i;
         }
 
-        return Node(id, distances);
+        data.push_back(Node(id, distances));
     }
-    catch (std::invalid_argument &error) {
+    catch (const std::invalid_argument& error) {
         return;
     }
-    catch (std::out_of_range &error) {  // for .at() method
+    catch (const std::out_of_range& error) {  // for .at() method
         return;
     }
-    // if error ocurrs the data line is skipped
 };
 
 void csvReader::isReadPathValid(const std::ifstream &fp) const{
