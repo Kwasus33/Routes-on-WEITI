@@ -15,6 +15,12 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(SDL2)
 
 FetchContent_Declare(
+    JsonRapid
+    URL https://github.com/Tencent/rapidjson/archive/refs/tags/v1.1.0.tar.gz
+)
+FetchContent_MakeAvailable(JsonRapid)
+
+FetchContent_Declare(
     googletest
     URL https://github.com/google/googletest/archive/refs/heads/master.zip
 )
@@ -32,6 +38,10 @@ gtest_discover_tests(graph_tests)
 add_library(program_manager STATIC ./src/program_manager.cpp)
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC SDL2main SDL2-static)
+
+add_library(file_handle STATIC ./src/file_handle.cpp)
+target_include_directories(file_handle PRIVATE ./include)
+target_link_libraries(file_handle PUBLIC rapidjson)
 
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE program_manager)
