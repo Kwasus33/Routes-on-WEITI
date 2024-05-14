@@ -1,7 +1,8 @@
 #include "node.hpp"
 #include <algorithm>
 
-Node::Node(int ID, std::vector<int> dist) : ID(ID), distances(dist) {
+Node::Node(int ID, std::vector<int> dist) : ID(ID), distances(dist)
+{
     while (nextNodes.size() != distances.size())
     {
         int currentIndex = nextNodes.size();
@@ -38,10 +39,20 @@ void Node::setDistance(int nodeID, int distance)
         distances[nodeID] = distance;
         return;
     }
-    while (distances.size() - 1 < nodeID)
+    int current_length = distances.size();
+    while (current_length < nodeID)
     {
-        distances.push_back(__INT_MAX__);
-        nextNodes.push_back(-1);
+        ++current_length;
+        if (current_length - 1 == ID)
+        {
+            distances.push_back(0);
+            nextNodes.push_back(ID);
+        }
+        else
+        {
+            distances.push_back(__INT_MAX__);
+            nextNodes.push_back(-1);
+        }
     }
     distances.push_back(distance);
     nextNodes.push_back(-1);
@@ -58,17 +69,18 @@ void Node::addRoute(int ID, int distance, int nextNode)
     this->setNextNode(ID, nextNode);
 }
 
-void Node::addClassroom(Classroom& new_classroom)
+void Node::addClassroom(Classroom &new_classroom)
 {
     classrooms.push_back(new_classroom);
 }
 
-std::vector<Classroom>& Node::getClassrooms()
+std::vector<Classroom> &Node::getClassrooms()
 {
     return classrooms;
 }
 
-bool Node::findClassroom(std::string& className)
+bool Node::findClassroom(std::string &className)
 {
-    return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(), [&className](Classroom classroom){return className == classroom.getName();});
+    return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(), [&className](Classroom classroom)
+                                            { return className == classroom.getName(); });
 }

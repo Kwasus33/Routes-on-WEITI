@@ -39,15 +39,15 @@ TEST(GraphTest, CreateGraph)
 
 TEST(GraphTest, TestDijkstraAlgorithm)
 {
-    std::vector<int> distance0 = {0, 5, __INT_MAX__, 1, 8, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__};
-    std::vector<int> distance1 = {__INT_MAX__, 0, 3, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__};
-    std::vector<int> distance2 = {__INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__};
-    std::vector<int> distance3 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__, 2, __INT_MAX__, __INT_MAX__};
-    std::vector<int> distance4 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, 1, __INT_MAX__, __INT_MAX__, __INT_MAX__};
-    std::vector<int> distance5 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, 2, __INT_MAX__};
-    std::vector<int> distance6 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 2, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__};
+    std::vector<int> distance0 = {0, 5, __INT_MAX__, 1, 8};
+    std::vector<int> distance1 = {__INT_MAX__, 0, 3};
+    std::vector<int> distance2 = {__INT_MAX__, __INT_MAX__, 0};
+    std::vector<int> distance3 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__, 2};
+    std::vector<int> distance4 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, 1};
+    std::vector<int> distance5 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, 2};
+    std::vector<int> distance6 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 2, 0};
     std::vector<int> distance7 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, 1};
-    std::vector<int> distance8 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__};
+    std::vector<int> distance8 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0};
     std::vector<int> distance9 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 1, __INT_MAX__, 10, 0};
     
     Node node0(0, distance0);
