@@ -80,6 +80,8 @@ void Graph::findRoutes(int nodeID)
         return;
     }
 
+    if (hasRoutes[nodeID]) return;
+
     // Creates priority queue and reference to starting node
     Node &startingNode = nodes[nodeID];
     std::deque<int> nodesQueue;

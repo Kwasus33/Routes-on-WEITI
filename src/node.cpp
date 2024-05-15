@@ -1,17 +1,50 @@
 #include "node.hpp"
 #include <algorithm>
 
-Node::Node(int ID, std::vector<int> dist) : ID(ID), distances(dist)
+Node::Node(int ID, std::vector<int> dist, std::vector<int> connected) : ID(ID)
 {
-    while (nextNodes.size() != distances.size())
+    if (connected.size() != 0)
     {
-        int currentIndex = nextNodes.size();
-        if (distances[currentIndex] != __INT_MAX__)
+
+        int lastNode = connected[connected.size() - 1];
+        int size = 0;
+        int current_index = 0;
+        while (size <= lastNode)
         {
-            nextNodes.push_back(currentIndex);
+            if (size == connected[current_index] && size != ID)
+            {
+                distances.push_back(dist[current_index]);
+                nextNodes.push_back(connected[current_index]);
+                ++current_index;
+            }
+            else
+            {
+                if (size == ID)
+                {
+                    distances.push_back(0);
+                    nextNodes.push_back(ID);
+                }
+                else
+                {
+                    distances.push_back(__INT_MAX__);
+                    nextNodes.push_back(-1);
+                }
+            }
+
+            ++size;
+        }
+    }
+
+    while (nextNodes.size() <= ID)
+    {
+        if (nextNodes.size() == ID)
+        {
+            distances.push_back(0);
+            nextNodes.push_back(ID);
         }
         else
         {
+            distances.push_back(__INT_MAX__);
             nextNodes.push_back(-1);
         }
     }
