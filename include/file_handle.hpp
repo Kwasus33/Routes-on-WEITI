@@ -28,6 +28,6 @@ class csvReader {
         Graph LoadFromFile(const std::string path);
     private:
         std::string path;
-        Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3);
+        Node addNode(std::string& line1, std::string& line2, std::string& line3);
         void isReadPathValid(const std::ifstream& fp) const; // dodane jako metody public nie private bo operatory z nich będą korzystać
 };
