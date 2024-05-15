@@ -47,16 +47,27 @@ add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE program_manager)
 target_include_directories(main PRIVATE ./include)
 
-set(BOOST_INCLUDE_LIBRARIES json)
-set(BOOST_ENABLE_CMAKE ON)
-include(FetchContent)
-FetchContent_Declare(
-  Boost
-  GIT_REPOSITORY https://github.com/boostorg/boost.git
-  GIT_TAG boost-1.80.0
-)
-FetchContent_MakeAvailable(Boost)
+# set(BOOST_INCLUDE_LIBRARIES json)
+# set(BOOST_ENABLE_CMAKE ON)
+# include(FetchContent)
+# FetchContent_Declare(
+#   Boost
+#   GIT_REPOSITORY https://github.com/boostorg/boost.git
+#   GIT_TAG boost-1.80.0
+# )
+# FetchContent_MakeAvailable(Boost)
 
-add_library(file_handle STATIC ./src/file_handle.cpp)
+# add_library(file_handle STATIC ./src/file_handle.cpp)
+# target_include_directories(file_handle PRIVATE ./include)
+# target_link_libraries(file_handle PUBLIC Boost::json)
+
+
+FetchContent_Declare(
+    json
+    URL https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz
+)
+FetchContent_MakeAvailable(json)
+
+add_library(file_handle ./src/file_handle.cpp)
 target_include_directories(file_handle PRIVATE ./include)
-target_link_libraries(file_handle PUBLIC Boost::json)
+target_link_libraries(file_handle PUBLIC json)

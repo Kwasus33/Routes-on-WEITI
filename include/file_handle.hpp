@@ -6,7 +6,8 @@
 #include <fstream>
 // #include "../include/file_handle.hpp"
 // #include "../build/_deps/jsonrapid-src/include/rapidjson/document.h"
-#include <../build/_deps/boost-src/libs/json>
+// #include <../build/_deps/boost-src/libs/json>
+#include "nlohmann/json.hpp"
 
 
 class csvReader {
@@ -34,6 +35,6 @@ class jsonReader {
     private:
         std::string path;
         std::vector<Node> data;
-        std::vector<Node> addNodes(Document document);
+        std::vector<Node> addNodes(json json_file);
         void isReadPathValid(const std::ifstream& fp) const; // dodane jako metody public nie private bo operatory z nich będą korzystać
 };
