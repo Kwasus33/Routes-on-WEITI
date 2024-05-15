@@ -6,16 +6,19 @@
 
 TEST(GraphTest, CreateGraph)
 {
-    std::vector<int> distance1 = {0, 123, __INT_MAX__};
-    std::vector<int> distance2 = {__INT_MAX__, 0, 123, 24, __INT_MAX__, 12};
-    std::vector<int> distance3 = {__INT_MAX__, __INT_MAX__, 0};
-    std::vector<int> dst;
-    Node node1(0, distance1);
-    Node node2(1, distance2);
-    Node node3(2, distance3);
-    Node node4(3, dst);
-    Node node5(4, dst);
-    Node node6(5, dst);
+    std::vector<int> distance1 = {123};
+    std::vector<int> connected1 = {1};
+    std::vector<int> distance2 = {123, 24, 12};
+    std::vector<int> connected2 = {0, 3, 5};
+    std::vector<int> distance3;
+    std::vector<int> connected3;
+    std::vector<int> empty;
+    Node node1(0, distance1, connected1);
+    Node node2(1, distance2, connected2);
+    Node node3(2, distance3, connected3);
+    Node node4(3, empty, empty);
+    Node node5(4, empty, empty);
+    Node node6(5, empty, empty);
     Graph testGraph;
     testGraph.addNode(node1);
     testGraph.addNode(node2);
@@ -24,42 +27,45 @@ TEST(GraphTest, CreateGraph)
     testGraph.addNode(node5);
     testGraph.addNode(node6);
     std::vector<Node> nodes = testGraph.getNodes();
-    distance1.push_back(__INT_MAX__);
-    distance1.push_back(__INT_MAX__);
-    distance1.push_back(__INT_MAX__);
-    distance2[0] = 123;
-    distance3[1] = 123;
-    distance3.push_back(__INT_MAX__);
-    distance3.push_back(__INT_MAX__);
-    distance3.push_back(__INT_MAX__);
-    EXPECT_EQ(nodes[0].getDistances(), distance1);
-    EXPECT_EQ(nodes[1].getDistances(), distance2);
-    EXPECT_EQ(nodes[2].getDistances(), distance3);
+    std::vector<int> result1 = {0, 123, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__};
+    std::vector<int> result2 = {123, 0, __INT_MAX__, 24, __INT_MAX__, 12};
+    std::vector<int> result3 = {__INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__};
+    EXPECT_EQ(nodes[0].getDistances(), result1);
+    EXPECT_EQ(nodes[1].getDistances(), result2);
+    EXPECT_EQ(nodes[2].getDistances(), result3);
 }
 
 TEST(GraphTest, TestDijkstraAlgorithm)
-{
-    std::vector<int> distance0 = {0, 5, __INT_MAX__, 1, 8};
-    std::vector<int> distance1 = {__INT_MAX__, 0, 3};
-    std::vector<int> distance2 = {__INT_MAX__, __INT_MAX__, 0};
-    std::vector<int> distance3 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__, 2};
-    std::vector<int> distance4 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, 1};
-    std::vector<int> distance5 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, 2};
-    std::vector<int> distance6 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 2, 0};
-    std::vector<int> distance7 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0, __INT_MAX__, 1};
-    std::vector<int> distance8 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 0};
-    std::vector<int> distance9 = {__INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__, 1, __INT_MAX__, 10, 0};
-    
-    Node node0(0, distance0);
-    Node node1(1, distance1);
-    Node node2(2, distance2);
-    Node node3(3, distance3);
-    Node node4(4, distance4);
-    Node node5(5, distance5);
-    Node node6(6, distance6);
-    Node node7(7, distance7);
-    Node node8(8, distance8);
-    Node node9(9, distance9);
+{   std::vector<int> empty;
+    std::vector<int> distance0 = {5, 1, 8};
+    std::vector<int> connected0 = {1, 3, 4};
+    std::vector<int> distance1 = {3};
+    std::vector<int> connected1 = {2};
+    std::vector<int> distance2;
+    std::vector<int> distance3 = {2};
+    std::vector<int> connected3 = {7};
+    std::vector<int> distance4 = {1};
+    std::vector<int> connected4 = {6};
+    std::vector<int> distance5 = {2};
+    std::vector<int> connected5 = {8};
+    std::vector<int> distance6 = {2};
+    std::vector<int> connected6 = {5};
+    std::vector<int> distance7 = {1};
+    std::vector<int> connected7 = {9};
+    std::vector<int> distance8;
+    std::vector<int> distance9 = {1, 10};
+    std::vector<int> connected9 = {6, 8};
+
+    Node node0(0, distance0, connected0);
+    Node node1(1, distance1, connected1);
+    Node node2(2, distance2, empty);
+    Node node3(3, distance3, connected3);
+    Node node4(4, distance4, connected4);
+    Node node5(5, distance5, connected5);
+    Node node6(6, distance6, connected6);
+    Node node7(7, distance7, connected7);
+    Node node8(8, distance8, empty);
+    Node node9(9, distance9, connected9);
 
     Graph testGraph;
 

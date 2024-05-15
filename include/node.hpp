@@ -5,7 +5,7 @@
 
 class Node{
     public:
-    Node(int ID, std::vector<int> dist);
+    Node(int ID, std::vector<int> dist, std::vector<int> connected);
     int getID() const;
     std::vector<int>& getDistances();
     std::vector<int>& getNextNodes();
