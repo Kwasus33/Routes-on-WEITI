@@ -67,7 +67,7 @@ jsonReader::jsonReader(): path() {};
 
 jsonReader::jsonReader(const std::string &path): path(path) {};
 
-json jsonReader::LoadFromFile(const std::string path) {
+json jsonReader::LoadFromFile() {
 
     std::ifstream fp_in(path); //opens file
     isReadPathValid(fp_in);

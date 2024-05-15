@@ -43,10 +43,6 @@ target_link_libraries(program_manager PUBLIC SDL2main SDL2-static)
 # target_include_directories(file_handle PRIVATE ./include)
 # target_link_libraries(file_handle PUBLIC json)
 
-add_executable(main src/main.cpp)
-target_link_libraries(main PRIVATE program_manager)
-target_include_directories(main PRIVATE ./include)
-
 # set(BOOST_INCLUDE_LIBRARIES json)
 # set(BOOST_ENABLE_CMAKE ON)
 # include(FetchContent)
@@ -70,4 +66,8 @@ FetchContent_MakeAvailable(nlohmann_json)
 
 add_library(file_handle ./src/file_handle.cpp)
 target_include_directories(file_handle PRIVATE ./include)
-target_link_libraries(file_handle PUBLIC nlohmann_json)
+target_link_libraries(file_handle PUBLIC nlohmann_json graph)
+
+add_executable(main src/main.cpp)
+target_link_libraries(main PRIVATE program_manager file_handle graph)
+target_include_directories(main PRIVATE ./include)

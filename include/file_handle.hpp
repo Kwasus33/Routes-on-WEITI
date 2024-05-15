@@ -27,7 +27,7 @@ class jsonReader {
     public:
         jsonReader();
         jsonReader(const std::string& path);
-        json LoadFromFile(const std::string path);
+        json LoadFromFile();
         Graph addNodes(json json_file);
     private:
         std::string path;
