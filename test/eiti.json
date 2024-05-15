@@ -18,7 +18,10 @@
                 "name": "Aula 163",
                 "description": "PTCY"
             }
-        ]
+        ],
+        "X": 0,
+        "Y": 0,
+        "floor": 1
     },
     {
         "ID": 1,
@@ -39,6 +42,9 @@
                 "name": "Aula 331",
                 "description": "PTCY"
             }
-        ]
+        ],
+        "X": 1,
+        "Y": 2,
+        "floor": 2
     }
 ]
