@@ -1,10 +1,44 @@
 [
     {
-        "id": 1,
-        "distances": [1, 2, 3]
+        "ID": 0,
+        "distances": [
+            1,
+            2
+        ],
+        "connected": [
+            1,
+            2
+        ],
+        "classrooms": [
+            {
+                "name": "Aula 131",
+                "description": "PIPR"
+            },
+            {
+                "name": "Aula 163",
+                "description": "PTCY"
+            }
+        ]
     },
     {
-        "id": 2,
-        "distances": [2, 2, 2]
+        "nodeID": 1,
+        "distances": [
+            1,
+            5
+        ],
+        "connected": [
+            0,
+            10
+        ],
+        "classrooms": [
+            {
+                "name": "221",
+                "description": "NO DESCRIPTION"
+            },
+            {
+                "name": "Aula 331",
+                "description": "PTCY"
+            }
+        ]
     }
 ]
