@@ -54,18 +54,18 @@ void Graph::addNode(Node new_node)
     }
 }
 
-void Graph::changeRoute(int start, int end, int which, int distance)
+void Graph::changeRoute(int start, int through, int end, int distance)
 {
     /*
     start indicates for the starting Node
-    end indicates the last Node
-    which indicates for which Node new route is being set
+    through indicates the last known Node
+    end indicates for which Node new route is being set
     */
-    while (start != end)
+    while (start != through)
     {
         Node &currentNode = nodes[start];
-        int nextNodeID = currentNode.getNextNodes()[end];
-        currentNode.addRoute(which, distance, nextNodeID);
+        int nextNodeID = currentNode.getNextNodes()[through];
+        currentNode.addRoute(end, distance, nextNodeID);
         distance -= currentNode.getDistances()[nextNodeID];
         start = nextNodeID;
     }
