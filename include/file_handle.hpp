@@ -15,11 +15,9 @@ class csvReader {
         csvReader();
         csvReader(const std::string& path);
         void LoadFromFile(const std::string path);
-        std::vector<Node> getData() const;
     private:
         std::string path;
-        std::vector<Node> data;
-        void addNode(std::string& line);
+        Node addNode(std::string& line);
         void isReadPathValid(const std::ifstream& fp) const; // dodane jako metody public nie private bo operatory z nich będą korzystać
 };
 

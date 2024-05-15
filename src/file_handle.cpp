@@ -4,62 +4,63 @@
 #include <iostream>
 
 
-// csvReader::csvReader(): path(), data() {};
+csvReader::csvReader(): path() {};
 
-// csvReader::csvReader(const std::string &path): path(path) {};
+csvReader::csvReader(const std::string &path): path(path) {};
 
-// std::vector<Node> csvReader::getData() const {
-//     return data;
-// };
+void csvReader::LoadFromFile(const std::string path) {
+    std::ifstream fp_in(path); //opens file
+    isReadPathValid(fp_in);
+    std::string line;
+    while(!fp_in.eof()) {
+        fp_in >> line;
+        if(!line.empty())
+            addNode(line);
+        fp_in >> line;
 
-// void csvReader::LoadFromFile(const std::string path) {
-//     std::ifstream fp_in(path); //opens file
-//     isReadPathValid(fp_in);
-//     std::string line;
-//     while(!fp_in.eof()) {
-//         fp_in >> line;
-//         if(!line.empty())
-//             addNode(line);
-//     }
-//     fp_in.close();
-// };
+    }
+    fp_in.close();
+};
 
-// void csvReader::addNode(std::string& line) {
-//     std::vector<std::string> values;
-//     std::vector<int> distances;
+Node csvReader::addNode(std::string& line) {
+    int id;
+    std::vector<std::string> values;
+    std::vector<int> distances;
+    std::vector<int> connected;
 
-//     size_t start = 0;
-//     size_t end = line.find(',');
+    size_t start = 0;
+    size_t end = line.find(',');
 
-//     try {
-//         // while (end != std::string::npos) {
-//         while (line[end] != '\n') {
-//             values.push_back(line.substr(start, end - start));
-//             start = end + 1;
-//             end = line.find(',', start);
-//         }
-//         values.push_back(line.substr(start));
+    try {
+        // while (end != std::string::npos) {
+        while (line[end] != '\n') {
+            values.push_back(line.substr(start, end - start));
+            start = end + 1;
+            end = line.find(',', start);
+        }
+        values.push_back(line.substr(start));
 
-//         int id = stoi(values.at(0));
+        int id = stoi(values.at(0));
         
-//         for(size_t i = 1; i < values.size(); ++i) {
-//             distances.push_back(stoi(values.at(i)));      
-//         }
+        for(size_t i = 1; i < values.size(); i+=2) {
+            distances.push_back(stoi(values.at(i)));
+            connected.push_back(stoi(values.at(++i)));
+        }
 
-//         data.push_back(Node(id, distances));
-//     }
-//     catch (const std::invalid_argument& error) {
-//         return;
-//     }
-//     catch (const std::out_of_range& error) {  // for .at() method
-//         return;
-//     }
-// };
+        return Node(id, distances, connected);
+    }
+    catch (const std::invalid_argument& error) {
+        return;
+    }
+    catch (const std::out_of_range& error) {  // for .at() method
+        return;
+    }
+};
 
-// void csvReader::isReadPathValid(const std::ifstream &fp) const{
-//     if (!fp.is_open())
-//         std::cerr << "Failed to open file" << std::endl;
-// }
+void csvReader::isReadPathValid(const std::ifstream &fp) const{
+    if (!fp.is_open())
+        std::cerr << "Failed to open file" << std::endl;
+}
 
 //////      rapid json jsonReader    ///////
 
