@@ -1,5 +1,6 @@
 #pragma once
-#include "node.hpp"
+// #include "node.hpp"
+#include "graph.hpp"
 #include <vector>
 #include <ostream>
 #include <istream>
@@ -26,11 +27,9 @@ class jsonReader {
     public:
         jsonReader();
         jsonReader(const std::string& path);
-        void LoadFromFile(const std::string path);
-        std::vector<Node> getData() const;
+        json LoadFromFile(const std::string path);
+        Graph addNodes(json json_file);
     private:
         std::string path;
-        std::vector<Node> data;
-        std::vector<Node> addNodes(json json_file);
         void isReadPathValid(const std::ifstream& fp) const; // dodane jako metody public nie private bo operatory z nich będą korzystać
 };
