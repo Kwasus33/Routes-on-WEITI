@@ -63,11 +63,11 @@ target_include_directories(main PRIVATE ./include)
 
 
 FetchContent_Declare(
-    json
+    nlohmann_json
     URL https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz
 )
-FetchContent_MakeAvailable(json)
+FetchContent_MakeAvailable(nlohmann_json)
 
 add_library(file_handle ./src/file_handle.cpp)
 target_include_directories(file_handle PRIVATE ./include)
-target_link_libraries(file_handle PUBLIC json)
+target_link_libraries(file_handle PUBLIC nlohmann_json)
