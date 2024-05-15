@@ -1,7 +1,7 @@
 #include "node.hpp"
 #include <algorithm>
 
-Node::Node(int ID, std::vector<int> dist, std::vector<int> connected) : ID(ID)
+Node::Node(int ID, std::vector<int> dist, std::vector<int> connected, int floor, int X, int Y) : ID(ID), X(X), Y(Y)
 {
     if (connected.size() != 0)
     {
@@ -116,4 +116,33 @@ bool Node::findClassroom(std::string &className)
 {
     return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(), [&className](Classroom classroom)
                                             { return className == classroom.getName(); });
+}
+int Node::getX() const
+{
+    return X;
+}
+
+int Node::getY() const
+{
+    return Y;
+}
+
+int Node::getFloor() const
+{
+    return floor;
+}
+
+void Node::setX(int x)
+{
+    X = x;
+}
+
+void Node::setY(int y)
+{
+    Y = y;
+}
+
+void Node::setFloor(int floor)
+{
+    this->floor = floor;
 }

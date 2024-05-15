@@ -13,12 +13,12 @@ TEST(GraphTest, CreateGraph)
     std::vector<int> distance3;
     std::vector<int> connected3;
     std::vector<int> empty;
-    Node node1(0, distance1, connected1);
-    Node node2(1, distance2, connected2);
-    Node node3(2, distance3, connected3);
-    Node node4(3, empty, empty);
-    Node node5(4, empty, empty);
-    Node node6(5, empty, empty);
+    Node node1(0, distance1, connected1, 0, 0, 0);
+    Node node2(1, distance2, connected2, 0, 0, 0);
+    Node node3(2, distance3, connected3, 0, 0, 0);
+    Node node4(3, empty, empty, 0, 0, 0);
+    Node node5(4, empty, empty, 0, 0, 0);
+    Node node6(5, empty, empty, 0, 0, 0);
     Graph testGraph;
     testGraph.addNode(node1);
     testGraph.addNode(node2);
@@ -56,16 +56,16 @@ TEST(GraphTest, TestDijkstraAlgorithm)
     std::vector<int> distance9 = {1, 10};
     std::vector<int> connected9 = {6, 8};
 
-    Node node0(0, distance0, connected0);
-    Node node1(1, distance1, connected1);
-    Node node2(2, distance2, empty);
-    Node node3(3, distance3, connected3);
-    Node node4(4, distance4, connected4);
-    Node node5(5, distance5, connected5);
-    Node node6(6, distance6, connected6);
-    Node node7(7, distance7, connected7);
-    Node node8(8, distance8, empty);
-    Node node9(9, distance9, connected9);
+    Node node0(0, distance0, connected0, 0, 0, 0);
+    Node node1(1, distance1, connected1, 0, 0, 0);
+    Node node2(2, distance2, empty, 0, 0, 0);
+    Node node3(3, distance3, connected3, 0, 0, 0);
+    Node node4(4, distance4, connected4, 0, 0, 0);
+    Node node5(5, distance5, connected5, 0, 0, 0);
+    Node node6(6, distance6, connected6, 0, 0, 0);
+    Node node7(7, distance7, connected7, 0, 0, 0);
+    Node node8(8, distance8, empty, 0, 0, 0);
+    Node node9(9, distance9, connected9, 0, 0, 0);
 
     Graph testGraph;
 
