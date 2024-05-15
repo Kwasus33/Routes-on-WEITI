@@ -4,8 +4,6 @@
 #include <iostream>
 // #include "json.hpp"
 
-using json = nlohmann::json;
-
 // using namespace rapidjson;
 // using namespace boost::json;
 
@@ -140,6 +138,7 @@ std::vector<Node> jsonReader::addNodes(json json_file) {
 
         Nodes.push_back(Node(id, distancesVect));
     }
+    return Nodes;
 }
 
 // void jsonReader::LoadFromFile(const std::string path) {

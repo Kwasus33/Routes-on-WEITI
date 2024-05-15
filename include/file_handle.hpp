@@ -9,6 +9,8 @@
 // #include <../build/_deps/boost-src/libs/json>
 #include "nlohmann/json.hpp"
 
+using json = nlohmann::json;
+
 
 class csvReader {
     public:
