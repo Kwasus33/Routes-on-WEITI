@@ -117,10 +117,10 @@ Graph jsonReader::addNodes(json json_file) {
         // Check if the object has a "classrooms" field
         if (obj.find("classrooms") != obj.end() && obj["classrooms"].is_array())
             for (const auto& room : obj["classrooms"]) {
-                if (obj.find("name") != obj.end() && obj["name"].is_string())
-                    name = obj["name"];
-                if (obj.find("description") != obj.end() && obj["description"].is_string())
-                    description = obj["description"];
+                if (room.find("name") != room.end() && room["name"].is_string())
+                    name = room["name"];
+                if (room.find("description") != room.end() && room["description"].is_string())
+                    description = room["description"];
                 
                 Classroom Classroom(name, description);
                 node.addClassroom(Classroom);
