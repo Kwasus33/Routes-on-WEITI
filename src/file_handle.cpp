@@ -85,7 +85,7 @@ void jsonReader::LoadFromFile(const std::string path) {
     // Read the JSON content into a json object
     json json_file;
     try {
-        json >> json_file;
+        fp_in >> json_file;
     }
     catch (json::parse_error& e) {
         std::cerr << "Error parsing the JSON: " << e.what() << std::endl;
