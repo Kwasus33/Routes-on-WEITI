@@ -196,10 +196,10 @@ Node csvReader::addNode(std::string& line1, std::string& line2, std::string& lin
         return node;
     }
     catch (const std::invalid_argument& error) {
-        return;
+        throw error;
     }
     catch (const std::out_of_range& error) {  // for .at() method
-        return;
+        throw error;
     }
 };
 
