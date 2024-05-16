@@ -9,8 +9,9 @@ class ProgramManager
     int screenWidth, screenHeight;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    Graph* graph;
     bool isRunning = true;
+    Graph* graph;
+    std::vector<int> nodePath;
     std::map<int, SDL_Texture*> floorTextures;
     int viewedFloor = 0;
     const int MAX_FLOOR = 1;
@@ -19,7 +20,8 @@ public:
     ProgramManager(const int screenWidth, const int screenHeight, Graph* graph);
     ~ProgramManager();
     
-    void Init();
+    void InitFloors();
+    void UpdatePath(std::string start, std::string end);
     void ProcessInput();
     void Update();
     void Render();

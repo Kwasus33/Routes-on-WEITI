@@ -31,13 +31,21 @@ ProgramManager::~ProgramManager()
     SDL_Quit();
 }
 
-void ProgramManager::Init()
+void ProgramManager::InitFloors()
 {
     // Load Floors
     LoadFloorTexture(-1, "../assets/greenland_grid_velo.bmp");
     LoadFloorTexture(0, "../test/test_graph.bmp");
     LoadFloorTexture(1, "../assets/dots.bmp");
 
+}
+
+void ProgramManager::UpdatePath(std::string start, std::string end)
+{
+    int class1 = graph->findClassroom(start);
+    int class2 = graph->findClassroom(end);
+    graph->findRoutes(class1);
+    nodePath = graph->getRoute(class1, class2);
 }
 
 void ProgramManager::ProcessInput()
@@ -79,9 +87,21 @@ void ProgramManager::Render()
     SDL_RenderCopy(renderer, floorTextures[viewedFloor], NULL, &transform);
 
     // Render path
-    //todo set positions in json
-    //todo get path, cache it maybe??
-    //todo render path by rendering lines between nodes in path
+    std::vector<Node> nodes = graph->getNodes();
+    int pathSize = nodePath.size();
+    for (int i = 1; i < pathSize; i ++)
+    {
+        Node node1 = nodes[nodePath[i-1]];
+        Node node2 = nodes[nodePath[i]];
+
+        // std::cout << node1.getID() << node2.getID() << std::endl;
+        // std::cout << node1.getFloor() << node2.getFloor() << " " << viewedFloor << std::endl;
+        // std::cout << node1.getX() << node2.getX() << std::endl;
+        // if(node1.getFloor() != viewedFloor || node2.getFloor() != viewedFloor) continue;
+
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_RenderDrawLine(renderer, node1.getX(), node1.getY(), node2.getX(), node2.getY());
+    }
 
     SDL_RenderPresent(renderer);
 }
