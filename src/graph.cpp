@@ -5,7 +5,7 @@
 #include <deque>
 #include <algorithm>
 
-void Graph::addNode(Node new_node)
+void Graph::addNode(Node& new_node)
 {
     int nodesQunatity = nodes.size() + 1;
     // adds other nodes description to node that is being added
@@ -138,7 +138,7 @@ std::vector<Node> &Graph::getNodes()
     return nodes;
 }
 
-int Graph::findClassroom(std::string &className)
+int Graph::findClassroom(std::string &className) const
 {
     for (Node node : nodes)
     {

@@ -1,8 +1,7 @@
 #include "node.hpp"
 #include <algorithm>
 
-Node::Node(int ID, std::vector<int> dist, std::vector<int> connected, int floor, int X, int Y) 
-    : ID(ID), X(X), Y(Y), floor(floor)
+Node::Node(const int ID, std::vector<int>& dist, std::vector<int>& connected, const int floor, const int X, const int Y) : ID(ID), X(X), Y(Y), floor(floor)
 {
     if (connected.size() != 0)
     {
@@ -68,7 +67,7 @@ std::vector<int> &Node::getNextNodes()
     return nextNodes;
 }
 
-void Node::setDistance(int nodeID, int distance)
+void Node::setDistance(const int nodeID, const int distance)
 {
     if (nodeID < distances.size())
     {
@@ -100,7 +99,7 @@ void Node::setNextNode(int toNode, int nextNode)
     nextNodes[toNode] = nextNode;
 }
 
-void Node::addRoute(int ID, int distance, int nextNode)
+void Node::addRoute(const int ID, const int distance, const int nextNode)
 {
     this->setDistance(ID, distance);
     this->setNextNode(ID, nextNode);
@@ -116,7 +115,7 @@ std::vector<Classroom> &Node::getClassrooms()
     return classrooms;
 }
 
-bool Node::findClassroom(std::string &className)
+bool Node::findClassroom(std::string &className) const
 {
     return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(), [&className](Classroom classroom)
                                             { return className == classroom.getName(); });

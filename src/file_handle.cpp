@@ -3,38 +3,42 @@
 #include <string>
 #include <iostream>
 
-
 //////      rapid json jsonReader    ///////
 
-jsonReader::jsonReader(): path() {};
+jsonReader::jsonReader() : path(){};
 
-jsonReader::jsonReader(const std::string &path): path(path) {};
+jsonReader::jsonReader(const std::string &path) : path(path){};
 
-json jsonReader::LoadFromFile() {
+json jsonReader::LoadFromFile()
+{
 
-    std::ifstream fp_in(path); //opens file
+    std::ifstream fp_in(path); // opens file
     isReadPathValid(fp_in);
 
     // Read the JSON content into a json object
     json json_file;
-    try {
+    try
+    {
         fp_in >> json_file;
     }
-    catch (json::parse_error& e) {
+    catch (json::parse_error &e)
+    {
         std::cerr << "Error parsing the JSON: " << e.what() << std::endl;
     }
 
     return json_file;
 }
 
-Graph jsonReader::addNodes() {
-    
+Graph jsonReader::addNodes()
+{
+
     json json_file = LoadFromFile();
-    
+
     Graph graph;
 
     // Iterate over each object in the array
-    for (const auto& obj : json_file) {
+    for (const auto &obj : json_file)
+    {
         int id, X, Y, floor;
         std::vector<int> distancesVect, connectedNodes;
         std::string name, description;
@@ -57,13 +61,13 @@ Graph jsonReader::addNodes() {
 
         // Check if the object has a "distances" field
         if (obj.find("distances") != obj.end() && obj["distances"].is_array())
-            for (const auto& distance : obj["distances"])
+            for (const auto &distance : obj["distances"])
                 if (distance.is_number_integer())
                     distancesVect.push_back(distance);
 
         // Check if the object has a "connected" field
         if (obj.find("connected") != obj.end() && obj["connected"].is_array())
-            for (const auto& connection : obj["connected"])
+            for (const auto &connection : obj["connected"])
                 if (connection.is_number_integer())
                     connectedNodes.push_back(connection);
 
@@ -71,12 +75,13 @@ Graph jsonReader::addNodes() {
 
         // Check if the object has a "classrooms" field
         if (obj.find("classrooms") != obj.end() && obj["classrooms"].is_array())
-            for (const auto& room : obj["classrooms"]) {
+            for (const auto &room : obj["classrooms"])
+            {
                 if (room.find("name") != room.end() && room["name"].is_string())
                     name = room["name"];
                 if (room.find("description") != room.end() && room["description"].is_string())
                     description = room["description"];
-                
+
                 Classroom Classroom(name, description);
                 node.addClassroom(Classroom);
             }
@@ -86,11 +91,11 @@ Graph jsonReader::addNodes() {
     return graph;
 }
 
-void jsonReader::isReadPathValid(const std::ifstream &fp) const{
+void jsonReader::isReadPathValid(const std::ifstream &fp) const
+{
     if (!fp.is_open())
         std::cerr << "Failed to open file" << std::endl;
 }
-
 
 /////   CSV reader - more prone to errors
 
@@ -99,12 +104,13 @@ void jsonReader::isReadPathValid(const std::ifstream &fp) const{
 //      distance,connected,distance,connected...
 //      name,description,name,description...    -classrooms
 
-csvReader::csvReader(): path() {};
+csvReader::csvReader() : path(){};
 
-csvReader::csvReader(const std::string &path): path(path) {};
+csvReader::csvReader(const std::string &path) : path(path){};
 
-Graph csvReader::LoadFromFile(const std::string path) {
-    std::ifstream fp_in(path); //opens file
+Graph csvReader::LoadFromFile(const std::string path)
+{
+    std::ifstream fp_in(path); // opens file
     isReadPathValid(fp_in);
 
     Graph graph;
@@ -112,23 +118,28 @@ Graph csvReader::LoadFromFile(const std::string path) {
     std::string line2;
     std::string line3;
 
-    while(!fp_in.eof()) {
-        
+    while (!fp_in.eof())
+    {
+
         fp_in >> line1;
-        if(!fp_in.eof())
+        if (!fp_in.eof())
             fp_in >> line2;
-        if(!fp_in.eof())
+        if (!fp_in.eof())
             fp_in >> line3;
 
-        if(!line1.empty() && !line2.empty() && !line3.empty())
-            graph.addNode(addNode(line1, line2, line3));
+        if (!line1.empty() && !line2.empty() && !line3.empty())
+        {
+            Node new_node = addNode(line1, line2, line3);
+            graph.addNode(new_node);
+        }
     }
     fp_in.close();
 
     return graph;
 };
 
-Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3) {
+Node csvReader::addNode(std::string &line1, std::string &line2, std::string &line3)
+{
 
     std::vector<std::string> values;
     std::vector<int> distances, connected;
@@ -136,13 +147,15 @@ Node csvReader::addNode(std::string& line1, std::string& line2, std::string& lin
     size_t start;
     size_t end;
 
-    try {
+    try
+    {
         // reading first line
         start = 0;
         end = line1.find(',');
 
         // while (end != std::string::npos) {
-        while (line1[end] != '\n') {
+        while (line1[end] != '\n')
+        {
             values.push_back(line1.substr(start, end - start));
             start = end + 1;
             end = line1.find(',', start);
@@ -160,14 +173,16 @@ Node csvReader::addNode(std::string& line1, std::string& line2, std::string& lin
         end = line2.find(',');
 
         // while (end != std::string::npos) {
-        while (line2[end] != '\n') {
+        while (line2[end] != '\n')
+        {
             values.push_back(line2.substr(start, end - start));
             start = end + 1;
             end = line2.find(',', start);
         }
         values.push_back(line2.substr(start));
-        
-        for(size_t i = 0; i < values.size(); i+=2) {
+
+        for (size_t i = 0; i < values.size(); i += 2)
+        {
             distances.push_back(stoi(values.at(i)));
             connected.push_back(stoi(values.at(++i)));
         }
@@ -181,29 +196,34 @@ Node csvReader::addNode(std::string& line1, std::string& line2, std::string& lin
         end = line3.find(',');
 
         // while (end != std::string::npos) {
-        while (line3[end] != '\n') {
+        while (line3[end] != '\n')
+        {
             values.push_back(line3.substr(start, end - start));
             start = end + 1;
             end = line3.find(',', start);
         }
         values.push_back(line3.substr(start));
-        
-        for(size_t i = 0; i < values.size(); i+=2) {
+
+        for (size_t i = 0; i < values.size(); i += 2)
+        {
             Classroom room(values.at(i), values.at(++i));
             node.addClassroom(room);
         }
 
         return node;
     }
-    catch (const std::invalid_argument& error) {
+    catch (const std::invalid_argument &error)
+    {
         throw error;
     }
-    catch (const std::out_of_range& error) {  // for .at() method
+    catch (const std::out_of_range &error)
+    { // for .at() method
         throw error;
     }
 };
 
-void csvReader::isReadPathValid(const std::ifstream &fp) const{
+void csvReader::isReadPathValid(const std::ifstream &fp) const
+{
     if (!fp.is_open())
         std::cerr << "Failed to open file" << std::endl;
 }

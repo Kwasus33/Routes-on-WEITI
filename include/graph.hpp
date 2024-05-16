@@ -6,13 +6,13 @@
 class Graph
 {
 public:
-    void addNode(Node new_node);
-    std::vector<Node> &getNodes();
-    void findRoutes(int nodeID);
+    void addNode(Node& new_node);
+    std::vector<Node>& getNodes();
+    void findRoutes(const int nodeID);
     std::vector<int> getRoute(int start, int end);
-    int findClassroom(std::string& className);
+    int findClassroom(std::string& className) const;
 private:
     std::vector<Node> nodes;
     std::vector<bool> hasRoutes;
-    void changeRoute(int start, int end, int which, int distance);
+    void changeRoute(const int start, const int end, const int which, const int distance);
 };
