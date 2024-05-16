@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
             if (i == 1 && (arg == "-h" || arg == "--help")) {
                 std::cout << "Usage: " << argv[0] << std::endl;
                 std::cout << "main.cpp [classroom1_number] [classroom2_number]";
+                return 0;
             }
             else {
                 if (i == 1)
