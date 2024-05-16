@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "classroom.hpp"
+#include <limits>
 
 class Node{
     public:

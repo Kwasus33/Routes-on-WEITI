@@ -27,9 +27,14 @@ TEST(GraphTest, CreateGraph)
     testGraph.addNode(node5);
     testGraph.addNode(node6);
     std::vector<Node> nodes = testGraph.getNodes();
-    std::vector<int> result1 = {0, 123, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__};
-    std::vector<int> result2 = {123, 0, __INT_MAX__, 24, __INT_MAX__, 12};
-    std::vector<int> result3 = {__INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__};
+    // std::vector<int> result1 = {0, 123, __INT_MAX__, __INT_MAX__, __INT_MAX__, __INT_MAX__};
+    // std::vector<int> result2 = {123, 0, __INT_MAX__, 24, __INT_MAX__, 12};
+    // std::vector<int> result3 = {__INT_MAX__, __INT_MAX__, 0, __INT_MAX__, __INT_MAX__, __INT_MAX__};
+    std::vector<int> result1 = {0, 123, std::numeric_limits<int>::max(), std::numeric_limits<int>::max(), 
+        std::numeric_limits<int>::max(), std::numeric_limits<int>::max()};
+    std::vector<int> result2 = {123, 0, std::numeric_limits<int>::max(), 24, std::numeric_limits<int>::max(), 12};
+    std::vector<int> result3 = {std::numeric_limits<int>::max(), std::numeric_limits<int>::max(), 
+        0, std::numeric_limits<int>::max(), std::numeric_limits<int>::max(), std::numeric_limits<int>::max()};
     EXPECT_EQ(nodes[0].getDistances(), result1);
     EXPECT_EQ(nodes[1].getDistances(), result2);
     EXPECT_EQ(nodes[2].getDistances(), result3);

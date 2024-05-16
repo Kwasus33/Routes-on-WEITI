@@ -15,7 +15,8 @@ TEST(NodeTest, GetDistances)
     std::vector<int> distances = {1, 3};
     std::vector<int> connected = {1, 3};
     Node node(0, distances, connected, 0, 0, 0);
-    std::vector<int> result = {0, 1, __INT_MAX__, 3};
+    // std::vector<int> result = {0, 1, __INT_MAX__, 3};
+    std::vector<int> result = {0, 1, std::numeric_limits<int>::max(), 3};
     EXPECT_EQ(node.getDistances(), result);
 }
 

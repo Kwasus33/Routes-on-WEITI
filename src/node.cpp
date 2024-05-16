@@ -26,7 +26,8 @@ Node::Node(int ID, std::vector<int> dist, std::vector<int> connected, int floor,
                 }
                 else
                 {
-                    distances.push_back(__INT_MAX__);
+                    // distances.push_back(__INT_MAX__);
+                    distances.push_back(std::numeric_limits<int>::max());
                     nextNodes.push_back(-1);
                 }
             }
@@ -44,7 +45,8 @@ Node::Node(int ID, std::vector<int> dist, std::vector<int> connected, int floor,
         }
         else
         {
-            distances.push_back(__INT_MAX__);
+            // distances.push_back(__INT_MAX__);
+            distances.push_back(std::numeric_limits<int>::max());
             nextNodes.push_back(-1);
         }
     }
@@ -83,7 +85,8 @@ void Node::setDistance(int nodeID, int distance)
         }
         else
         {
-            distances.push_back(__INT_MAX__);
+            // distances.push_back(__INT_MAX__);
+            distances.push_back(std::numeric_limits<int>::max());
             nextNodes.push_back(-1);
         }
     }

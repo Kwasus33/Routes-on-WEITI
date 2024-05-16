@@ -11,7 +11,8 @@ void Graph::addNode(Node new_node)
     // adds other nodes description to node that is being added
     if (new_node.getDistances().size() < nodesQunatity)
     {
-        new_node.setDistance(nodesQunatity - 1, __INT_MAX__);
+        // new_node.setDistance(nodesQunatity - 1, __INT_MAX__);
+        new_node.setDistance(nodesQunatity - 1, std::numeric_limits<int>::max());
         new_node.addRoute(new_node.getID(), 0, new_node.getID());
     }
     nodes.push_back(new_node);
@@ -30,7 +31,8 @@ void Graph::addNode(Node new_node)
         // adds placeholders for no information nodes to current node
         if (currentNode.getDistances().size() < nodesQunatity)
         {
-            currentNode.setDistance(nodesQunatity - 1, __INT_MAX__);
+            // currentNode.setDistance(nodesQunatity - 1, __INT_MAX__);
+            currentNode.setDistance(nodesQunatity - 1, std::numeric_limits<int>::max());
         }
         // checks if added node has information about route to this node
         if (new_node.getNextNodes()[i] == currentNode.getID())
