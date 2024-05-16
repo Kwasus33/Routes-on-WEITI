@@ -35,7 +35,7 @@ include(GoogleTest)
 target_link_libraries(graph_tests PRIVATE GTest::gtest_main)
 gtest_discover_tests(graph_tests)
 
-add_library(program_manager STATIC ./src/program_manager.cpp)
+add_library(program_manager ./src/program_manager.cpp)
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC SDL2main SDL2-static)
 
