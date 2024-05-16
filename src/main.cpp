@@ -6,29 +6,30 @@
 
 int main(int argc, char *argv[])
 {
-    // std::vector<std::string> arguments;
+    std::vector<std::string> arguments;
+    std::string id_1;
+    std::string id_2;
 
-    // for (int i = 1; i < argc; ++i) {
-    //     std::string arg(argv[i]);
-
-    //     if (arg == "-h" || arg == "--help") {
-    //         std::cout << "Usage: " << argv[0] << " [options]\n";
-    //         std::cout << "Options:\n";
-    //         std::cout << "  -h, --help  Show this help message\n";
-    //     }
-    //     else if (arg == "-f" || arg == "--find") {
-    //         // call findRoute() func
-    //     }
-    //     else if (arg == "-" || arg == "--find"){
-    //         arguments.push_back(arg);
-    //     }
-    // }
-
-    // // Process custom arguments
-    // for (const std::string& arg : arguments) {
-    //     // Add your custom argument processing logic here
-    //     std::cout << "Custom argument: " << arg << "\n";
-    // }
+    for (int i = 1; i < argc; ++i) {
+        std::string arg(argv[i]);
+        try {
+            if (i == 1 && (arg == "-h" || arg == "--help")) {
+                std::cout << "Usage: " << argv[0] << std::endl;
+                std::cout << "main.cpp [classroom1_number] [classroom2_number]";
+            }
+            else {
+                if (i == 1)
+                    id_1 = arg;
+                else if (i == 2)
+                    id_2 = arg;
+                else
+                    continue;
+            }
+        }
+        catch(const std::exception& e) {
+            std::cerr << e.what() << '\n';
+        }
+    }
 
     jsonReader fh("../test/test.json");
     Graph gr = fh.addNodes();
