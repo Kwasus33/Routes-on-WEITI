@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-ProgramManager::ProgramManager(int screenWidth, int screenHeight) 
-    : screenWidth{screenWidth}, screenHeight{screenHeight}
+ProgramManager::ProgramManager(const int screenWidth, const int screenHeight, Graph* graph) 
+    : screenWidth{screenWidth}, screenHeight{screenHeight}, graph{graph}
 {
     // Setup window
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -34,29 +34,10 @@ ProgramManager::~ProgramManager()
 void ProgramManager::Init()
 {
     // Load Floors
-    SDL_Surface* surface;
-    SDL_Texture* texture;
-    SDL_Rect transform{0, 0, 100, 100};
+    LoadFloorTexture(-1, "../assets/greenland_grid_velo.bmp");
+    LoadFloorTexture(0, "../test/test_graph.bmp");
+    LoadFloorTexture(1, "../assets/dots.bmp");
 
-    surface = SDL_LoadBMP("../assets/greenland_grid_velo.bmp");
-    if(surface == nullptr) 
-    {
-        std::cerr << "Can't load image" << std::endl;
-        return;
-    }
-    texture = SDL_CreateTextureFromSurface(renderer, surface);
-    floors[-1] = Floor(texture, transform);
-
-    surface = SDL_LoadBMP("../assets/dots.bmp");
-    if(surface == nullptr) 
-    {
-        std::cerr << "Can't load image" << std::endl;
-        return;
-    }
-    texture = SDL_CreateTextureFromSurface(renderer, surface);
-    floors[0] = Floor(texture, transform);
-
-    SDL_FreeSurface(surface);
 }
 
 void ProgramManager::ProcessInput()
@@ -93,12 +74,29 @@ void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
     
-    SDL_RenderCopy(renderer, floors[viewedFloor].texture, NULL, &floors[viewedFloor].transform);
+    SDL_Rect transform{0, 0, screenWidth, screenHeight};
+    SDL_RenderCopy(renderer, floorTextures[viewedFloor], NULL, &transform);
 
     SDL_RenderPresent(renderer);
 }
 
-bool ProgramManager::IsRunning()
+bool ProgramManager::IsRunning() const
 {
     return isRunning;
+}
+
+void ProgramManager::LoadFloorTexture(const int floor, const char* path)
+{
+    SDL_Surface* surface;
+    SDL_Texture* texture;
+    surface = SDL_LoadBMP(path);
+    if(surface == nullptr) 
+    {
+        std::cerr << "Can't load image: " << path << std::endl;
+        return;
+    }
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    floorTextures[floor] = texture;
+    
+    SDL_FreeSurface(surface);
 }

@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     std::cout << std::endl;
     std::cout << "start" << std::endl;
     
-    ProgramManager program(800, 600);
+    ProgramManager program(800, 600, &gr);
 
     program.Init();
 
