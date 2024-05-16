@@ -32,13 +32,21 @@ int main(int argc, char *argv[])
 
     jsonReader fh("../test/test.json");
     Graph gr = fh.addNodes();
-    
+
     ProgramManager program(800, 600, &gr);
 
     program.InitFloors();
-    program.UpdatePath("01", "52");
+    try
+    {
+        program.UpdatePath("0", "82");
+    }
+    catch (std::invalid_argument &e)
+    {
+        std::cout << e.what() << '\n';
+        return 1;
+    }
 
-    while(program.IsRunning())
+    while (program.IsRunning())
     {
         program.ProcessInput();
         program.Update();
