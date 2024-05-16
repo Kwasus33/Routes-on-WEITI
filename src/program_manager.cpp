@@ -74,8 +74,14 @@ void ProgramManager::Render()
 {
     SDL_RenderClear(renderer);
     
+    // Render floor image
     SDL_Rect transform{0, 0, screenWidth, screenHeight};
     SDL_RenderCopy(renderer, floorTextures[viewedFloor], NULL, &transform);
+
+    // Render path
+    //todo set positions in json
+    //todo get path, cache it maybe??
+    //todo render path by rendering lines between nodes in path
 
     SDL_RenderPresent(renderer);
 }
