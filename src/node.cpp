@@ -1,7 +1,8 @@
 #include "node.hpp"
 #include <algorithm>
 
-Node::Node(int ID, std::vector<int> dist, std::vector<int> connected, int floor, int X, int Y) : ID(ID), X(X), Y(Y)
+Node::Node(int ID, std::vector<int> dist, std::vector<int> connected, int floor, int X, int Y) 
+    : ID(ID), X(X), Y(Y), floor(floor)
 {
     if (connected.size() != 0)
     {
