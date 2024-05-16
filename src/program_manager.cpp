@@ -94,9 +94,6 @@ void ProgramManager::Render()
         Node node1 = nodes[nodePath[i-1]];
         Node node2 = nodes[nodePath[i]];
 
-        // std::cout << node1.getID() << node2.getID() << std::endl;
-        // std::cout << node1.getFloor() << node2.getFloor() << " " << viewedFloor << std::endl;
-        // std::cout << node1.getX() << node2.getX() << std::endl;
         if(node1.getFloor() != viewedFloor || node2.getFloor() != viewedFloor) continue;
 
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
