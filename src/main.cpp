@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     program.InitFloors();
     try
     {
-        program.UpdatePath("0", "82");
+        program.UpdatePath(id_1, id_2);
     }
     catch (std::invalid_argument &e)
     {
