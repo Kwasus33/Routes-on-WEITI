@@ -1,5 +1,4 @@
 #pragma once
-// #include "node.hpp"
 #include "graph.hpp"
 #include <vector>
 #include <ostream>
@@ -10,24 +9,38 @@
 using json = nlohmann::json;
 
 
-class jsonReader {
+class FileReader {
+    public:
+        FileReader();
+        FileReader(const std::string& path);
+        virtual Graph ReadDataIntoGraph() = 0;
+    private:
+        std::string path;
+    protected:
+        virtual void isReadPathValid(const std::ifstream& fp) const;
+
+};
+
+class jsonReader: public FileReader {
     public:
         jsonReader();
         jsonReader(const std::string& path);
-        Graph addNodes();
+        Graph ReadDataIntoGraph();
     private:
         std::string path;
         json LoadFromFile();
-        void isReadPathValid(const std::ifstream& fp) const; // dodane jako metody public nie private bo operatory z nich będą korzystać
+    protected:
+        void isReadPathValid(const std::ifstream& fp) const;
 };
 
-class csvReader {
+class csvReader: public FileReader {
     public:
         csvReader();
         csvReader(const std::string& path);
-        Graph LoadFromFile(const std::string path);
+        Graph ReadDataIntoGraph();
     private:
         std::string path;
         Node addNode(std::string& line1, std::string& line2, std::string& line3);
-        void isReadPathValid(const std::ifstream& fp) const; // dodane jako metody public nie private bo operatory z nich będą korzystać
+    protected:
+        void isReadPathValid(const std::ifstream& fp) const;
 };

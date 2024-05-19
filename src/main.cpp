@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     }
 
     jsonReader fh("../test/test.json");
-    Graph gr = fh.addNodes();
+    Graph gr = fh.ReadDataIntoGraph();
 
     ProgramManager program(800, 600, &gr);
 

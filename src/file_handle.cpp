@@ -3,11 +3,18 @@
 #include <string>
 #include <iostream>
 
+
+// Base class FileReader
+
+FileReader::FileReader() : path(){};
+
+FileReader::FileReader(const std::string& path): path(path) {};
+
 //////      rapid json jsonReader    ///////
 
-jsonReader::jsonReader() : path(){};
+jsonReader::jsonReader() : FileReader(){};
 
-jsonReader::jsonReader(const std::string &path) : path(path){};
+jsonReader::jsonReader(const std::string &path) : FileReader(path){};
 
 json jsonReader::LoadFromFile()
 {
@@ -29,9 +36,8 @@ json jsonReader::LoadFromFile()
     return json_file;
 }
 
-Graph jsonReader::addNodes()
+Graph jsonReader::ReadDataIntoGraph()
 {
-
     json json_file = LoadFromFile();
 
     Graph graph;
@@ -62,14 +68,18 @@ Graph jsonReader::addNodes()
         // Check if the object has a "distances" field
         if (obj.find("distances") != obj.end() && obj["distances"].is_array())
             for (const auto &distance : obj["distances"])
+            {
                 if (distance.is_number_integer())
                     distancesVect.push_back(distance);
+            }
 
         // Check if the object has a "connected" field
         if (obj.find("connected") != obj.end() && obj["connected"].is_array())
             for (const auto &connection : obj["connected"])
+            {
                 if (connection.is_number_integer())
                     connectedNodes.push_back(connection);
+            }
 
         Node node(id, distancesVect, connectedNodes, floor, X, Y);
 
@@ -97,18 +107,19 @@ void jsonReader::isReadPathValid(const std::ifstream &fp) const
         std::cerr << "Failed to open file" << std::endl;
 }
 
+
 /////   CSV reader - more prone to errors
 
-// csv konwencja zapisu:
+//      csv konwencja zapisu:
 //      id,x,y,floor,
 //      distance,connected,distance,connected...
 //      name,description,name,description...    -classrooms
 
-csvReader::csvReader() : path(){};
+csvReader::csvReader() : FileReader(){};
 
-csvReader::csvReader(const std::string &path) : path(path){};
+csvReader::csvReader(const std::string &path) : FileReader(path) {};
 
-Graph csvReader::LoadFromFile(const std::string path)
+Graph csvReader::ReadDataIntoGraph()
 {
     std::ifstream fp_in(path); // opens file
     isReadPathValid(fp_in);
@@ -216,8 +227,8 @@ Node csvReader::addNode(std::string &line1, std::string &line2, std::string &lin
     {
         throw error;
     }
-    catch (const std::out_of_range &error)
-    { // for .at() method
+    catch (const std::out_of_range &error)   // for .at() method
+    {
         throw error;
     }
 };

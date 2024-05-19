@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
 project(RoutesOnWEITI)
 
+add_compile_options(-std=gnu++14)
+
 add_library(graph ./src/node.cpp ./src/graph.cpp ./src/classroom.cpp)
 target_include_directories(graph PRIVATE ./include)
 
@@ -13,12 +15,6 @@ FetchContent_Declare(
     URL  https://github.com/libsdl-org/SDL/releases/download/release-2.30.3/SDL2-2.30.3.tar.gz
 )
 FetchContent_MakeAvailable(SDL2)
-
-# FetchContent_Declare(
-#     BoostJson
-#     URL https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.5.tar.gz
-# )
-# FetchContent_MakeAvailable(BoostJson)
 
 FetchContent_Declare(
     googletest
@@ -38,25 +34,6 @@ gtest_discover_tests(graph_tests)
 add_library(program_manager ./src/program_manager.cpp)
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC SDL2main SDL2-static)
-
-# add_library(file_handle STATIC ./src/file_handle.cpp)
-# target_include_directories(file_handle PRIVATE ./include)
-# target_link_libraries(file_handle PUBLIC json)
-
-# set(BOOST_INCLUDE_LIBRARIES json)
-# set(BOOST_ENABLE_CMAKE ON)
-# include(FetchContent)
-# FetchContent_Declare(
-#   Boost
-#   GIT_REPOSITORY https://github.com/boostorg/boost.git
-#   GIT_TAG boost-1.80.0
-# )
-# FetchContent_MakeAvailable(Boost)
-
-# add_library(file_handle STATIC ./src/file_handle.cpp)
-# target_include_directories(file_handle PRIVATE ./include)
-# target_link_libraries(file_handle PUBLIC Boost::json)
-
 
 FetchContent_Declare(
     nlohmann_json
