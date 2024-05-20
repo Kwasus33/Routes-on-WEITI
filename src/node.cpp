@@ -117,8 +117,8 @@ std::vector<Classroom> &Node::getClassrooms()
 
 bool Node::findClassroom(std::string &className) const
 {
-    return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(), [&className](Classroom classroom)
-                                            { return className == classroom.getName(); });
+    return classrooms.end() != std::find_if(classrooms.begin(), classrooms.end(),
+                                [&className](const Classroom& classroom){ return className == classroom.getName(); });
 }
 int Node::getX() const
 {

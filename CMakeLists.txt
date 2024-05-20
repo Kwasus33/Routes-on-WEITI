@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.28)
 project(RoutesOnWEITI)
 
-add_compile_options(-std=gnu++14)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_library(graph ./src/node.cpp ./src/graph.cpp ./src/classroom.cpp)
 target_include_directories(graph PRIVATE ./include)
