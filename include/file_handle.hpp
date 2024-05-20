@@ -13,12 +13,10 @@ class FileReader {
     public:
         FileReader();
         FileReader(const std::string& path);
+        virtual ~FileReader();
         virtual Graph ReadDataIntoGraph() = 0;
     private:
         std::string path;
-    protected:
-        virtual void isReadPathValid(const std::ifstream& fp) const;
-
 };
 
 class jsonReader: public FileReader {
@@ -29,7 +27,6 @@ class jsonReader: public FileReader {
     private:
         std::string path;
         json LoadFromFile();
-    protected:
         void isReadPathValid(const std::ifstream& fp) const;
 };
 
@@ -41,6 +38,5 @@ class csvReader: public FileReader {
     private:
         std::string path;
         Node addNode(std::string& line1, std::string& line2, std::string& line3);
-    protected:
         void isReadPathValid(const std::ifstream& fp) const;
 };

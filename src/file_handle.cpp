@@ -10,6 +10,8 @@ FileReader::FileReader() : path(){};
 
 FileReader::FileReader(const std::string& path): path(path) {};
 
+FileReader::~FileReader() {};
+
 //////      rapid json jsonReader    ///////
 
 jsonReader::jsonReader() : FileReader(){};
@@ -215,9 +217,11 @@ Node csvReader::addNode(std::string &line1, std::string &line2, std::string &lin
         }
         values.push_back(line3.substr(start));
 
+        int j;
         for (size_t i = 0; i < values.size(); i += 2)
         {
-            Classroom room(values.at(i), values.at(++i));
+            j = ++i;
+            Classroom room(values.at(i), values.at(j));
             node.addClassroom(room);
         }
 
