@@ -5,54 +5,59 @@
 #include <deque>
 #include <algorithm>
 
-void Graph::addNode(Node& new_node)
+void addNodeInfo(std::vector<Node> &nodes, int nodesQuantity, int id)
 {
-    int nodesQunatity = nodes.size() + 1;
-    // adds other nodes description to node that is being added
-    if (new_node.getDistances().size() < nodesQunatity)
+    Node &currentNode = nodes[id];
+    Node &newlyInsertedNode = nodes[nodesQuantity - 1];
+    // adds placeholders for no information nodes to current node
+    if (currentNode.getDistances().size() < nodesQuantity)
     {
-        // new_node.setDistance(nodesQunatity - 1, __INT_MAX__);
-        new_node.setDistance(nodesQunatity - 1, std::numeric_limits<int>::max());
+        // currentNode.setDistance(nodesQuantity - 1, __INT_MAX__);
+        currentNode.setDistance(nodesQuantity - 1, std::numeric_limits<int>::max());
+    }
+    // checks if added node has information about route to this node
+    if (newlyInsertedNode.getNextNodes()[id] == currentNode.getID())
+    {
+        if (currentNode.getID() == newlyInsertedNode.getID())
+        {
+            currentNode.setDistance(id, 0);
+            currentNode.setNextNode(id, id);
+        }
+        else
+        {
+
+            currentNode.addRoute(newlyInsertedNode.getID(), newlyInsertedNode.getDistances()[id], newlyInsertedNode.getID());
+        }
+    }
+    // checks if current node has information about route to added noode
+    if (currentNode.getNextNodes()[newlyInsertedNode.getID()] == newlyInsertedNode.getID())
+    {
+        newlyInsertedNode.addRoute(currentNode.getID(), currentNode.getDistances()[newlyInsertedNode.getID()], currentNode.getID());
+    }
+};
+
+void Graph::addNode(Node &new_node)
+{
+    int nodesQuantity = nodes.size() + 1;
+    // adds other nodes description to node that is being added
+    if (new_node.getDistances().size() < nodesQuantity)
+    {
+        // new_node.setDistance(nodesQuantity - 1, __INT_MAX__);
+        new_node.setDistance(nodesQuantity - 1, std::numeric_limits<int>::max());
         new_node.addRoute(new_node.getID(), 0, new_node.getID());
     }
     nodes.push_back(new_node);
     hasRoutes.push_back(false);
 
-    for (int i = 0; i < nodesQunatity; ++i)
+    for (int i = 0; i < nodesQuantity; ++i)
     {
         if (hasRoutes[i])
             hasRoutes[i] = false;
     }
 
-    for (int i = 0; i < nodesQunatity; ++i)
+    for (int i = 0; i < nodesQuantity; ++i)
     {
-        Node &currentNode = nodes[i];
-        Node &newlyInsertedNode = nodes[nodesQunatity - 1];
-        // adds placeholders for no information nodes to current node
-        if (currentNode.getDistances().size() < nodesQunatity)
-        {
-            // currentNode.setDistance(nodesQunatity - 1, __INT_MAX__);
-            currentNode.setDistance(nodesQunatity - 1, std::numeric_limits<int>::max());
-        }
-        // checks if added node has information about route to this node
-        if (new_node.getNextNodes()[i] == currentNode.getID())
-        {
-            if (currentNode.getID() == newlyInsertedNode.getID())
-            {
-                currentNode.setDistance(i, 0);
-                currentNode.setNextNode(i, i);
-            }
-            else
-            {
-
-                currentNode.addRoute(new_node.getID(), new_node.getDistances()[i], new_node.getID());
-            }
-        }
-        // checks if current node has information about route to added noode
-        if (currentNode.getNextNodes()[new_node.getID()] == new_node.getID())
-        {
-            newlyInsertedNode.addRoute(currentNode.getID(), currentNode.getDistances()[new_node.getID()], currentNode.getID());
-        }
+        addNodeInfo(nodes, nodesQuantity, i);
     }
 }
 
@@ -82,7 +87,8 @@ void Graph::findRoutes(int nodeID)
         return;
     }
 
-    if (hasRoutes[nodeID]) return;
+    if (hasRoutes[nodeID])
+        return;
 
     // Creates priority queue and reference to starting node
     Node &startingNode = nodes[nodeID];
