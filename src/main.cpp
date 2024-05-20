@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
             std::cerr << e.what() << '\n';
         }
     }
-    std::shared_ptr<FileReader> fh = std::make_shared<jsonReader>("../test/eiti.json");
+    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>("../test/eiti.json");
     Graph gr = fh->ReadDataIntoGraph();
 
     ProgramManager program(800, 600, &gr);
