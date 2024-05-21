@@ -31,12 +31,12 @@ int main(int argc, char *argv[])
             std::cerr << e.what() << '\n';
         }
     }
-    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>("../test/eiti.json");
+    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>("../test/test.json");
     Graph gr = fh->ReadDataIntoGraph();
 
     ProgramManager program(800, 600, &gr);
 
-    program.InitFloors();
+
     try
     {
         program.UpdatePath(id_1, id_2);
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
         std::cout << e.what() << '\n';
         return 1;
     }
-
+    program.InitFloors();
     while (program.IsRunning())
     {
         program.ProcessInput();

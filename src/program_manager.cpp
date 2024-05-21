@@ -46,7 +46,7 @@ void ProgramManager::UpdatePath(std::string start, std::string end)
 {
     int class1 = graph->findClassroom(start);
     int class2 = graph->findClassroom(end);
-    if (class1 == -1 || class1 == -1)
+    if (class1 == -1 || class2 == -1)
         throw std::invalid_argument("NO SUCH CLASSROOM");
     graph->findRoutes(class1);
     nodePath = graph->getRoute(class1, class2);
