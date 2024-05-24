@@ -43,10 +43,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(nlohmann_json)
 
-add_library(file_handle ./src/file_handle.cpp)
-target_include_directories(file_handle PRIVATE ./include)
-target_link_libraries(file_handle PUBLIC nlohmann_json graph)
+add_library(file_handler ./src/file_handler.cpp)
+target_include_directories(file_handler PRIVATE ./include)
+target_link_libraries(file_handler PUBLIC nlohmann_json graph)
 
 add_executable(main src/main.cpp)
-target_link_libraries(main PRIVATE program_manager file_handle graph)
+target_link_libraries(main PRIVATE program_manager file_handler graph)
 target_include_directories(main PRIVATE ./include)
