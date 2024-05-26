@@ -1,0 +1,246 @@
+[
+    {
+        "ID": 0,
+        "X": 80,
+        "Y": 270,
+        "floor": 0,
+        "distances": [
+            5,
+            8,
+            1
+        ],
+        "connected": [
+            1,
+            4,
+            3
+        ],
+        "classrooms": [
+            {
+                "name": "01",
+                "description": "PIPR"
+            },
+            {
+                "name": "02",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 1,
+        "X": 50,
+        "Y": 60,
+        "floor": 0,
+        "distances": [
+            5,
+            3
+        ],
+        "connected": [
+            0,
+            2
+        ],
+        "classrooms": [
+            {
+                "name": "11",
+                "description": "PIPR"
+            },
+            {
+                "name": "12",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 2,
+        "X": 280,
+        "Y": 50,
+        "floor": 0,
+        "distances": [
+            3
+        ],
+        "connected": [
+            1
+        ],
+        "classrooms": [
+            {
+                "name": "21",
+                "description": "PIPR"
+            },
+            {
+                "name": "22",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 3,
+        "X": 220,
+        "Y": 470,
+        "floor": 0,
+        "distances": [
+            1,
+            2
+        ],
+        "connected": [
+            0,
+            7
+        ],
+        "classrooms": [
+            {
+                "name": "31",
+                "description": "PIPR"
+            },
+            {
+                "name": "32",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 4,
+        "X": 360,
+        "Y": 270,
+        "floor": 0,
+        "distances": [
+            8,
+            1
+        ],
+        "connected": [
+            0,
+            6
+        ],
+        "classrooms": [
+            {
+                "name": "41",
+                "description": "PIPR"
+            },
+            {
+                "name": "42",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 5,
+        "X": 620,
+        "Y": 110,
+        "floor": 0,
+        "distances": [
+            2,
+            2
+        ],
+        "connected": [
+            6,
+            8
+        ],
+        "classrooms": [
+            {
+                "name": "51",
+                "description": "PIPR"
+            },
+            {
+                "name": "52",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 6,
+        "X": 590,
+        "Y": 280,
+        "floor": 0,
+        "distances": [
+            1,
+            2,
+            1
+        ],
+        "connected": [
+            4,
+            5,
+            9
+        ],
+        "classrooms": [
+            {
+                "name": "61",
+                "description": "PIPR"
+            },
+            {
+                "name": "62",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 7,
+        "X": 490,
+        "Y": 480,
+        "floor": 0,
+        "distances": [
+            2,
+            1
+        ],
+        "connected": [
+            3,
+            9
+        ],
+        "classrooms": [
+            {
+                "name": "71",
+                "description": "PIPR"
+            },
+            {
+                "name": "72",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 8,
+        "X": 710,
+        "Y": 220,
+        "floor": 0,
+        "distances": [
+            2,
+            10
+        ],
+        "connected": [
+            5,
+            9
+        ],
+        "classrooms": [
+            {
+                "name": "81",
+                "description": "PIPR"
+            },
+            {
+                "name": "82",
+                "description": "PTCY"
+            }
+        ]
+    },
+    {
+        "ID": 9,
+        "X": 740,
+        "Y": 420,
+        "floor": 0,
+        "distances": [
+            1,
+            1,
+            10
+        ],
+        "connected": [
+            6,
+            7,
+            8
+        ],
+        "classrooms": [
+            {
+                "name": "91",
+                "description": "PIPR"
+            },
+            {
+                "name": "92",
+                "description": "PTCY"
+            }
+        ]
+    }
+]
