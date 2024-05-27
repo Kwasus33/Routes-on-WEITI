@@ -8,23 +8,19 @@ InputManager::InputManager(ProgramManager* programManager)
 
 InputManager::~InputManager()
 {
-    while (SDL_PollEvent(&event))
+    for (auto item : commandMap) 
     {
-        if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
-        {
-            commandMap[InputType::QUIT]->Execute();
-        }
+        delete item.second;
     }
 }
 
 void InputManager::Update()
 {
-    if (event.type == SDL_KEYDOWN) 
+    while (SDL_PollEvent(&event))
     {
-        auto it = commandMap.find(event.key.keysym.sym);
-        if (it != commandMap.end()) 
+        if (event.type == SDL_QUIT || (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
         {
-            it->second->execute();
+            commandMap[InputType::QUIT]->Execute();
         }
     }
 }
