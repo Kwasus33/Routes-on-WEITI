@@ -14,7 +14,6 @@ class ProgramManager
 
 public:
     ProgramManager();
-    void Init();
     void Run();
 
 private:
