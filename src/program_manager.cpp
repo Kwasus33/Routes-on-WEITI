@@ -1,8 +1,15 @@
 #include "program_manager.hpp"
 
 ProgramManager::ProgramManager()
-    : isRunning(true), inputManager(this)
+    : isRunning(true)
 {
+    inputManager = new InputManager(this);
+    renderer = new Renderer(800, 600);
+}
+
+ProgramManager::~ProgramManager()
+{
+    delete inputManager;
 }
 
 void ProgramManager::Run()
@@ -11,9 +18,9 @@ void ProgramManager::Run()
 
     while(isRunning)
     {
-        inputManager.Update();
-        logicManager.Update();
-        renderer.Render();
+        inputManager->Update();
+        // logicManager->Update();
+        renderer->Render();
     }
 }
 

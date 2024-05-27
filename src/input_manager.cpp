@@ -1,9 +1,8 @@
 #include "input_manager.hpp"
 
 InputManager::InputManager(ProgramManager* programManager)
-    : programManager(manager) 
 {
-    commandMap[InputType::QUIT] = new QuitCommand(manager);
+    commandMap[InputType::QUIT] = new QuitCommand(programManager);
 }
 
 InputManager::~InputManager()

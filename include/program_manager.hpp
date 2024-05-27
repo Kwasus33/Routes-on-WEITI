@@ -5,17 +5,20 @@
 #include "logic_manager.hpp"
 #include "renderer.hpp"
 
+class InputManager;
+
 class ProgramManager
 {
-    ResourceManager* resourceManager;
+    // ResourceManager* resourceManager;
     InputManager* inputManager;
-    LogicManager* logicManager;
+    // LogicManager* logicManager;
     Renderer* renderer;
     
     bool isRunning;
 
 public:
     ProgramManager();
+    ~ProgramManager();
     void Run();
     void Stop();
 

@@ -2,6 +2,8 @@
 
 #include "program_manager.hpp"
 
+class ProgramManager;
+
 class Command
 {
 public:
@@ -9,12 +11,10 @@ public:
     virtual void Execute() = 0; 
 };
 
-class QuitCommand : Command
+class QuitCommand : public Command
 {
     ProgramManager* programManager;
 public:
-    QuitCommand(ProgramManager* programManager)
-        : programManager(programManager) {}
-    void Execute() override 
-        { programManager->Stop(); }
+    QuitCommand(ProgramManager* programManager);
+    void Execute() override;
 };

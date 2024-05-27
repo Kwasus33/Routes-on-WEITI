@@ -3,6 +3,10 @@
 #include "program_manager.hpp"
 #include "map"
 #include "SDL.h"
+#include "commands.hpp"
+
+class Command;
+class ProgramManager;
 
 enum class InputType
 {
@@ -15,7 +19,7 @@ class InputManager
     SDL_Event event;
 
 public:
-    InputManager(const ProgramManager& programManager);
+    InputManager(ProgramManager* programManager);
     ~InputManager();
     void Update();
 };

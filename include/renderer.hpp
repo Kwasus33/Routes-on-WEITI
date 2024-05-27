@@ -4,7 +4,7 @@
 
 class Renderer
 {
-    int windowWitdth, windowHeight;
+    int windowWidth, windowHeight;
     SDL_Window* window;
     SDL_Renderer* renderer;
 public:

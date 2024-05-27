@@ -1,5 +1,4 @@
 #include "program_manager.hpp"
-#include <SDL.h>
 #include <iostream>
 #include "file_handler.hpp"
 #include "graph.hpp"
@@ -56,6 +55,7 @@ int main(int argc, char *argv[])
 
     // return 0;
 
-    ProgramManager programManager();
-    ProgramManager.Run();
+    ProgramManager programManager;
+    programManager.Run();
+    return 0;
 }
