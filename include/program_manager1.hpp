@@ -4,7 +4,7 @@
 #include "graph.hpp"
 #include <map>
 
-class ProgramManager
+class ProgramManagerXXXX
 {
     int screenWidth, screenHeight;
     SDL_Window* window;
