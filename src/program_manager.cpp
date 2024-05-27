@@ -24,5 +24,4 @@ void ProgramManager::Stop()
 
 void ProgramManager::Init()
 {
-    resourceManager.LoadFloors();
 }
