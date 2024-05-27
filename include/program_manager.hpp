@@ -11,12 +11,16 @@ class ProgramManager
     InputManager* inputManager;
     LogicManager* logicManager;
     Renderer* renderer;
+    
+    bool isRunning;
 
 public:
     ProgramManager();
     void Run();
+    void Stop();
 
 private:
     void Init();
+    
 
 };
