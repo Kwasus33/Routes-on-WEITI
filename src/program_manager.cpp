@@ -3,13 +3,16 @@
 ProgramManager::ProgramManager()
     : isRunning(true)
 {
+    resourceManager = new ResourceManager();
     inputManager = new InputManager(this);
     renderer = new Renderer(800, 600);
 }
 
 ProgramManager::~ProgramManager()
 {
+    delete resourceManager;
     delete inputManager;
+    delete renderer;
 }
 
 void ProgramManager::Run()

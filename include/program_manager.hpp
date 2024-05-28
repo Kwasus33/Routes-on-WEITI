@@ -9,7 +9,7 @@ class InputManager;
 
 class ProgramManager
 {
-    // ResourceManager* resourceManager;
+    ResourceManager* resourceManager;
     InputManager* inputManager;
     // LogicManager* logicManager;
     Renderer* renderer;

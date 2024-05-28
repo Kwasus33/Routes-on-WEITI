@@ -1,11 +1,9 @@
 #pragma once
 
-#include "drawable.hpp"
 #include "SDL.h"
+#include <vector>
 
-class Path : Drawable
+class Path
 {
-    
-public:
-    void Draw() override;
+    std::vector<SDL_Point> points;
 };

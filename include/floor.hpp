@@ -1,10 +1,9 @@
 #pragma once
 
-#include "drawable.hpp"
 #include "SDL.h"
 
-class Floor : Drawable
+class Floor
 {
-public:
-    void Draw() override;
+    SDL_Texture texture;
+    SDL_Rect transfrom;
 };
