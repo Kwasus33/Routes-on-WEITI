@@ -1,15 +1,16 @@
 #include "resource_manager.hpp"
 
 #include "iostream"
+#include "config.hpp"
 
 ResourceManager::ResourceManager(SDL_Renderer* sdlRenderer)
 {
     SDL_Texture* tex;
-    tex = LoadTextureFromBitmap("../assets/piwnica.bmp", sdlRenderer);
+    tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, sdlRenderer);
     floors[-1] = Floor(tex);
-    tex = LoadTextureFromBitmap("../assets/parter.bmp", sdlRenderer);
+    tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PARTER, sdlRenderer);
     floors[0] = Floor(tex);
-    tex = LoadTextureFromBitmap("../assets/pierwsze.bmp", sdlRenderer);
+    tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, sdlRenderer);
     floors[1] = Floor(tex);
 }
 
