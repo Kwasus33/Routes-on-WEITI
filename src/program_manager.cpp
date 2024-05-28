@@ -3,6 +3,7 @@
 ProgramManager::ProgramManager()
     : isRunning(true)
 {
+    logicManager = new LogicManager();
     inputManager = new InputManager(this);
     renderer = new Renderer(800, 600);
     resourceManager = new ResourceManager(renderer->GetSdlRenderer());
@@ -10,9 +11,10 @@ ProgramManager::ProgramManager()
 
 ProgramManager::~ProgramManager()
 {
-    delete resourceManager;
     delete inputManager;
+    delete logicManager;
     delete renderer;
+    delete resourceManager;
 }
 
 void ProgramManager::Run()
@@ -22,7 +24,6 @@ void ProgramManager::Run()
     while(isRunning)
     {
         inputManager->Update();
-        // logicManager->Update();
         renderer->Render(resourceManager);
     }
 }

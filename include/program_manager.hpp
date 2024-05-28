@@ -11,7 +11,7 @@ class ProgramManager
 {
     ResourceManager* resourceManager;
     InputManager* inputManager;
-    // LogicManager* logicManager;
+    LogicManager* logicManager;
     Renderer* renderer;
     
     bool isRunning;
