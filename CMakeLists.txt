@@ -50,6 +50,7 @@ add_library( program_manager
     ./src/resource_manager.cpp 
     ./src/renderer.cpp
     ./src/logic_manager.cpp
+    ./src/path.cpp
     )
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC file_handler graph SDL2main SDL2-static)

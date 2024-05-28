@@ -9,6 +9,6 @@ class Path
 {
     std::map<int,std::vector<SDL_Point>> pointsByFloor;
 public:
-    Path() = default;
+    Path();
     void SetFromGraph(Graph graph);
 };
