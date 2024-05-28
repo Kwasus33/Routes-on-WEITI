@@ -10,4 +10,5 @@ class Renderer
 public:
     Renderer(int windowWidth, int windoHeight);
     void Render();
+    SDL_Renderer* GetSdlRenderer() const { return renderer; }
 };

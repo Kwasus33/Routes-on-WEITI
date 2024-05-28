@@ -1,22 +1,22 @@
 #include "resource_manager.hpp"
 
-ResourceManager::ResourceManager()
+#include "iostream"
+
+ResourceManager::ResourceManager(SDL_Renderer* sdlRenderer)
 {
-    floors[-1] = Floor(LoadTextureFromBitmap("assets/piwnica.bmp"))
-    floors[0] = Floor(LoadTextureFromBitmap("assets/parter.bmp"))
-    floors[1] = Floor(LoadTextureFromBitmap("assets/pierwsze.bmp"))
+    floors[-1] = Floor(LoadTextureFromBitmap("assets/piwnica.bmp", sdlRenderer));
+    floors[0] = Floor(LoadTextureFromBitmap("assets/parter.bmp", sdlRenderer));
+    floors[1] = Floor(LoadTextureFromBitmap("assets/pierwsze.bmp", sdlRenderer));
 }
 
-SDL_Texture* ResourceManager::LoadTextureFromBitmap(std::string filePath)
+SDL_Texture* ResourceManager::LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer)
 {
-    SDL_Surface *surface;
-    SDL_Texture *texture;
-    surface = SDL_LoadBMP(filePath);
+    SDL_Surface* surface = SDL_LoadBMP(filePath);
     if (surface == nullptr)
     {
-        std::cerr << "Can't load image: " << path << std::endl;
-        return;
+        std::cerr << "Can't load image: " << filePath << std::endl;
+        return SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1, 1);
     }
-    texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(sdlRenderer, surface);
     return texture;
 }

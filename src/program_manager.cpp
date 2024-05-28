@@ -3,9 +3,9 @@
 ProgramManager::ProgramManager()
     : isRunning(true)
 {
-    resourceManager = new ResourceManager();
     inputManager = new InputManager(this);
     renderer = new Renderer(800, 600);
+    resourceManager = new ResourceManager(renderer->GetSdlRenderer());
 }
 
 ProgramManager::~ProgramManager()
