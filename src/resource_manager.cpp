@@ -4,9 +4,13 @@
 
 ResourceManager::ResourceManager(SDL_Renderer* sdlRenderer)
 {
-    floors[-1] = Floor(LoadTextureFromBitmap("assets/piwnica.bmp", sdlRenderer));
-    floors[0] = Floor(LoadTextureFromBitmap("assets/parter.bmp", sdlRenderer));
-    floors[1] = Floor(LoadTextureFromBitmap("assets/pierwsze.bmp", sdlRenderer));
+    SDL_Texture* tex;
+    tex = LoadTextureFromBitmap("../assets/piwnica.bmp", sdlRenderer);
+    floors[-1] = Floor(tex);
+    tex = LoadTextureFromBitmap("../assets/parter.bmp", sdlRenderer);
+    floors[0] = Floor(tex);
+    tex = LoadTextureFromBitmap("../assets/pierwsze.bmp", sdlRenderer);
+    floors[1] = Floor(tex);
 }
 
 SDL_Texture* ResourceManager::LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer)
@@ -18,5 +22,6 @@ SDL_Texture* ResourceManager::LoadTextureFromBitmap(const char* filePath, SDL_Re
         return SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1, 1);
     }
     SDL_Texture* texture = SDL_CreateTextureFromSurface(sdlRenderer, surface);
+    std::cout << texture << std::endl;
     return texture;
 }

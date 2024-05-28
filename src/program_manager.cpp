@@ -23,7 +23,7 @@ void ProgramManager::Run()
     {
         inputManager->Update();
         // logicManager->Update();
-        renderer->Render();
+        renderer->Render(resourceManager);
     }
 }
 

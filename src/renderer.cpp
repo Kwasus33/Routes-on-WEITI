@@ -27,6 +27,29 @@ Renderer::Renderer(int windowWidth, int windowHeight)
     SDL_RenderClear(renderer);
 }
 
-void Renderer::Render()
+void Renderer::Render(const ResourceManager* resourceManager)
 {
+    SDL_RenderClear(renderer);
+
+    for (const auto& pair : resourceManager->GetFloors())
+    {
+        AddFloorToRender(pair.second);
+    }
+
+    AddPathToRender(resourceManager->GetPath());
+
+    SDL_RenderPresent(renderer);
+}
+
+void Renderer::AddFloorToRender(Floor flr)
+{
+    // SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &flr.GetTransfrom());
+    //TODO this is a temporary transform
+    SDL_Rect t{0,0,windowWidth, windowHeight};
+    SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &t);
+}
+
+void Renderer::AddPathToRender(Path pth)
+{
+
 }
