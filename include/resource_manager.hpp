@@ -4,10 +4,13 @@
 #include "path.hpp"
 #include <map>
 #include <string>
+#include "SDL.h"
 
 class ResourceManager
 {
     std::map<int,Floor> floors;
+    Path path;
 public:
-    void LoadTextureFromBitmap(std::string path);
+    ResourceManager();
+    SDL_Texture* LoadTextureFromBitmap(std::string filePath);
 };
