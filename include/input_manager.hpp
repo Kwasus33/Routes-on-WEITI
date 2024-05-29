@@ -7,6 +7,7 @@
 
 class Command;
 class ProgramManager;
+class LogicManager;
 
 enum class InputType
 {

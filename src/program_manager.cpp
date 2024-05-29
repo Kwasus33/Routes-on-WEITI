@@ -5,7 +5,7 @@ ProgramManager::ProgramManager()
 {
     logicManager = new LogicManager();
     inputManager = new InputManager(this, logicManager);
-    renderer = new Renderer(800, 600);
+    renderer = new Renderer();
     resourceManager = new ResourceManager(renderer);
 }
 

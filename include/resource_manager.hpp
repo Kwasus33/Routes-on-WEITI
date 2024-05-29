@@ -7,6 +7,8 @@
 #include "SDL.h"
 #include "renderer.hpp"
 
+class Renderer;
+
 class ResourceManager
 {
     std::map<int,Floor> floors;

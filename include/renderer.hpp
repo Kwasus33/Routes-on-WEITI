@@ -3,6 +3,8 @@
 #include "SDL.h"
 #include "resource_manager.hpp"
 
+class ResourceManager;
+
 class Renderer
 {
     SDL_Window* window;
