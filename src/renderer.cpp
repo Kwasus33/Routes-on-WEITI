@@ -49,5 +49,13 @@ void Renderer::AddFloorToRender(Floor flr)
 
 void Renderer::AddPathToRender(Path pth, const int currentFloor)
 {
-    
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+    auto points = pth.GetPointsOnFloor(currentFloor);
+    for (int i = 1; i < points.size(); i++)
+    {
+        auto point1 = points[i - 1];
+        auto point2 = points[i];
+
+        SDL_RenderDrawLine(renderer, point1.x, point1.y, point2.x, point2.y);
+    }
 }
