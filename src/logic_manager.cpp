@@ -26,12 +26,4 @@ void LogicManager::ChangeFloor(int change)
         currentFloor -= change;
         return;
     }
-
-    for (int i = config::MIN_FLOOR; i <= config::MAX_FLOOR; ++i)
-    {
-        Floor& floor = resourceManager->GetFloor(i);
-        SDL_Rect t = floor.GetTransfrom();
-        t.y -= change*config::SCREEN_HEIGHT;
-        floor.SetTransfrom(t);
-    }
 }

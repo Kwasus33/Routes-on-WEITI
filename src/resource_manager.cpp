@@ -6,16 +6,15 @@
 ResourceManager::ResourceManager(Renderer* renderer)
 {
     SDL_Renderer* sdlRenderer = renderer->GetSdlRenderer();
-    SDL_Rect transform = {0, -config::SCREEN_HEIGHT, config::SCREEN_WIDTH, config::SCREEN_HEIGHT};
+    SDL_Rect transform = {0, 0, config::SCREEN_WIDTH, config::SCREEN_HEIGHT};
     SDL_Texture* tex;
+
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, sdlRenderer);
     floors[-1] = Floor(tex, transform);
 
-    transform.y += config::SCREEN_HEIGHT;
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PARTER, sdlRenderer);
     floors[0] = Floor(tex, transform);
 
-    transform.y += config::SCREEN_HEIGHT;
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, sdlRenderer);
     floors[1] = Floor(tex, transform);
 }
