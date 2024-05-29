@@ -22,6 +22,12 @@ public:
     void Run();
     void Stop();
 
+    //TODO replace with ui
+    void setgraph(std::string uno, std::string dos)
+    {
+        logicManager->UpdatePath(uno, dos);
+    }
+
 private:
     void Init();
     
