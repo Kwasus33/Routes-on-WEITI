@@ -10,10 +10,18 @@ Path::Path()
     }
 }
 
-void Path::SetFromGraph(const Graph& Graph, const std::vector<int>& nodePath)
+void Path::SetFromGraph(Graph* graph, const std::vector<int>& nodePath)
 {
-    //TODO i think this is more of logic's job??
-    //idk think about it
-    //too eepy now
-    //a mimir
+    for(auto floor : pointsByFloor)
+    {
+        floor.second.clear();
+    }
+
+    std::vector<Node> nodes = graph->getNodes();
+    for(const auto id : nodePath)
+    {
+        Node node = nodes[id];
+        SDL_Point point = {node.getX(), node.getY()};
+        pointsByFloor[node.getFloor()].push_back(point);
+    }
 }

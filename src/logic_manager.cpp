@@ -15,7 +15,7 @@ void LogicManager::UpdatePath(std::string& start, std::string& end)
     int startID = graph.findClassroom(start);
     int endID = graph.findClassroom(end);
     std::vector<int> path = graph.getRoute(startID, endID);
-    resourceManager->GetPath().SetFromGraph(graph, path);
+    resourceManager->GetPath().SetFromGraph(&graph, path);
 }
 
 void LogicManager::ChangeFloor(int change)

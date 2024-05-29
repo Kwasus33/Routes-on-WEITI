@@ -10,5 +10,5 @@ class Path
     std::map<int,std::vector<SDL_Point>> pointsByFloor;
 public:
     Path();
-    void SetFromGraph(const Graph& graph, const std::vector<int>& nodePath);
+    void SetFromGraph(Graph* graph, const std::vector<int>& nodePath);
 };
