@@ -8,4 +8,7 @@ namespace config
 
     constexpr int MIN_FLOOR = -1;
     constexpr int MAX_FLOOR = 1;
+
+    constexpr int SCREEN_WIDTH = 800;
+    constexpr int SCREEN_HEIGHT = 600;
 }
