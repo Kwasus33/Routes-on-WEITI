@@ -35,7 +35,8 @@ std::list<std::string> parseArguments(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>("../test/test.json");
+    std::vector<std::string> pathsVec = {"../test/test.json", "../test/eiti.json"};
+    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>(pathsVec);
     Graph gr = fh->ReadDataIntoGraph();
 
     std::list<std::string> args = parseArguments(argc, argv);
