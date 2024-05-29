@@ -10,7 +10,8 @@ class ProgramManager;
 
 enum class InputType
 {
-    QUIT
+    QUIT,
+    FLOOR_UP, FLOOR_DOWN
 };
 
 class InputManager
@@ -19,7 +20,7 @@ class InputManager
     SDL_Event event;
 
 public:
-    InputManager(ProgramManager* programManager);
+    InputManager(ProgramManager* programManager, LogicManager* LogicManager);
     ~InputManager();
     void Update();
 };
