@@ -24,5 +24,13 @@ void LogicManager::ChangeFloor(int change)
     if (currentFloor < config::MIN_FLOOR || currentFloor > config::MAX_FLOOR)
     {
         currentFloor -= change;
+        return;
+    }
+
+    for (auto& floor : resourceManager->GetFloors())
+    {
+        SDL_Rect t = floor.second.GetTransfrom();
+        t.y += change*config::SCREEN_HEIGHT;
+        floor.second.SetTransfrom(t);
     }
 }
