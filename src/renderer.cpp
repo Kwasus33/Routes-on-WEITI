@@ -30,16 +30,14 @@ Renderer::Renderer()
     SDL_RenderClear(renderer);
 }
 
-void Renderer::Render(ResourceManager* resourceManager)
+void Renderer::Render(ResourceManager* resourceManager, const int currentFloor)
 {
     SDL_RenderClear(renderer);
 
-    for (const auto& pair : resourceManager->GetFloors())
-    {
-        AddFloorToRender(pair.second);
-    }
+    Floor floorObject = resourceManager->GetFloor(currentFloor);
+    AddFloorToRender(floorObject);
 
-    AddPathToRender(resourceManager->GetPath());
+    AddPathToRender(resourceManager->GetPath(), currentFloor);
 
     SDL_RenderPresent(renderer);
 }
@@ -49,7 +47,7 @@ void Renderer::AddFloorToRender(Floor flr)
     SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &flr.GetTransfrom());
 }
 
-void Renderer::AddPathToRender(Path pth)
+void Renderer::AddPathToRender(Path pth, const int currentFloor)
 {
-
+    
 }

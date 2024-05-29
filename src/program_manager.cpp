@@ -24,7 +24,7 @@ void ProgramManager::Run()
     while(isRunning)
     {
         inputManager->Update();
-        renderer->Render(resourceManager);
+        renderer->Render(resourceManager, logicManager->GetCurrentFloor());
     }
 }
 

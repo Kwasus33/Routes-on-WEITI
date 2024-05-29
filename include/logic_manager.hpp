@@ -13,4 +13,5 @@ public:
     LogicManager(ResourceManager* resourceManager);
     void UpdatePath(std::string& start, std::string& end);
     void ChangeFloor(const int change);
+    int GetCurrentFloor() { return currentFloor; }
 };
