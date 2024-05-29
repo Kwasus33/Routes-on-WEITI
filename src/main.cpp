@@ -1,12 +1,12 @@
 #include "program_manager.hpp"
 #include <SDL.h>
 #include <iostream>
+#include <list>
 #include "file_handler.hpp"
 #include "graph.hpp"
 
-int main(int argc, char *argv[])
+std::list<std::string> parseArguments(int argc, char *argv[])
 {
-    std::vector<std::string> arguments;
     std::string id_1;
     std::string id_2;
 
@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
             if (i == 1 && (arg == "-h" || arg == "--help")) {
                 std::cout << "Usage: " << argv[0] << std::endl;
                 std::cout << "main.cpp [classroom1_number] [classroom2_number]";
-                return 0;
             }
             else {
                 if (i == 1)
@@ -31,15 +30,22 @@ int main(int argc, char *argv[])
             std::cerr << e.what() << '\n';
         }
     }
-    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>("../test/test.json");
+    return {id_1, id_2};
+}
+
+int main(int argc, char *argv[])
+{
+    std::vector<std::string> pathsVec = {"../test/test.json", "../test/eiti.json"};
+    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>(pathsVec);
     Graph gr = fh->ReadDataIntoGraph();
+
+    std::list<std::string> args = parseArguments(argc, argv);
 
     ProgramManager program(800, 600, &gr);
 
-
     try
     {
-        program.UpdatePath(id_1, id_2);
+        program.UpdatePath(args.front(), args.back());
     }
     catch (std::invalid_argument &e)
     {
