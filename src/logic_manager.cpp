@@ -3,8 +3,8 @@
 #include "file_handler.hpp"
 #include "config.hpp"
 
-LogicManager::LogicManager()
-    : currentFloor(0)
+LogicManager::LogicManager(ResourceManager* resourceManager)
+    : currentFloor(0), resourceManager(resourceManager)
 {
     jsonReader fh("../test/test.json");
     graph = fh.ReadDataIntoGraph();
@@ -27,10 +27,11 @@ void LogicManager::ChangeFloor(int change)
         return;
     }
 
-    for (auto& floor : resourceManager->GetFloors())
+    for (int i = config::MIN_FLOOR; i <= config::MAX_FLOOR; ++i)
     {
-        SDL_Rect t = floor.second.GetTransfrom();
-        t.y += change*config::SCREEN_HEIGHT;
-        floor.second.SetTransfrom(t);
+        Floor& floor = resourceManager->GetFloor(i);
+        SDL_Rect t = floor.GetTransfrom();
+        t.y -= change*config::SCREEN_HEIGHT;
+        floor.SetTransfrom(t);
     }
 }

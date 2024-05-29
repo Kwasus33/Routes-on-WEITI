@@ -3,10 +3,10 @@
 ProgramManager::ProgramManager()
     : isRunning(true)
 {
-    logicManager = new LogicManager();
-    inputManager = new InputManager(this, logicManager);
     renderer = new Renderer();
     resourceManager = new ResourceManager(renderer);
+    logicManager = new LogicManager(resourceManager);
+    inputManager = new InputManager(this, logicManager);
 }
 
 ProgramManager::~ProgramManager()

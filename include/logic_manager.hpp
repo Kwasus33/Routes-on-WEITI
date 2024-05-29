@@ -10,7 +10,7 @@ class LogicManager
     Graph graph;
     ResourceManager* resourceManager;
 public:
-    LogicManager();
+    LogicManager(ResourceManager* resourceManager);
     void UpdatePath(std::string& start, std::string& end);
     void ChangeFloor(const int change);
 };

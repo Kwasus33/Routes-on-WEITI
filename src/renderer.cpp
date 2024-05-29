@@ -30,7 +30,7 @@ Renderer::Renderer()
     SDL_RenderClear(renderer);
 }
 
-void Renderer::Render(const ResourceManager* resourceManager)
+void Renderer::Render(ResourceManager* resourceManager)
 {
     SDL_RenderClear(renderer);
 

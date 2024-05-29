@@ -17,6 +17,6 @@ public:
     ResourceManager(Renderer* renderer);
     SDL_Texture* LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer);
     std::map<int,Floor> GetFloors() const { return floors; }
-    Floor GetFloor(int floor) const { return floors.at(floor); }
-    Path GetPath() const { return path; }
+    Floor& GetFloor(int floor) { return floors.at(floor); }
+    Path& GetPath() { return path; }
 };
