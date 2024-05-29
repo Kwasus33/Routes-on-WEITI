@@ -1,9 +1,9 @@
 #include "renderer.hpp"
 
 #include "iostream"
+#include "config.hpp"
 
-Renderer::Renderer(int windowWidth, int windowHeight)
-    : windowWidth(windowWidth), windowHeight(windowHeight)
+Renderer::Renderer()
 {
     // Setup window
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -11,7 +11,10 @@ Renderer::Renderer(int windowWidth, int windowHeight)
         std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
         return;
     }
-    window = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow(
+        "Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+        config::SCREEN_WIDTH, config::SCREEN_HEIGHT, SDL_WINDOW_SHOWN
+        );
     if (!window)
     {
         std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
@@ -43,10 +46,7 @@ void Renderer::Render(const ResourceManager* resourceManager)
 
 void Renderer::AddFloorToRender(Floor flr)
 {
-    // SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &flr.GetTransfrom());
-    //TODO this is a temporary transform
-    SDL_Rect t{0,0,windowWidth, windowHeight};
-    SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &t);
+    SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &flr.GetTransfrom());
 }
 
 void Renderer::AddPathToRender(Path pth)

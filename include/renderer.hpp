@@ -5,11 +5,10 @@
 
 class Renderer
 {
-    int windowWidth, windowHeight;
     SDL_Window* window;
     SDL_Renderer* renderer;
 public:
-    Renderer(int windowWidth, int windoHeight);
+    Renderer();
     void Render(const ResourceManager* resourceManager);
     SDL_Renderer* GetSdlRenderer() const { return renderer; }
 private:
