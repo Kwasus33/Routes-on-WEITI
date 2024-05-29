@@ -3,8 +3,9 @@
 #include "iostream"
 #include "config.hpp"
 
-ResourceManager::ResourceManager(SDL_Renderer* sdlRenderer)
+ResourceManager::ResourceManager(Renderer* renderer)
 {
+    SDL_Renderer* sdlRenderer = renderer->GetSdlRenderer();
     SDL_Texture* tex;
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, sdlRenderer);
     floors[-1] = Floor(tex);

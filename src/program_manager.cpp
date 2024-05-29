@@ -6,7 +6,7 @@ ProgramManager::ProgramManager()
     logicManager = new LogicManager();
     inputManager = new InputManager(this, logicManager);
     renderer = new Renderer(800, 600);
-    resourceManager = new ResourceManager(renderer->GetSdlRenderer());
+    resourceManager = new ResourceManager(renderer);
 }
 
 ProgramManager::~ProgramManager()

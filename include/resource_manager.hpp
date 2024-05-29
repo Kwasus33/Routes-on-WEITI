@@ -5,13 +5,14 @@
 #include <map>
 #include <string>
 #include "SDL.h"
+#include "renderer.hpp"
 
 class ResourceManager
 {
     std::map<int,Floor> floors;
     Path path;
 public:
-    ResourceManager(SDL_Renderer* sdlRenderer);
+    ResourceManager(Renderer* renderer);
     SDL_Texture* LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer);
     std::map<int,Floor> GetFloors() const { return floors; }
     Floor GetFloor(int floor) const { return floors.at(floor); }
