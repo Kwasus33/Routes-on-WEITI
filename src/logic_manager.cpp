@@ -6,7 +6,8 @@
 LogicManager::LogicManager(ResourceManager* resourceManager)
     : currentFloor(0), resourceManager(resourceManager)
 {
-    jsonReader fh("../test/test.json");
+    std::vector<std::string> path {"../test/test.json"};
+    jsonReader fh(path);
     graph = fh.ReadDataIntoGraph();
 }
 

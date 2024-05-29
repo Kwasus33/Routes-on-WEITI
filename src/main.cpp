@@ -1,10 +1,9 @@
 #include "program_manager.hpp"
 #include <iostream>
-#include <list>
 #include "file_handler.hpp"
 #include "graph.hpp"
 
-std::list<std::string> parseArguments(int argc, char *argv[])
+std::vector<std::string> parseArguments(int argc, char *argv[])
 {
     std::string id_1;
     std::string id_2;
@@ -29,41 +28,15 @@ std::list<std::string> parseArguments(int argc, char *argv[])
             std::cerr << e.what() << '\n';
         }
     }
-<<<<<<< HEAD
-=======
-    return {id_1, id_2};
+
+    return std::vector<std::string> {id_1, id_2};
 }
 
 int main(int argc, char *argv[])
 {
-    std::vector<std::string> pathsVec = {"../test/test.json", "../test/eiti.json"};
-    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>(pathsVec);
-    Graph gr = fh->ReadDataIntoGraph();
-
-    std::list<std::string> args = parseArguments(argc, argv);
-
-    ProgramManager program(800, 600, &gr);
-
-    try
-    {
-        program.UpdatePath(args.front(), args.back());
-    }
-    catch (std::invalid_argument &e)
-    {
-        std::cout << e.what() << '\n';
-        return 1;
-    }
-    program.InitFloors();
-    while (program.IsRunning())
-    {
-        program.ProcessInput();
-        program.Update();
-        program.Render();
-    }
->>>>>>> 858d5411645e967315a82c8252b52ecb53883faa
-
+    auto rooms = parseArguments(argc, argv);
     ProgramManager programManager;
-    programManager.setgraph(id_1, id_2);
+    programManager.setgraph(rooms[0], rooms[1]);
     programManager.Run();
     return 0;
 }
