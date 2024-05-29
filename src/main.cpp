@@ -1,5 +1,4 @@
 #include "program_manager.hpp"
-#include <SDL.h>
 #include <iostream>
 #include "file_handler.hpp"
 #include "graph.hpp"
@@ -31,28 +30,9 @@ int main(int argc, char *argv[])
             std::cerr << e.what() << '\n';
         }
     }
-    std::unique_ptr<FileReader> fh = std::make_unique<jsonReader>("../test/test.json");
-    Graph gr = fh->ReadDataIntoGraph();
 
-    ProgramManager program(800, 600, &gr);
-
-
-    try
-    {
-        program.UpdatePath(id_1, id_2);
-    }
-    catch (std::invalid_argument &e)
-    {
-        std::cout << e.what() << '\n';
-        return 1;
-    }
-    program.InitFloors();
-    while (program.IsRunning())
-    {
-        program.ProcessInput();
-        program.Update();
-        program.Render();
-    }
-
+    ProgramManager programManager;
+    programManager.setgraph(id_1, id_2);
+    programManager.Run();
     return 0;
 }

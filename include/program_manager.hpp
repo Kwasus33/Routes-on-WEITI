@@ -1,32 +1,35 @@
 #pragma once
 
-#include "SDL.h"
-#include "graph.hpp"
-#include <map>
+#include "resource_manager.hpp"
+#include "input_manager.hpp"
+#include "logic_manager.hpp"
+#include "renderer.hpp"
+
+class InputManager;
 
 class ProgramManager
 {
-    int screenWidth, screenHeight;
-    SDL_Window* window;
-    SDL_Renderer* renderer;
-    bool isRunning = true;
-    Graph* graph;
-    std::vector<int> nodePath;
-    std::map<int, SDL_Texture*> floorTextures;
-    int viewedFloor = 0;
-    const int MAX_FLOOR = 1;
-    const int MIN_FLOOR = -1;
-public:
-    ProgramManager(const int screenWidth, const int screenHeight, Graph* graph);
-    ~ProgramManager();
+    ResourceManager* resourceManager;
+    InputManager* inputManager;
+    LogicManager* logicManager;
+    Renderer* renderer;
     
-    void InitFloors();
-    void UpdatePath(std::string start, std::string end);
-    void ProcessInput();
-    void Update();
-    void Render();
-    bool IsRunning() const;
+    bool isRunning;
+
+public:
+    ProgramManager();
+    ~ProgramManager();
+    void Run();
+    void Stop();
+
+    //TODO replace with ui
+    void setgraph(std::string uno, std::string dos)
+    {
+        logicManager->UpdatePath(uno, dos);
+    }
 
 private:
-    void LoadFloorTexture(const int floor, const char* path);
+    void Init();
+    
+
 };

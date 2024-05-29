@@ -33,10 +33,6 @@ include(GoogleTest)
 target_link_libraries(graph_tests PRIVATE GTest::gtest_main)
 gtest_discover_tests(graph_tests)
 
-add_library(program_manager ./src/program_manager.cpp)
-target_include_directories(program_manager PRIVATE ./include)
-target_link_libraries(program_manager PUBLIC SDL2main SDL2-static)
-
 FetchContent_Declare(
     nlohmann_json
     URL https://github.com/nlohmann/json/archive/refs/tags/v3.11.3.tar.gz
@@ -46,6 +42,18 @@ FetchContent_MakeAvailable(nlohmann_json)
 add_library(file_handler ./src/file_handler.cpp)
 target_include_directories(file_handler PRIVATE ./include)
 target_link_libraries(file_handler PUBLIC nlohmann_json graph)
+
+add_library( program_manager 
+    ./src/program_manager.cpp 
+    ./src/commands.cpp 
+    ./src/input_manager.cpp 
+    ./src/resource_manager.cpp 
+    ./src/renderer.cpp
+    ./src/logic_manager.cpp
+    ./src/path.cpp
+    )
+target_include_directories(program_manager PRIVATE ./include)
+target_link_libraries(program_manager PUBLIC file_handler graph SDL2main SDL2-static)
 
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE program_manager file_handler graph)
