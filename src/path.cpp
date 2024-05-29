@@ -9,3 +9,11 @@ Path::Path()
         pointsByFloor[i] = std::vector<SDL_Point>();
     }
 }
+
+void Path::SetFromGraph(const Graph& Graph, const std::vector<int>& nodePath)
+{
+    //TODO i think this is more of logic's job??
+    //idk think about it
+    //too eepy now
+    //a mimir
+}
