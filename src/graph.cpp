@@ -144,13 +144,20 @@ std::vector<Node> &Graph::getNodes()
     return nodes;
 }
 
-int Graph::findClassroom(std::string &className) const
+std::vector<int> Graph::findClassrooms(std::string &className) const
 {
+    std::vector<int> found_classrooms;
     for (Node node : nodes)
     {
         if (node.findClassroom(className))
-            return node.getID();
-    }
+            found_classrooms.push_back(node.getID());
 
-    return -1;
+    }
+    return found_classrooms;
+}
+
+int Graph::getDistance(int start, int end)
+{  
+    int resultDistance = nodes[start].getDistances()[end];
+    return resultDistance;
 }

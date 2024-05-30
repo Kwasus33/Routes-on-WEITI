@@ -105,8 +105,9 @@ TEST(GraphTest, TestDijkstraAlgorithm)
     EXPECT_EQ(resultDistances, testGraph.getNodes()[4].getDistances());
 
     std::string failedSearch = "132";
-
-    EXPECT_EQ(testGraph.findClassroom(className), 5);
-    EXPECT_EQ(testGraph.findClassroom(failedSearch), -1);
+    std::vector<int> emptyVector;
+    std::vector<int> resultClassrooms = {5};
+    EXPECT_EQ(testGraph.findClassrooms(className), resultClassrooms);
+    EXPECT_EQ(testGraph.findClassrooms(failedSearch), emptyVector);
 
 }
