@@ -44,7 +44,8 @@ void Renderer::Render(ResourceManager* resourceManager, const int currentFloor)
 
 void Renderer::AddFloorToRender(Floor flr)
 {
-    SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &flr.GetTransfrom());
+    auto transformedFloor = flr.GetTransfrom();
+    SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &transformedFloor);
 }
 
 void Renderer::AddPathToRender(Path pth, const int currentFloor)
