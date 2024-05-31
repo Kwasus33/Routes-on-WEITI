@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
+
 project(RoutesOnWEITI)
+
+set(CMAKE_CONFIGURATION_TYPES "Release;RelWithDebInfo" CACHE STRING "" FORCE)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -55,6 +58,19 @@ add_library( program_manager
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC file_handler graph SDL2main SDL2-static)
 
+find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+qt_standard_project_setup()
+
+qt_add_library(GuiLogic
+    ./src/mainwindow.cpp
+    ./include/mainwindow.h
+    ./forms/mainwindow.ui
+)
+
+target_link_libraries(GuiLogic PRIVATE program_manager file_handler graph Qt6::Core)
+target_include_directories(GuiLogic PUBLIC ./include)
+
 add_executable(main src/main.cpp)
-target_link_libraries(main PRIVATE program_manager file_handler graph)
+target_link_libraries(main PRIVATE GuiLogic program_manager file_handler graph)
 target_include_directories(main PRIVATE ./include)
+
