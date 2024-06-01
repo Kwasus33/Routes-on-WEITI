@@ -5,6 +5,7 @@ InputManager::InputManager(ProgramManager* programManager, LogicManager* LogicMa
     commandMap[InputType::QUIT] = new QuitCommand(programManager);
     commandMap[InputType::FLOOR_UP] = new FloorUpCommand(LogicManager);
     commandMap[InputType::FLOOR_DOWN] = new FloorDownCommand(LogicManager);
+    commandMap[InputType::UPDATE_PATH] = new UpdatePathCommand(LogicManager, this);
 
     SDL_StartTextInput();
 }
@@ -41,6 +42,9 @@ void InputManager::Update()
             else if(event.key.keysym.sym == SDLK_BACKSPACE) {
                 text = text.substr(0, text.length()-1);
                 updatedText = true;
+            }
+            else if(event.key.keysym.sym == SDLK_KP_ENTER) {
+                commandMap[InputType::UPDATE_PATH]->Execute();
             }
         }
         else if(event.type == SDL_TEXTINPUT) {
