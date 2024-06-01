@@ -33,9 +33,9 @@ std::vector<std::string> parseArguments(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    auto rooms = parseArguments(argc, argv);
+    // auto rooms = parseArguments(argc, argv);
     ProgramManager programManager;
-    programManager.setgraph(rooms[0], rooms[1]);
+    // programManager.setgraph(rooms[0], rooms[1]);
     programManager.Run();
     return 0;
 }
