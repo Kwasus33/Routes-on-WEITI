@@ -19,6 +19,7 @@ class InputManager
 {
     std::map<InputType, Command*> commandMap;
     SDL_Event event;
+    std::string text;
 
 public:
     InputManager(ProgramManager* programManager, LogicManager* LogicManager);
