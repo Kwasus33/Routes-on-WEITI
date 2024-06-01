@@ -40,7 +40,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(nlohmann_json)
 
-add_library(file_handler ./src/file_handler.cpp)
+add_library(file_handler 
+    ./src/file_handler.cpp
+    ./src/jsonReader.cpp
+    ./src/csvReader.cpp
+)
 target_include_directories(file_handler PRIVATE ./include)
 target_link_libraries(file_handler PUBLIC nlohmann_json graph)
 

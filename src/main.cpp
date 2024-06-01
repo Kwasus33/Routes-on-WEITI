@@ -1,6 +1,5 @@
 #include "program_manager.hpp"
 #include <iostream>
-#include "file_handler.hpp"
 #include "graph.hpp"
 
 std::vector<std::string> parseArguments(int argc, char *argv[])

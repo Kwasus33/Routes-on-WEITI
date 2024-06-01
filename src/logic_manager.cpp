@@ -1,6 +1,6 @@
 #include "logic_manager.hpp"
-
-#include "file_handler.hpp"
+#include "jsonReader.hpp"
+#include "csvReader.hpp"
 #include "config.hpp"
 
 LogicManager::LogicManager(ResourceManager* resourceManager)
