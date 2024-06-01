@@ -13,9 +13,20 @@ LogicManager::LogicManager(ResourceManager* resourceManager)
 
 void LogicManager::UpdatePath(std::string& start, std::string& end)
 {
-    std::cout << start << " " << end << std::endl;
     int startID = graph.findClassroom(start);
+    if(startID == -1)
+    {
+        std::cout << "Couldn't find class: " << start << std::endl;
+        return;
+    }
     int endID = graph.findClassroom(end);
+    if(endID == -1)
+    {
+        std::cout << "Couldn't find class: " << end << std::endl;
+        return;
+    }
+    
+    graph.findRoutes(startID);
     std::vector<int> path = graph.getRoute(startID, endID);
     resourceManager->GetPath().SetFromGraph(&graph, path);
 }
