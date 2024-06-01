@@ -18,8 +18,6 @@ void Path::SetFromGraph(Graph* graph, const std::vector<int>& nodePath)
         floor.second.clear();
     }
 
-    std::cout << pointsByFloor[0].size() << std::endl;
-
     std::vector<Node> nodes = graph->getNodes();
     for(const auto id : nodePath)
     {
