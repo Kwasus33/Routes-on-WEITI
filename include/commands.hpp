@@ -1,7 +1,6 @@
 #pragma once
 
 #include "program_manager.hpp"
-#include "logic_manager.hpp"
 
 class ProgramManager;
 
@@ -33,5 +32,14 @@ class FloorDownCommand : public Command
     LogicManager* logicManager;
 public:
     FloorDownCommand(LogicManager* logicManager);
+    void Execute() override;
+};
+
+class UpdatePathCommand : public Command
+{
+    LogicManager* logicManager;
+    InputManager* inputManager;
+public:
+    UpdatePathCommand(LogicManager* logicManager, InputManager* inputManager);
     void Execute() override;
 };
