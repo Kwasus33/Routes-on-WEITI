@@ -25,4 +25,5 @@ public:
     InputManager(ProgramManager* programManager, LogicManager* LogicManager);
     ~InputManager();
     void Update();
+    const std::string& GetText() const { return text; }
 };
