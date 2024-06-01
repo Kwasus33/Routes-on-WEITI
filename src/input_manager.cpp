@@ -43,7 +43,7 @@ void InputManager::Update()
                 text = text.substr(0, text.length()-1);
                 updatedText = true;
             }
-            else if(event.key.keysym.sym == SDLK_KP_ENTER) {
+            else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
                 commandMap[InputType::UPDATE_PATH]->Execute();
             }
         }
