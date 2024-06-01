@@ -45,6 +45,7 @@ void InputManager::Update()
             }
             else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
                 commandMap[InputType::UPDATE_PATH]->Execute();
+                text.clear();
             }
         }
         else if(event.type == SDL_TEXTINPUT) {
