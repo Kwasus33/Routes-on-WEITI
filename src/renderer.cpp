@@ -52,7 +52,8 @@ void Renderer::AddPathToRender(Path pth, const int currentFloor)
 {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     auto points = pth.GetPointsOnFloor(currentFloor);
-    for (int i = 1; i < points.size(); i++)
+    int pointsSizeCasted = static_cast<int>(points.size());
+    for (int i = 1; i < pointsSizeCasted; i++)
     {
         auto point1 = points[i - 1];
         auto point2 = points[i];
