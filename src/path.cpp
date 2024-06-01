@@ -1,6 +1,7 @@
 #include "path.hpp"
 
 #include "config.hpp"
+#include "iostream"
 
 Path::Path()
 {
@@ -12,10 +13,12 @@ Path::Path()
 
 void Path::SetFromGraph(Graph* graph, const std::vector<int>& nodePath)
 {
-    for(auto floor : pointsByFloor)
+    for(auto& floor : pointsByFloor)
     {
         floor.second.clear();
     }
+
+    std::cout << pointsByFloor[0].size() << std::endl;
 
     std::vector<Node> nodes = graph->getNodes();
     for(const auto id : nodePath)
