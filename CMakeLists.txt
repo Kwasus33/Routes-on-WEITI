@@ -55,6 +55,11 @@ add_library( program_manager
 target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC file_handler graph SDL2main SDL2-static)
 
+
 add_executable(main src/main.cpp)
 target_link_libraries(main PRIVATE program_manager file_handler graph)
 target_include_directories(main PRIVATE ./include)
+
+add_executable(menu src/mainwindow.cpp)
+target_link_libraries(menu PUBLIC file_handler SDL2main SDL2-static)
+target_include_directories(menu PRIVATE ./include)
