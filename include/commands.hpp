@@ -3,6 +3,8 @@
 #include "program_manager.hpp"
 
 class ProgramManager;
+class LogicManager;
+class InputManager;
 
 class Command
 {
