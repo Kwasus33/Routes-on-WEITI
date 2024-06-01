@@ -7,10 +7,11 @@
 
 void addNodeInfo(std::vector<Node> &nodes, int nodesQuantity, int id)
 {
+    auto nodesQuantityCasted = static_cast<std::vector<int>::size_type>(nodesQuantity);
     Node &currentNode = nodes[id];
     Node &newlyInsertedNode = nodes[nodesQuantity - 1];
     // adds placeholders for no information nodes to current node
-    if (currentNode.getDistances().size() < nodesQuantity)
+    if (currentNode.getDistances().size() < nodesQuantityCasted)
     {
         // currentNode.setDistance(nodesQuantity - 1, __INT_MAX__);
         currentNode.setDistance(nodesQuantity - 1, std::numeric_limits<int>::max());
@@ -40,7 +41,8 @@ void Graph::addNode(Node &new_node)
 {
     int nodesQuantity = nodes.size() + 1;
     // adds other nodes description to node that is being added
-    if (new_node.getDistances().size() < nodesQuantity)
+    auto nodesQuantityCasted = static_cast<std::vector<int>::size_type>(nodesQuantity);
+    if (new_node.getDistances().size() < nodesQuantityCasted)
     {
         // new_node.setDistance(nodesQuantity - 1, __INT_MAX__);
         new_node.setDistance(nodesQuantity - 1, std::numeric_limits<int>::max());
@@ -57,7 +59,7 @@ void Graph::addNode(Node &new_node)
 
     for (int i = 0; i < nodesQuantity; ++i)
     {
-        addNodeInfo(nodes, nodesQuantity, i);
+        addNodeInfo(nodes, nodesQuantityCasted, i);
     }
 }
 
@@ -81,7 +83,8 @@ void Graph::changeRoute(int start, int through, int end, int distance)
 void Graph::findRoutes(int nodeID)
 {
     // checks if graph has node of this ID
-    if (nodeID >= nodes.size())
+    auto nodeIDCasted = static_cast<std::vector<int>::size_type>(nodeID);
+    if (nodeIDCasted >= nodes.size())
     {
         throw std::invalid_argument("Index out of range");
         return;
@@ -109,7 +112,8 @@ void Graph::findRoutes(int nodeID)
         nodesQueue.pop_front();
 
         // walk through all the routes available from this graph
-        for (int node = 0; node < currentNode.getDistances().size(); ++node)
+        int currentNodeDistancesCasted = static_cast<int>(currentNode.getDistances().size());
+        for (int node = 0; node < currentNodeDistancesCasted; ++node)
         {
             if (node == currentNode.getNextNodes()[node] && node != currentNode.getID())
             {

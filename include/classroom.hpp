@@ -13,6 +13,6 @@ public:
     void setDescription(std::string newDescription);
 
 private:
-    std::string description;
     std::string name;
+    std::string description;
 };

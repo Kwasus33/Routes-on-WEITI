@@ -35,10 +35,10 @@ Node::Node(const int ID, std::vector<int>& dist, std::vector<int>& connected, co
             ++size;
         }
     }
-
-    while (nextNodes.size() <= ID)
+    std::vector<int>::size_type castedID = static_cast<std::vector<int>::size_type>(ID);
+    while (nextNodes.size() <= castedID)
     {
-        if (nextNodes.size() == ID)
+        if (nextNodes.size() == castedID)
         {
             distances.push_back(0);
             nextNodes.push_back(ID);
@@ -69,7 +69,8 @@ std::vector<int> &Node::getNextNodes()
 
 void Node::setDistance(const int nodeID, const int distance)
 {
-    if (nodeID < distances.size())
+    std::vector<int>::size_type castedNodeID = static_cast<std::vector<int>::size_type>(nodeID);
+    if (castedNodeID < distances.size())
     {
         distances[nodeID] = distance;
         return;
