@@ -1,0 +1,1763 @@
+[
+       {
+              "ID": 134,
+              "X": 129,
+              "Y": 678,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "58",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 135,
+              "X": 129,
+              "Y": 645,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "59",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 136,
+              "X": 129,
+              "Y": 629,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "60",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 137,
+              "X": 129,
+              "Y": 578,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "61",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 138,
+              "X": 129,
+              "Y": 567,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "62",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 139,
+              "X": 129,
+              "Y": 531,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "63",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 140,
+              "X": 129,
+              "Y": 480,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "64",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "65",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 141,
+              "X": 108,
+              "Y": 473,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "66",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 142,
+              "X": 90,
+              "Y": 480,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "67",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "68",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 143,
+              "X": 90,
+              "Y": 531,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "69",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 144,
+              "X": 90,
+              "Y": 567,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "70",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 145,
+              "X": 90,
+              "Y": 578,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "71",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 146,
+              "X": 90,
+              "Y": 629,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "72",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 147,
+              "X": 90,
+              "Y": 645,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "73",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 148,
+              "X": 90,
+              "Y": 678,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "74",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 149,
+              "X": 108,
+              "Y": 678,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2
+              ],
+              "connected": [
+                     134,
+                     148
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 150,
+              "X": 108,
+              "Y": 631,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     135,
+                     136,
+                     146,
+                     147,
+                     149
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 151,
+              "X": 108,
+              "Y": 570,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     137,
+                     138,
+                     144,
+                     145,
+                     150
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 152,
+              "X": 108,
+              "Y": 531,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     3
+              ],
+              "connected": [
+                     139,
+                     143,
+                     151
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 153,
+              "X": 108,
+              "Y": 491,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     2,
+                     3
+              ],
+              "connected": [
+                     140,
+                     141,
+                     142,
+                     152
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 154,
+              "X": 77,
+              "Y": 716,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "WC",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 155,
+              "X": 108,
+              "Y": 730,
+              "floor": 0,
+              "distances": [
+                     5,
+                     2
+              ],
+              "connected": [
+                     149,
+                     154
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 156,
+              "X": 162,
+              "Y": 730,
+              "floor": 0,
+              "distances": [
+                     20,
+                     5
+              ],
+              "connected": [
+                     14,
+                     155
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 157,
+              "X": 92,
+              "Y": 777,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "1",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "2",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 158,
+              "X": 119,
+              "Y": 795,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "3",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 159,
+              "X": 114,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5,
+                     2,
+                     2
+              ],
+              "connected": [
+                     155,
+                     157,
+                     158
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 160,
+              "X": 199,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     159
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 161,
+              "X": 192,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     160
+              ],
+              "classrooms": [
+                     {
+                            "name": "4",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "5",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 162,
+              "X": 203,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     160
+              ],
+              "classrooms": [
+                     {
+                            "name": "6",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "7",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 163,
+              "X": 302,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     7
+              ],
+              "connected": [
+                     160
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 164,    
+              "X": 375,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     163
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 165,
+              "X": 302,
+              "Y": 826,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     163
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 166,
+              "X": 375,
+              "Y": 826,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     164
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 167,
+              "X": 338,
+              "Y": 906,
+              "floor": 0,
+              "distances": [
+                     5,
+                     5
+              ],
+              "connected": [
+                     165,
+                     166
+              ],
+              "classrooms": [
+                     {
+                            "name": "WEJSCIE L",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 168,
+              "X": 338,
+              "Y": 826,
+              "floor": 0,
+              "distances": [
+                     20,
+                     5
+              ],
+              "connected": [
+                     133,
+                     167
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 169,
+              "X": 472,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     164
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 170,
+              "X": 453,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     169
+              ],
+              "classrooms": [
+                     {
+                            "name": "8",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 171,
+              "X": 482,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     169
+              ],
+              "classrooms": [
+                     {
+                            "name": "9B",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 172,
+              "X": 553,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     169
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 173,
+              "X": 553,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     172
+              ],
+              "classrooms": [
+                     {
+                            "name": "9A",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 174,
+              "X": 590,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     3
+              ],
+              "connected": [
+                     172
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 175,
+              "X": 590,
+              "Y": 732,
+              "floor": 0,
+              "distances": [
+                     3
+              ],
+              "connected": [
+                     174
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 176,
+              "X": 535,
+              "Y": 732,
+              "floor": 0,
+              "distances": [
+                     20,
+                     5
+              ],
+              "connected": [
+                     39,
+                     175
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 177,
+              "X": 597,
+              "Y": 676,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "49",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 178,
+              "X": 597,
+              "Y": 613,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "50",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 179,
+              "X": 597,
+              "Y": 583,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "51",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 180,
+              "X": 597,
+              "Y": 517,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "52",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 181,
+              "X": 552,
+              "Y": 505,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "53",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 182,
+              "X": 564,
+              "Y": 558,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "54",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 183,
+              "X": 564,
+              "Y": 631,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "55",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 184,
+              "X": 564,
+              "Y": 665,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "56",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 185,
+              "X": 564,
+              "Y": 698,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "57",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 186,
+              "X": 576,
+              "Y": 676,
+              "floor": 0,
+              "distances": [
+                     5,
+                     2,
+                     2,
+                     2
+              ],
+              "connected": [
+                     175,
+                     177,
+                     184,
+                     185
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 187,
+              "X": 576,
+              "Y": 627,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     178,
+                     183,
+                     186
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 188,
+              "X": 576,
+              "Y": 575,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     179,
+                     182,
+                     187
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 189,
+              "X": 576,
+              "Y": 526,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     180,
+                     181,
+                     188
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 190,
+              "X": 646,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     3
+              ],
+              "connected": [
+                     174
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 191,
+              "X": 646,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     190
+              ],
+              "classrooms": [
+                     {
+                            "name": "9",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 192,
+              "X": 718,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     190
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 193,
+              "X": 718,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     192
+              ],
+              "classrooms": [
+                     {
+                            "name": "10",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 194,
+              "X": 792,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     192
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 195,
+              "X": 792,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     194
+              ],
+              "classrooms": [
+                     {
+                            "name": "11",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 196,
+              "X": 833,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     3
+              ],
+              "connected": [
+                     194
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 197,
+              "X": 833,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     196
+              ],
+              "classrooms": [
+                     {
+                            "name": "11A",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 198,
+              "X": 876,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     196
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 199,
+              "X": 875,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     198
+              ],
+              "classrooms": [
+                     {
+                            "name": "12",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 200,
+              "X": 927,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     3
+              ],
+              "connected": [
+                     198
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 201,
+              "X": 927,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     200
+              ],
+              "classrooms": [
+                     {
+                            "name": "13",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 202,
+              "X": 973,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     200
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 203,
+              "X": 973,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     202
+              ],
+              "classrooms": [
+                     {
+                            "name": "14",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 204,
+              "X": 1007,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     202
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 205,
+              "X": 1007,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     204
+              ],
+              "classrooms": [
+                     {
+                            "name": "15",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 206,
+              "X": 1017,
+              "Y": 732,
+              "floor": 0,
+              "distances": [
+                     4
+              ],
+              "connected": [
+                     204
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 207,
+              "X": 1066,
+              "Y": 732,
+              "floor": 0,
+              "distances": [
+                     20,
+                     5
+              ],
+              "connected": [
+                     78,
+                     206
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 208,
+              "X": 1018,
+              "Y": 703,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     206
+              ],
+              "classrooms": [
+                     {
+                            "name": "BIBLIOTEKA",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 209,
+              "X": 988,
+              "Y": 715,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     206
+              ],
+              "classrooms": [
+                     {
+                            "name": "WC",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 210,
+              "X": 1100,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     204
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 211,
+              "X": 1100,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     210
+              ],
+              "classrooms": [
+                     {
+                            "name": "16",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 212,
+              "X": 1169,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     210
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 213,
+              "X": 1163,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     212
+              ],
+              "classrooms": [
+                     {
+                            "name": "17",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 214,
+              "X": 1181,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     212
+              ],
+              "classrooms": [
+                     {
+                            "name": "18",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 215,
+              "X": 1215,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     212
+              ],
+              "classrooms": [
+                     {
+                            "name": "SZATNIA",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 216,
+              "X": 1283,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     215
+              ],
+              "classrooms": [
+                     {
+                            "name": "SZATNIA",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 217,
+              "X": 1215,
+              "Y": 905,
+              "floor": 0,
+              "distances": [
+                     7
+              ],
+              "connected": [
+                     215
+              ],
+              "classrooms": [
+                     {
+                            "name": "WEJSCIE R",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 218,
+              "X": 1283,
+              "Y": 905,
+              "floor": 0,
+              "distances": [
+                     7
+              ],
+              "connected": [
+                     216
+              ],
+              "classrooms": [
+                     {
+                            "name": "WEJSCIE R",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 219,
+              "X": 1249,
+              "Y": 827,
+              "floor": 0,
+              "distances": [
+                     5,
+                     5,
+                     20
+              ],
+              "connected": [
+                     217,
+                     218,
+                     245
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 220,
+              "X": 1337,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     216
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 221,
+              "X": 1324,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     220
+              ],
+              "classrooms": [
+                     {
+                            "name": "19",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 222,
+              "X": 1355,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     220
+              ],
+              "classrooms": [
+                     {
+                            "name": "20",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 223,
+              "X": 1406,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     220
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 224,
+              "X": 1388,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     223
+              ],
+              "classrooms": [
+                     {
+                            "name": "21",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 225,
+              "X": 1419,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     223
+              ],
+              "classrooms": [
+                     {
+                            "name": "22",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 226,
+              "X": 1470,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     223
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 227,
+              "X": 1449,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     226
+              ],
+              "classrooms": [
+                     {
+                            "name": "23",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 228,
+              "X": 1472,
+              "Y": 795,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     226
+              ],
+              "classrooms": [
+                     {
+                            "name": "24",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "25",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 229,
+              "X": 1494,
+              "Y": 777,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     226
+              ],
+              "classrooms": [
+                     {
+                            "name": "26",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 230,
+              "X": 1482,
+              "Y": 732,
+              "floor": 0,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     226
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 231,
+              "X": 1427,
+              "Y": 732,
+              "floor": 0,
+              "distances": [
+                     20,
+                     5
+              ],
+              "connected": [
+                     115,
+                     230
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 232,
+              "X": 1510,
+              "Y": 718,
+              "floor": 0,
+              "distances": [
+                     2
+              ],
+              "connected": [
+                     230
+              ],
+              "classrooms": [
+                     {
+                            "name": "WC",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 233,
+              "X": 1498,
+              "Y": 666,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "27",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 234,
+              "X": 1498,
+              "Y": 600,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "28",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 235,
+              "X": 1498,
+              "Y": 556,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "29",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 236,
+              "X": 1498,
+              "Y": 523,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "30",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 237,
+              "X": 1458,
+              "Y": 543,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "31",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 238,
+              "X": 1458,
+              "Y": 556,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "32",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 239,
+              "X": 1458,
+              "Y": 600,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "33",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 240,
+              "X": 1458,
+              "Y": 635,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "34",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 241,
+              "X": 1458,
+              "Y": 666,
+              "floor": 0,
+              "distances": [],
+              "connected": [],
+              "classrooms": [
+                     {
+                            "name": "35",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     },
+                     {
+                            "name": "36",
+                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                     }
+              ]
+       },
+       {
+              "ID": 242,
+              "X": 1482,
+              "Y": 650,
+              "floor": 0,
+              "distances": [
+                     5,
+                     2,
+                     2,
+                     2
+              ],
+              "connected": [
+                     230,
+                     233,
+                     240,
+                     241
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 243,
+              "X": 1482,
+              "Y": 600,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     234,
+                     239,
+                     242
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 244,
+              "X": 1482,
+              "Y": 537,
+              "floor": 0,
+              "distances": [
+                     2,
+                     2,
+                     2,
+                     2,
+                     5
+              ],
+              "connected": [
+                     235,
+                     236,
+                     237,
+                     238,
+                     243
+              ],
+              "classrooms": []
+       },
+       {
+              "ID": 245,
+              "X": 1249,
+              "Y": 827,
+              "floor": 1,
+              "distances": [
+                     5
+              ],
+              "connected": [
+                     101
+              ],
+              "classrooms": []
+       }
+]
