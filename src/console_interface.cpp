@@ -1,6 +1,6 @@
 #include "console_interface.hpp"
 
-ConsoleInterface::ConsoleInterface(const LogicManager* logicManager)
+ConsoleInterface::ConsoleInterface(LogicManager* logicManager)
     : logicManager(logicManager) {}
 
 Action ConsoleInterface::GetNextAction() const
@@ -26,5 +26,27 @@ Action ConsoleInterface::GetNextAction() const
         }
         
         std::cout << "Invalid input. Try again." << std::endl << std::endl;
+    }
+}
+
+void ConsoleInterface::SetNewPath() const
+{
+    while (true)
+    {
+        std::string room1, room2;
+        std::cout << "Type in the name of the first classroom:" << std::endl;
+        std::cin >> room1;
+        std::cout << "Type in the name of the second classroom:" << std::endl;
+        std::cin >> room2;
+
+        try
+        {
+            logicManager->UpdatePath(room1, room2);
+            return;
+        }
+        catch(const std::invalid_argument& e)
+        {
+            std::cout << "Invalid input. Try again." << std::endl << std::endl;
+        }
     }
 }

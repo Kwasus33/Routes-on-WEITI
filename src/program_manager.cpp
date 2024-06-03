@@ -34,8 +34,8 @@ void ProgramManager::Run()
 
         case Action::SHOW_PATH:
 
+            consoleInterface->SetNewPath();
             renderer->ShowWindow();
-            // consoleInterface->SetNewPath();
             isShowing = true;
             while(isShowing)
             {
