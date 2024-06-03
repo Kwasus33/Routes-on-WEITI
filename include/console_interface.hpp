@@ -13,7 +13,7 @@ class ConsoleInterface
     const InputManager* inputManager;
 
 public:
-    ConsoleInterface(const InputManager* inputManager)
+    ConsoleInterface(const InputManager* inputManager);
 
     Action GetNextAction() const;
     void SetNewPath() const;
