@@ -1,7 +1,7 @@
 #include "program_manager.hpp"
 
 ProgramManager::ProgramManager()
-    : isRunning(true)
+    : isShowing(true)
 {
     renderer = new Renderer();
     resourceManager = new ResourceManager(renderer);
@@ -19,20 +19,14 @@ ProgramManager::~ProgramManager()
 
 void ProgramManager::Run()
 {
-    Init();
-
-    while(isRunning)
+    while(isShowing)
     {
         inputManager->Update();
         renderer->Render(resourceManager, logicManager->GetCurrentFloor());
     }
 }
 
-void ProgramManager::Stop()
+void ProgramManager::StopShowing()
 {
-    isRunning = false;
-}
-
-void ProgramManager::Init()
-{
+    isShowing = false;
 }

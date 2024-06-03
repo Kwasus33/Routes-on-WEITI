@@ -6,7 +6,7 @@ QuitCommand::QuitCommand(ProgramManager* programManager)
 
 void QuitCommand::Execute() 
 { 
-    programManager->Stop(); 
+    programManager->StopShowing(); 
 }
 
 FloorUpCommand::FloorUpCommand(LogicManager* logicManager)

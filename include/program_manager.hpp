@@ -14,19 +14,13 @@ class ProgramManager
     LogicManager* logicManager;
     Renderer* renderer;
     
-    bool isRunning;
+    bool isShowing;
 
 public:
     ProgramManager();
     ~ProgramManager();
     void Run();
-    void Stop();
-
-    //TODO replace with ui
-    void setgraph(std::string uno, std::string dos)
-    {
-        logicManager->UpdatePath(uno, dos);
-    }
+    void StopShowing();
 
 private:
     void Init();
