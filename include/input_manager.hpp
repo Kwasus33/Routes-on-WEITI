@@ -20,11 +20,9 @@ class InputManager
 {
     std::map<InputType, Command*> commandMap;
     SDL_Event event;
-    std::string text;
 
 public:
     InputManager(ProgramManager* programManager, LogicManager* LogicManager);
     ~InputManager();
     void Update();
-    const std::string& GetText() const { return text; }
 };

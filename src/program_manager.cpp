@@ -1,12 +1,13 @@
 #include "program_manager.hpp"
 
 ProgramManager::ProgramManager()
-    : isRunning(true)
+    : isShowing(true)
 {
     renderer = new Renderer();
     resourceManager = new ResourceManager(renderer);
     logicManager = new LogicManager(resourceManager);
     inputManager = new InputManager(this, logicManager);
+    consoleInterface = new ConsoleInterface(logicManager);
 }
 
 ProgramManager::~ProgramManager()
@@ -15,24 +16,40 @@ ProgramManager::~ProgramManager()
     delete logicManager;
     delete renderer;
     delete resourceManager;
+    delete logicManager;
 }
 
 void ProgramManager::Run()
 {
-    Init();
-
-    while(isRunning)
+    Action nextAction;
+    do
     {
-        inputManager->Update();
-        renderer->Render(resourceManager, logicManager->GetCurrentFloor());
-    }
+        nextAction = consoleInterface->GetNextAction();
+
+        switch (nextAction)
+        {
+        case Action::SHOW_DESCRIPTION:
+            consoleInterface->ShowDescription();
+            break;
+
+        case Action::SHOW_PATH:
+
+            consoleInterface->SetNewPath();
+            renderer->ShowWindow();
+            isShowing = true;
+            while(isShowing)
+            {
+                inputManager->Update();
+                renderer->Render(resourceManager, logicManager->GetCurrentFloor());
+            }
+            renderer->HideWindow();
+            break;
+        }
+    } while(nextAction != Action::QUIT);
+    
 }
 
-void ProgramManager::Stop()
+void ProgramManager::StopShowing()
 {
-    isRunning = false;
-}
-
-void ProgramManager::Init()
-{
+    isShowing = false;
 }

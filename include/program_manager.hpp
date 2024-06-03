@@ -4,8 +4,10 @@
 #include "input_manager.hpp"
 #include "logic_manager.hpp"
 #include "renderer.hpp"
+#include "console_interface.hpp"
 
 class InputManager;
+class ConsoleInterface;
 
 class ProgramManager
 {
@@ -13,20 +15,15 @@ class ProgramManager
     InputManager* inputManager;
     LogicManager* logicManager;
     Renderer* renderer;
+    ConsoleInterface* consoleInterface;
     
-    bool isRunning;
+    bool isShowing;
 
 public:
     ProgramManager();
     ~ProgramManager();
     void Run();
-    void Stop();
-
-    //TODO replace with ui
-    void setgraph(std::string uno, std::string dos)
-    {
-        logicManager->UpdatePath(uno, dos);
-    }
+    void StopShowing();
 
 private:
     void Init();

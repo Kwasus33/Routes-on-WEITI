@@ -13,7 +13,7 @@ Renderer::Renderer()
     }
     window = SDL_CreateWindow(
         "Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-        config::SCREEN_WIDTH, config::SCREEN_HEIGHT, SDL_WINDOW_SHOWN
+        config::SCREEN_WIDTH, config::SCREEN_HEIGHT, SDL_WINDOW_HIDDEN
         );
     if (!window)
     {

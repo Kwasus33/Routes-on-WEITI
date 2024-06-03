@@ -30,6 +30,20 @@ void LogicManager::UpdatePath(std::string& start, std::string& end)
     resourceManager->GetPath().SetFromGraph(&graph, path);
 }
 
+std::string LogicManager::GetDescription(std::string className)
+{
+    std::vector<int> classIDs = graph.findClassrooms(className);
+    if(classIDs.empty())
+        throw std::invalid_argument("Classroom not found");
+    int classID = classIDs[0];
+    std::vector<Node>& nodes = graph.getNodes();
+    for (const auto& clss : nodes[classID].getClassrooms())
+    {
+        if(clss.getName() == className) return clss.getDescription();
+    }
+    throw std::invalid_argument("Classroom not found");
+}
+
 void LogicManager::ChangeFloor(int change)
 {
     currentFloor += change;

@@ -15,6 +15,7 @@ add_library( program_manager
     ./src/resource_manager.cpp 
     ./src/renderer.cpp
     ./src/logic_manager.cpp
+    ./src/console_interface.cpp
     ./src/path.cpp
     )
 
