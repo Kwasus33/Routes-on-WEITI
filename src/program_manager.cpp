@@ -29,7 +29,7 @@ void ProgramManager::Run()
         switch (nextAction)
         {
         case Action::SHOW_DESCRIPTION:
-            // consoleInterface->ShowDescription();
+            consoleInterface->ShowDescription();
             break;
 
         case Action::SHOW_PATH:

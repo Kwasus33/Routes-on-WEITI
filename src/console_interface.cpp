@@ -50,3 +50,24 @@ void ConsoleInterface::SetNewPath() const
         }
     }
 }
+
+void ConsoleInterface::ShowDescription() const
+{
+    while (true)
+    {
+        std::cout << "Type in the name of the classroom:" << std::endl;
+        std::string room;
+        std::cin >> room;
+        
+        try
+        {
+            std::string desc = logicManager->GetDescription(room);
+            std::cout << desc << std::endl;
+            return;
+        }
+        catch(const std::invalid_argument& e)
+        {
+            std::cout << "Invalid input. Try again." << std::endl << std::endl;
+        }
+    }
+}
