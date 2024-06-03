@@ -11,11 +11,11 @@ class Renderer
     SDL_Renderer* renderer;
 public:
     Renderer();
-    void Render(ResourceManager* resourceManager, const int currentFloor);
-    SDL_Renderer* GetSdlRenderer() const { return renderer; }
-    void HideWindow() { SDL_HideWindow(window); }
-    void ShowWindow() { SDL_ShowWindow(window); }
+    void Render(const ResourceManager* resourceManager, const int currentFloor) const;
+    SDL_Renderer* GetSdlRenderer() const;
+    void HideWindow() const;
+    void ShowWindow() const;
 private:
-    void AddFloorToRender(Floor flr);
-    void AddPathToRender(Path pth, const int currentFloor);
+    void AddFloorToRender(const Floor& flr) const;
+    void AddPathToRender(const Path& pth, const int currentFloor) const;
 };

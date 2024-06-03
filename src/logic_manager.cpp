@@ -27,7 +27,7 @@ void LogicManager::UpdatePath(std::string& start, std::string& end)
               { return graph.getDistance(startID, nodeOne) < graph.getDistance(startID, nodeTwo); });
     int endID = endSearches[0];
     std::vector<int> path = graph.getRoute(startID, endID);
-    resourceManager->GetPath().SetFromGraph(&graph, path);
+    resourceManager->SetPathFromGraph(&graph, path);
 }
 
 std::string LogicManager::GetDescription(std::string className)
