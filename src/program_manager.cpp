@@ -7,6 +7,7 @@ ProgramManager::ProgramManager()
     resourceManager = new ResourceManager(renderer);
     logicManager = new LogicManager(resourceManager);
     inputManager = new InputManager(this, logicManager);
+    consoleInterface = new ConsoleInterface(logicManager);
 }
 
 ProgramManager::~ProgramManager()
@@ -15,15 +16,22 @@ ProgramManager::~ProgramManager()
     delete logicManager;
     delete renderer;
     delete resourceManager;
+    delete logicManager;
 }
 
 void ProgramManager::Run()
 {
-    while(isShowing)
+    Action nextAction;
+    do
     {
-        inputManager->Update();
-        renderer->Render(resourceManager, logicManager->GetCurrentFloor());
-    }
+        nextAction = consoleInterface->GetNextAction();
+        // while(isShowing)
+        // {
+        //     inputManager->Update();
+        //     renderer->Render(resourceManager, logicManager->GetCurrentFloor());
+        // }
+    } while(nextAction != Action::QUIT);
+    
 }
 
 void ProgramManager::StopShowing()

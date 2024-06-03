@@ -1,9 +1,9 @@
 #include "console_interface.hpp"
 
-ConsoleInterface::ConsoleInterface(const InputManager* inputManager)
-    : inputManager(inputManager) {}
+ConsoleInterface::ConsoleInterface(const LogicManager* logicManager)
+    : logicManager(logicManager) {}
 
-Action ConsoleInterface::GetNextAction()
+Action ConsoleInterface::GetNextAction() const
 {
     while (true)
     {
@@ -15,13 +15,13 @@ Action ConsoleInterface::GetNextAction()
         std::string input;
         std::cin >> input;
 
-        switch (input)
-        {
-        case "p":
+        if (input == "p"){
             return Action::SHOW_PATH;
-        case "d":
+        }
+        else if (input == "d"){
             return Action::SHOW_DESCRIPTION;
-        case "q":
+        }
+        else if (input == "q"){
             return Action::QUIT;
         }
         

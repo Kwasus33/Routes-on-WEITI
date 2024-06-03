@@ -4,8 +4,10 @@
 #include "input_manager.hpp"
 #include "logic_manager.hpp"
 #include "renderer.hpp"
+#include "console_interface.hpp"
 
 class InputManager;
+class ConsoleInterface;
 
 class ProgramManager
 {
@@ -13,6 +15,7 @@ class ProgramManager
     InputManager* inputManager;
     LogicManager* logicManager;
     Renderer* renderer;
+    ConsoleInterface* consoleInterface;
     
     bool isShowing;
 

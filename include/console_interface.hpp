@@ -10,10 +10,10 @@ enum class Action
 
 class ConsoleInterface
 {
-    const InputManager* inputManager;
+    const LogicManager* logicManager;
 
 public:
-    ConsoleInterface(const InputManager* inputManager);
+    ConsoleInterface(const LogicManager* logicManager);
 
     Action GetNextAction() const;
     void SetNewPath() const;

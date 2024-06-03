@@ -30,9 +30,9 @@ UpdatePathCommand::UpdatePathCommand(LogicManager* logicManager, InputManager* i
 
 void UpdatePathCommand::Execute()
 {
-    std::string input = inputManager->GetText();
-    int split = input.find(':');
-    std::string start = input.substr(0, split);
-    std::string end = input.substr(split+1, input.length());
-    logicManager->UpdatePath(start, end);
+    // std::string input = inputManager->GetText();
+    // int split = input.find(':');
+    // std::string start = input.substr(0, split);
+    // std::string end = input.substr(split+1, input.length());
+    // logicManager->UpdatePath(start, end);
 }
