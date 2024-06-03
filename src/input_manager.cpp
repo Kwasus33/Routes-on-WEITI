@@ -6,8 +6,6 @@ InputManager::InputManager(ProgramManager* programManager, LogicManager* LogicMa
     commandMap[InputType::FLOOR_UP] = new FloorUpCommand(LogicManager);
     commandMap[InputType::FLOOR_DOWN] = new FloorDownCommand(LogicManager);
     commandMap[InputType::UPDATE_PATH] = new UpdatePathCommand(LogicManager, this);
-
-    SDL_StartTextInput();
 }
 
 InputManager::~InputManager()
@@ -16,8 +14,6 @@ InputManager::~InputManager()
     {
         delete item.second;
     }
-
-    SDL_StopTextInput();
 }
 
 void InputManager::Update()
