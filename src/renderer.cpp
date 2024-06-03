@@ -8,8 +8,7 @@ Renderer::Renderer()
     // Setup window
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        std::cerr << "SDL initialization failed: " << SDL_GetError() << std::endl;
-        return;
+        throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
     }
     window = SDL_CreateWindow(
         "Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
@@ -17,38 +16,56 @@ Renderer::Renderer()
         );
     if (!window)
     {
-        std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
-        return;
+        throw std::runtime_error(std::string("Window initialization failed: ") + SDL_GetError());
     }
+
+    // Setup SDL renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer)
     {
-        std::cerr << "Renderer creation failed: " << SDL_GetError() << std::endl;
-        return;
+        throw std::runtime_error(std::string("Renderer initialization failed: ") + SDL_GetError());
     }
+
     SDL_SetRenderDrawColor(renderer, 255, 255, 200, 255);
     SDL_RenderClear(renderer);
 }
 
-void Renderer::Render(ResourceManager* resourceManager, const int currentFloor)
+SDL_Renderer* Renderer::GetSdlRenderer() const 
+{ 
+    return renderer; 
+}
+
+void Renderer::HideWindow() const
+{ 
+    SDL_HideWindow(window); 
+}
+
+void Renderer::ShowWindow() const
+{ 
+    SDL_ShowWindow(window); 
+}
+
+void Renderer::Render(const ResourceManager* resourceManager, const int currentFloor) const
 {
     SDL_RenderClear(renderer);
 
-    Floor floorObject = resourceManager->GetFloor(currentFloor);
+    // Draw current floor
+    const Floor& floorObject = resourceManager->GetFloor(currentFloor);
     AddFloorToRender(floorObject);
 
+    // Draw path on current floor
     AddPathToRender(resourceManager->GetPath(), currentFloor);
 
     SDL_RenderPresent(renderer);
 }
 
-void Renderer::AddFloorToRender(Floor flr)
+void Renderer::AddFloorToRender(const Floor& flr) const
 {
     auto transformedFloor = flr.GetTransfrom();
     SDL_RenderCopy(renderer, flr.GetTexture(), NULL, &transformedFloor);
 }
 
-void Renderer::AddPathToRender(Path pth, const int currentFloor)
+void Renderer::AddPathToRender(const Path& pth, const int currentFloor) const
 {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     auto points = pth.GetPointsOnFloor(currentFloor);
