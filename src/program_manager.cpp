@@ -25,11 +25,26 @@ void ProgramManager::Run()
     do
     {
         nextAction = consoleInterface->GetNextAction();
-        // while(isShowing)
-        // {
-        //     inputManager->Update();
-        //     renderer->Render(resourceManager, logicManager->GetCurrentFloor());
-        // }
+
+        switch (nextAction)
+        {
+        case Action::SHOW_DESCRIPTION:
+            // consoleInterface->ShowDescription();
+            break;
+
+        case Action::SHOW_PATH:
+
+            renderer->ShowWindow();
+            // consoleInterface->SetNewPath();
+            isShowing = true;
+            while(isShowing)
+            {
+                inputManager->Update();
+                renderer->Render(resourceManager, logicManager->GetCurrentFloor());
+            }
+            renderer->HideWindow();
+            break;
+        }
     } while(nextAction != Action::QUIT);
     
 }
