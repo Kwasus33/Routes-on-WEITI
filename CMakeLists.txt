@@ -19,13 +19,18 @@ add_library( program_manager
     ./src/path.cpp
     )
 
-add_library(file_handler 
+add_library( file_handler 
     ./src/file_handler.cpp
     ./src/jsonReader.cpp
     ./src/csvReader.cpp
 )
 
+add_library( parser
+    ./src/argParser.cpp
+)
+
 target_include_directories(graph PRIVATE ./include)
+target_include_directories(parser PRIVATE ./include)
 
 option(BUILD_TESTS "Build tests" OFF)
 
@@ -63,5 +68,5 @@ target_include_directories(program_manager PRIVATE ./include)
 target_link_libraries(program_manager PUBLIC file_handler graph SDL2main SDL2-static)
 
 add_executable(main src/main.cpp)
-target_link_libraries(main PRIVATE program_manager file_handler graph)
+target_link_libraries(main PRIVATE parser program_manager file_handler graph)
 target_include_directories(main PRIVATE ./include)
