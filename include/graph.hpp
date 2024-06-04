@@ -10,8 +10,8 @@ public:
     std::vector<Node>& getNodes();
     void findRoutes(const int nodeID);
     std::vector<int> getRoute(int start, int end);
-    std::vector<int> findClassrooms(std::string& className) const;
-    int getDistance(int start, int end);
+    std::vector<int> findClassrooms(const std::string& className) const;
+    int getDistance(const int start, const int end);
 private:
     std::vector<Node> nodes;
     std::vector<bool> hasRoutes;

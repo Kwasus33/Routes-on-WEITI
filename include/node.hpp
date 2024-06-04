@@ -16,7 +16,7 @@ public:
     void addRoute(const int ID, const int distance, const int nextNode);
     void setNextNode(const int toNode, const int nextNode);
     void addClassroom(Classroom &new_classroom);
-    bool findClassroom(std::string &class_name) const;
+    bool findClassroom(const std::string &class_name) const;
     int getX() const;
     int getY() const;
     int getFloor() const;

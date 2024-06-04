@@ -148,10 +148,10 @@ std::vector<Node> &Graph::getNodes()
     return nodes;
 }
 
-std::vector<int> Graph::findClassrooms(std::string &className) const
+std::vector<int> Graph::findClassrooms(const std::string &className) const
 {
     std::vector<int> found_classrooms;
-    for (Node node : nodes)
+    for (const Node& node : nodes)
     {
         if (node.findClassroom(className))
             found_classrooms.push_back(node.getID());
