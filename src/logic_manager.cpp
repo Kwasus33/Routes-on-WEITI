@@ -17,8 +17,9 @@ void LogicManager::UpdatePath(std::string& start, std::string& end)
     std::vector<int> startSearches = graph.findClassrooms(start);
     std::vector<int> endSearches = graph.findClassrooms(end);
     // If no classrooms are found, throws an exception
-    if (startSearches.empty() || endSearches.empty())
+    if (startSearches.empty() || endSearches.empty()){
         throw std::invalid_argument("Classroom not found");
+    }
     // If multiple classrooms are found, chooses the first one for start
     int startID = startSearches[0];
     graph.findRoutes(startID);
@@ -33,8 +34,9 @@ void LogicManager::UpdatePath(std::string& start, std::string& end)
 std::string LogicManager::GetDescription(std::string className)
 {
     std::vector<int> classIDs = graph.findClassrooms(className);
-    if(classIDs.empty())
+    if(classIDs.empty()){
         throw std::invalid_argument("Classroom not found");
+    }
     int classID = classIDs[0];
     std::vector<Node>& nodes = graph.getNodes();
     for (const auto& clss : nodes[classID].getClassrooms())

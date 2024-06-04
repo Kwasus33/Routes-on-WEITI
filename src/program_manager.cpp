@@ -3,20 +3,11 @@
 ProgramManager::ProgramManager()
     : isShowing(true)
 {
-    renderer = new Renderer();
-    resourceManager = new ResourceManager(renderer);
-    logicManager = new LogicManager(resourceManager);
-    inputManager = new InputManager(this, logicManager);
-    consoleInterface = new ConsoleInterface(logicManager);
-}
-
-ProgramManager::~ProgramManager()
-{
-    delete inputManager;
-    delete logicManager;
-    delete renderer;
-    delete resourceManager;
-    delete consoleInterface;
+    renderer = std::make_unique<Renderer>();
+    resourceManager = std::make_unique<ResourceManager>(renderer.get());
+    logicManager = std::make_unique<LogicManager>(resourceManager.get());
+    inputManager = std::make_unique<InputManager>(this, logicManager.get());
+    consoleInterface = std::make_unique<ConsoleInterface>(logicManager.get());
 }
 
 void ProgramManager::Run(Action nextAction, std::string room1, std::string room2)
@@ -36,7 +27,7 @@ void ProgramManager::Run(Action nextAction, std::string room1, std::string room2
             while (isShowing)
             {
                 inputManager->Update();
-                renderer->Render(resourceManager, logicManager->GetCurrentFloor());
+                renderer->Render(resourceManager.get(), logicManager->GetCurrentFloor());
             }
             renderer->HideWindow();
             break;

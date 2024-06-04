@@ -8,8 +8,8 @@ Action ConsoleInterface::GetNextAction() const
     while (true)
     {
         std::cout << "What would you like to do?" << std::endl;
-        std::cout << "p: Show me a path between two classrooms." << std::endl;
-        std::cout << "d: Show me the description of a classroom." << std::endl;
+        std::cout << "p: Show a path between two classrooms." << std::endl;
+        std::cout << "d: Show the description of a classroom." << std::endl;
         std::cout << "q: Quit." << std::endl << std::endl;
 
         std::string input;
@@ -50,6 +50,7 @@ void ConsoleInterface::SetNewPath(std::string room1, std::string room2) const
         catch(const std::invalid_argument& e)
         {
             std::cout << "Invalid input. Try again." << std::endl << std::endl;
+            room1, room2 = "";
         }
     }
 }

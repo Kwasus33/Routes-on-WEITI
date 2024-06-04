@@ -6,27 +6,21 @@
 ResourceManager::ResourceManager(Renderer* renderer)
 {
     SDL_Renderer* sdlRenderer = renderer->GetSdlRenderer();
-    SDL_Rect transform = {0, 0, config::SCREEN_WIDTH, config::SCREEN_HEIGHT};
-    SDL_Texture* tex;
 
-    tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, sdlRenderer);
-    floors[-1] = Floor(tex, transform);
-
-    tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PARTER, sdlRenderer);
-    floors[0] = Floor(tex, transform);
-
-    tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, sdlRenderer);
-    floors[1] = Floor(tex, transform);
+    LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, -1, sdlRenderer);
+    LoadTextureFromBitmap(config::TEXTURE_PATH_PARTER, 0, sdlRenderer);
+    LoadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, 1, sdlRenderer);
 }
 
-SDL_Texture* ResourceManager::LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer)
+void ResourceManager::LoadTextureFromBitmap(const char* filePath, const int flr, SDL_Renderer* sdlRenderer)
 {
     SDL_Surface* surface = SDL_LoadBMP(filePath);
     if (surface == nullptr)
     {
         std::cerr << "Can't load image: " << filePath << std::endl;
-        return SDL_CreateTexture(sdlRenderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, 1, 1);
     }
     SDL_Texture* texture = SDL_CreateTextureFromSurface(sdlRenderer, surface);
-    return texture;
+    SDL_Rect transform = {0, 0, config::SCREEN_WIDTH, config::SCREEN_HEIGHT};
+    floors.emplace(flr, Floor(texture, transform));
+    SDL_FreeSurface(surface);
 }
