@@ -5,7 +5,6 @@ InputManager::InputManager(ProgramManager* programManager, LogicManager* LogicMa
     commandMap[InputType::QUIT] = new QuitCommand(programManager);
     commandMap[InputType::FLOOR_UP] = new FloorUpCommand(LogicManager);
     commandMap[InputType::FLOOR_DOWN] = new FloorDownCommand(LogicManager);
-    commandMap[InputType::UPDATE_PATH] = new UpdatePathCommand(LogicManager, this);
 }
 
 InputManager::~InputManager()

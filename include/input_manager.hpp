@@ -12,8 +12,7 @@ class LogicManager;
 enum class InputType
 {
     QUIT,
-    FLOOR_UP, FLOOR_DOWN,
-    UPDATE_PATH
+    FLOOR_UP, FLOOR_DOWN
 };
 
 class InputManager
