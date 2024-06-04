@@ -33,6 +33,7 @@ void ConsoleInterface::SetNewPath(std::string room1 = "", std::string room2 = ""
 {
     while (true)
     {
+        // Optionally skip input if rooms are already decided
         if(room1 == "" && room2 == "")
         {
             std::cout << "Type in the name of the first classroom:" << std::endl;
@@ -57,6 +58,7 @@ void ConsoleInterface::ShowDescription(std::string room = "") const
 {
     while (true)
     {
+        // Optionally skip input if room is already decided
         if(room == "")
         {
             std::cout << "Type in the name of the classroom:" << std::endl;

@@ -19,22 +19,22 @@ ProgramManager::~ProgramManager()
     delete consoleInterface;
 }
 
-void ProgramManager::Run()
+void ProgramManager::Run(Action nextAction = Action::NONE, std::string room1 = "", std::string room2 = "")
 {
-    Action nextAction;
     do
     {
-        nextAction = consoleInterface->GetNextAction();
+        if(nextAction == Action::NONE){
+            nextAction = consoleInterface->GetNextAction();
+        }
 
         switch (nextAction)
         {
         case Action::SHOW_DESCRIPTION:
-            consoleInterface->ShowDescription();
+            consoleInterface->ShowDescription(room1);
             break;
 
         case Action::SHOW_PATH:
-
-            consoleInterface->SetNewPath();
+            consoleInterface->SetNewPath(room1, room2);
             renderer->ShowWindow();
             isShowing = true;
             while (isShowing)
@@ -44,10 +44,13 @@ void ProgramManager::Run()
             }
             renderer->HideWindow();
             break;
+
         default:
-        {
+            break;
         }
-        }
+
+        nextAction = Action::NONE;
+        room1, room2 = "";
     } while (nextAction != Action::QUIT);
 }
 

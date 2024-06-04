@@ -22,7 +22,7 @@ class ProgramManager
 public:
     ProgramManager();
     ~ProgramManager();
-    void Run();
+    void Run(std::string startRoom1 = "", std::string startRoom2 = "");
     void StopShowing();
 
 private:

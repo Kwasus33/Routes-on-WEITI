@@ -5,7 +5,7 @@
 
 enum class Action
 {
-    QUIT, SHOW_PATH, SHOW_DESCRIPTION
+    NONE, QUIT, SHOW_PATH, SHOW_DESCRIPTION
 };
 
 class ConsoleInterface

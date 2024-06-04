@@ -1,6 +1,7 @@
 #include "program_manager.hpp"
 #include <iostream>
 #include "argParser.hpp"
+#include "console_interface.hpp"
 
 
 int main(int argc, char *argv[])
@@ -17,14 +18,12 @@ int main(int argc, char *argv[])
 
             if (argParser.getState() == TuiCommand::FIND_PATH)
             {
-                //programManager.setGraph(args.front(), args.back());
-                programManager.Run();
+                programManager.Run(Action::SHOW_PATH, args.front(), args.back());
             }
 
             else if (argParser.getState() == TuiCommand::FIND_CLASSROOM)
             {
-                //programManager.findClassroom(args.front());
-                programManager.Run();
+                programManager.Run(Action::SHOW_DESCRIPTION, args.front());
             }
 
             else if (argParser.getState() == TuiCommand::QUIT)
