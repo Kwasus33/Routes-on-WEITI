@@ -16,7 +16,7 @@ class ResourceManager
 public:
     ResourceManager(Renderer* renderer);
     SDL_Texture* LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer);
-    std::map<int,Floor> GetFloors() const { return floors; }
+    const std::map<int,Floor>& GetFloors() const { return floors; }
     const Floor& GetFloor(int floor) const { return floors.at(floor); }
     const Path& GetPath() const { return path; }
     void SetPathFromGraph(Graph* graph, const std::vector<int>& nodePath) 

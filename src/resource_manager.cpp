@@ -10,13 +10,13 @@ ResourceManager::ResourceManager(Renderer* renderer)
     SDL_Texture* tex;
 
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, sdlRenderer);
-    floors[-1] = Floor(tex, transform);
+    floors.emplace(-1, Floor(tex, transform));
 
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PARTER, sdlRenderer);
-    floors[0] = Floor(tex, transform);
+    floors.emplace(0, Floor(tex, transform));
 
     tex = LoadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, sdlRenderer);
-    floors[1] = Floor(tex, transform);
+    floors.emplace(1, Floor(tex, transform));
 }
 
 SDL_Texture* ResourceManager::LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer)
