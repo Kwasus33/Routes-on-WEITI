@@ -1,43 +1,29 @@
 #include "argParser.hpp"
-#include "program_manager.hpp"
 #include <vector>
 #include <iostream>
 
 
 
-argParser::argParser(int argc, char *argv[]): argc(argc), argv(argv), state(ParserState::BEGIN) {}
+argParser::argParser(int argc, char *argv[]): argc(argc), argv(argv), state(ParserState::BEGIN), command(TuiCommand::BEGIN) {}
 
 
-void argParser::parseArguments(int argc, char *argv[])
+ParserState argParser::parseArguments(int argc, char *argv[])
 {
     if (argc == 1)
         state = ParserState::GUI;
     else
         state = ParserState::TUI;
 
-    switch (state)
-    {
-    case ParserState::TUI:
-        parseTUI(argc, argv);
-        break;
-    case ParserState::GUI:
-        parseGUI();
-        break;
-    default:
-        break;
-    }
-    return;
-}
-    
-void argParser::parseGUI()
-{
-    ProgramManager programManager;
-    programManager.Run();
+    return state;
 }
 
-void argParser::parseTUI(int argc, char *argv[]) 
+TuiCommand argParser::getState() const
 {
-    TuiCommand command = TuiCommand::BEGIN;
+    return command;
+}
+
+std::list<std::string> argParser::parseTUI() 
+{
     std::string id_1;
     std::string id_2;
 
@@ -83,18 +69,5 @@ void argParser::parseTUI(int argc, char *argv[])
         }
     }
 
-    ProgramManager programManager;
-
-    switch (command)
-    {
-    case TuiCommand::FIND_PATH:
-        // programManager.setgraph(id_1, id_2);
-        break;
-    case TuiCommand::FIND_CLASSROOM:
-        // programManager.findClassroom(id_1);
-        break;
-    default:
-        break;
-    }
-
+    return {id_1, id_2};
 }

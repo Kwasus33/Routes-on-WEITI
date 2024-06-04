@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <string>
+#include <list>
 
 enum class ParserState {
     BEGIN,
@@ -19,11 +21,12 @@ class argParser
 {
 public:
     argParser(int argc, char *argv[]);
-    void parseArguments(int argc, char *argv[]);
+    ParserState parseArguments(int argc, char *argv[]);
+    std::list<std::string> parseTUI();
+    TuiCommand getState() const;
 private:
     int argc;
     char **argv;
     ParserState state;
-    void parseGUI();
-    void parseTUI(int argc, char *argv[]);
+    TuiCommand command;
 };
