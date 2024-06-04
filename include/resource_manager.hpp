@@ -15,7 +15,7 @@ class ResourceManager
     Path path;
 public:
     ResourceManager(Renderer* renderer);
-    SDL_Texture* LoadTextureFromBitmap(const char* filePath, SDL_Renderer* sdlRenderer);
+    void LoadTextureFromBitmap(const char* filePath, const int flr, SDL_Renderer* sdlRenderer);
     const std::map<int,Floor>& GetFloors() const { return floors; }
     const Floor& GetFloor(int floor) const { return floors.at(floor); }
     const Path& GetPath() const { return path; }
