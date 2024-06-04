@@ -6,9 +6,9 @@
 int main(int argc, char *argv[])
 {
     argParser argParser(argc, argv);
-    // auto rooms = parseArguments(argc, argv);
-    ProgramManager programManager;
-    // programManager.setgraph(rooms[0], rooms[1]);
-    programManager.Run();
+    argParser.parseArguments(argc, argv);
+
+    // ProgramManager programManager;
+    // programManager.Run();
     return 0;
 }

@@ -8,6 +8,7 @@ enum class ParserState {
 };
 
 enum class TuiCommand {
+    BEGIN,
     FIND_PATH,
     FIND_CLASSROOM,
     QUIT
@@ -18,10 +19,11 @@ class argParser
 {
 public:
     argParser(int argc, char *argv[]);
-    std::vector<std::string> parseArguments(int argc, char *argv[]);
+    void parseArguments(int argc, char *argv[]);
 private:
     int argc;
     char **argv;
     ParserState state;
-    void defineState();
+    void parseGUI();
+    void parseTUI(int argc, char *argv[]);
 };
