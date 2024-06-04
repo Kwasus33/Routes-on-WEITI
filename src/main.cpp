@@ -14,24 +14,20 @@ int main(int argc, char *argv[])
     {
     case ParserState::TUI:
         {
-            std::cout << (int)argParser.getState();
             std::list<std::string> args = argParser.parseTUI();
 
             if (argParser.getState() == TuiCommand::FIND_PATH)
             {
-                std::cout << 2;
                 programManager.Run(Action::SHOW_PATH, args.front(), args.back());
             }
 
             else if (argParser.getState() == TuiCommand::FIND_CLASSROOM)
             {
-                std::cout << 1;
                 programManager.Run(Action::SHOW_DESCRIPTION, args.front());
             }
 
             else if (argParser.getState() == TuiCommand::QUIT)
             {
-                std::cout << 3;
                 return 0;
             }
         }
