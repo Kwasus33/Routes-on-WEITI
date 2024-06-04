@@ -16,7 +16,7 @@ ProgramManager::~ProgramManager()
     delete logicManager;
     delete renderer;
     delete resourceManager;
-    delete logicManager;
+    delete consoleInterface;
 }
 
 void ProgramManager::Run()
@@ -37,16 +37,18 @@ void ProgramManager::Run()
             consoleInterface->SetNewPath();
             renderer->ShowWindow();
             isShowing = true;
-            while(isShowing)
+            while (isShowing)
             {
                 inputManager->Update();
                 renderer->Render(resourceManager, logicManager->GetCurrentFloor());
             }
             renderer->HideWindow();
             break;
+        default:
+        {
         }
-    } while(nextAction != Action::QUIT);
-    
+        }
+    } while (nextAction != Action::QUIT);
 }
 
 void ProgramManager::StopShowing()
