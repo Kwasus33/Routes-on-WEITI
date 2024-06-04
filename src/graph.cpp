@@ -5,7 +5,7 @@
 #include <deque>
 #include <algorithm>
 
-void addNodeInfo(std::vector<Node> &nodes, int nodesQuantity, int id)
+void addNodeInfo(std::vector<Node> &nodes, const int nodesQuantity, const int id)
 {
     auto nodesQuantityCasted = static_cast<std::vector<int>::size_type>(nodesQuantity);
     Node &currentNode = nodes[id];
@@ -13,7 +13,6 @@ void addNodeInfo(std::vector<Node> &nodes, int nodesQuantity, int id)
     // adds placeholders for no information nodes to current node
     if (currentNode.getDistances().size() < nodesQuantityCasted)
     {
-        // currentNode.setDistance(nodesQuantity - 1, __INT_MAX__);
         currentNode.setDistance(nodesQuantity - 1, std::numeric_limits<int>::max());
     }
     // checks if added node has information about route to this node
@@ -40,6 +39,7 @@ void addNodeInfo(std::vector<Node> &nodes, int nodesQuantity, int id)
 void Graph::addNode(Node &new_node)
 {
     int nodesQuantity = nodes.size() + 1;
+
     // adds other nodes description to node that is being added
     auto nodesQuantityCasted = static_cast<std::vector<int>::size_type>(nodesQuantity);
     if (new_node.getDistances().size() < nodesQuantityCasted)
@@ -54,7 +54,9 @@ void Graph::addNode(Node &new_node)
     for (int i = 0; i < nodesQuantity; ++i)
     {
         if (hasRoutes[i])
+        {
             hasRoutes[i] = false;
+        }
     }
 
     for (int i = 0; i < nodesQuantity; ++i)
@@ -63,7 +65,7 @@ void Graph::addNode(Node &new_node)
     }
 }
 
-void Graph::changeRoute(int start, int through, int end, int distance)
+void Graph::changeRoute(int start, int through, const int end, int distance)
 {
     /*
     start indicates for the starting Node
@@ -97,7 +99,7 @@ void Graph::findRoutes(int nodeID)
     Node &startingNode = nodes[nodeID];
     std::deque<int> nodesQueue;
     nodesQueue.push_back(nodeID);
-    // creates container to mark Nodes as visited
+
     std::vector<bool> visited(nodes.size(), false);
 
     // Main loop with responisbility of walking through the whole graph
@@ -105,6 +107,7 @@ void Graph::findRoutes(int nodeID)
     {
         std::vector<int> originDistances = startingNode.getDistances();
         // prioritize the queue basing on actual distance from source
+
         std::sort(nodesQueue.begin(), nodesQueue.end(), [&originDistances](int nodeOne, int nodeTwo)
                   { return originDistances[nodeOne] < originDistances[nodeTwo]; });
 
@@ -118,12 +121,16 @@ void Graph::findRoutes(int nodeID)
             if (node == currentNode.getNextNodes()[node] && node != currentNode.getID())
             {
                 if (!visited[node])
+                {
                     nodesQueue.push_back(node);
+                }
 
                 int new_distance = originDistances[currentNode.getID()] + currentNode.getDistances()[node];
 
                 if (originDistances[node] > new_distance)
+                {
                     this->changeRoute(nodeID, currentNode.getID(), node, new_distance);
+                }
             }
         }
         visited[currentNode.getID()] = true;
@@ -151,17 +158,18 @@ std::vector<Node> &Graph::getNodes()
 std::vector<int> Graph::findClassrooms(const std::string &className) const
 {
     std::vector<int> found_classrooms;
-    for (const Node& node : nodes)
+    for (const Node &node : nodes)
     {
         if (node.findClassroom(className))
+        {
             found_classrooms.push_back(node.getID());
-
+        }
     }
     return found_classrooms;
 }
 
 int Graph::getDistance(int start, int end)
-{  
+{
     int resultDistance = nodes[start].getDistances()[end];
     return resultDistance;
 }
