@@ -10,9 +10,13 @@ argParser::argParser(int argc, char *argv[]): argc(argc), argv(argv), state(Pars
 ParserState argParser::parseArguments(int argc, char *argv[])
 {
     if (argc == 1)
+    {
         state = ParserState::GUI;
+    }
     else
+    {
         state = ParserState::TUI;
+    }
 
     return state;
 }
@@ -38,30 +42,35 @@ std::list<std::string> argParser::parseTUI()
                 std::cout << "main.cpp [classroom1_number] [classroom2_number]";
                 command = TuiCommand::QUIT;
             }
-            
             else if (i == 1 && (arg == "-q" || arg == "--quit"))
             {
                 std::cout << "Thank you for your time. Please score us 5 stars on Google Play!";
                 command = TuiCommand::QUIT;
             }
-            
             else if (i == 1 && (arg == "-p" || arg == "--path"))
+            {
                command = TuiCommand::FIND_PATH;
-            
+            }
             else if (i == 1 && (arg == "-c" || arg == "--classroom"))
+            {
                command = TuiCommand::FIND_CLASSROOM;
-            
+            }
             else if (i == 2 && command == TuiCommand::FIND_PATH)
+            {
                 id_1 = arg;
-            
+            }
             else if (i == 3 && command == TuiCommand::FIND_PATH)
+            {
                 id_2 = arg;
-
+            }
             else if (i == 2 && command == TuiCommand::FIND_CLASSROOM)
+            {
                 id_1 = arg;
-
+            }
             else
+            {
                 continue;
+            }
         }
         catch(const std::exception& e) {
             std::cerr << e.what() << '\n';

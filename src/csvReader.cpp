@@ -27,10 +27,13 @@ Graph csvReader::ReadDataIntoGraph()
         while (!fp_in.eof())
         {
             fp_in >> line1;
-            if (!fp_in.eof())
+            if (!fp_in.eof()){
                 fp_in >> line2;
-            if (!fp_in.eof())
+            }
+            
+            if (!fp_in.eof()){
                 fp_in >> line3;
+            }
 
             if (!line1.empty() && !line2.empty() && !line3.empty())
             {
@@ -156,6 +159,7 @@ void csvReader::createClassrooms(const std::string& line3, Node& node)
 
 void csvReader::isReadPathValid(const std::ifstream &fp) const
 {
-    if (!fp.is_open())
+    if (!fp.is_open()){
         std::cerr << "Failed to open file" << std::endl;
+    }
 }

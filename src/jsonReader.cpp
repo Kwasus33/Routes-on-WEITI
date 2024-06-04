@@ -48,31 +48,41 @@ Node jsonReader::createNode(const json &obj)
     int id, X, Y, floor;
     std::vector<int> distancesVect, connectedNodes;
 
-    if (obj.find("ID") != obj.end() && obj["ID"].is_number_integer())
+    if (obj.find("ID") != obj.end() && obj["ID"].is_number_integer()){
         id = obj["ID"];
+    }
 
-    if (obj.find("X") != obj.end() && obj["X"].is_number_integer())
+    if (obj.find("X") != obj.end() && obj["X"].is_number_integer()){
         X = obj["X"];
+    }
 
-    if (obj.find("Y") != obj.end() && obj["Y"].is_number_integer())
+    if (obj.find("Y") != obj.end() && obj["Y"].is_number_integer()){
         Y = obj["Y"];
+    }
 
-    if (obj.find("floor") != obj.end() && obj["floor"].is_number_integer())
+    if (obj.find("floor") != obj.end() && obj["floor"].is_number_integer()){
         floor = obj["floor"];
+    }
 
     if (obj.find("distances") != obj.end() && obj["distances"].is_array())
+    {
         for (const auto &distance : obj["distances"])
         {
-            if (distance.is_number_integer())
+            if (distance.is_number_integer()){
                 distancesVect.push_back(distance);
+            }
         }
+    }
 
     if (obj.find("connected") != obj.end() && obj["connected"].is_array())
+    {
         for (const auto &connection : obj["connected"])
         {
-            if (connection.is_number_integer())
+            if (connection.is_number_integer()){
                 connectedNodes.push_back(connection);
+            }
         }
+    }
 
     return Node(id, distancesVect, connectedNodes, floor, X, Y);
 }
@@ -85,10 +95,12 @@ void jsonReader::createClassrooms(const json& obj, Node& node)
     {
         for (const auto &classroom : obj["classrooms"])
         {
-            if (classroom.find("name") != classroom.end() && classroom["name"].is_string())
+            if (classroom.find("name") != classroom.end() && classroom["name"].is_string()){
                 name = classroom["name"];
-            if (classroom.find("description") != classroom.end() && classroom["description"].is_string())
+            }
+            if (classroom.find("description") != classroom.end() && classroom["description"].is_string()){
                 description = classroom["description"];
+            }
             
             Classroom Class(name, description);
             node.addClassroom(Class);
@@ -98,6 +110,7 @@ void jsonReader::createClassrooms(const json& obj, Node& node)
 
 void jsonReader::isReadPathValid(const std::ifstream &fp) const
 {
-    if (!fp.is_open())
+    if (!fp.is_open()){
         std::cerr << "Failed to open file" << std::endl;
+    }
 }
