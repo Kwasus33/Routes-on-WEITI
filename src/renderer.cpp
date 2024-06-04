@@ -62,8 +62,7 @@ void Renderer::Render(const ResourceManager* resourceManager, const int currentF
 void Renderer::AddFloorToRender(const Floor& flr) const
 {
     auto transformedFloor = flr.GetTransfrom();
-    // SDL_RenderCopy() doesn't change the value of the texture
-    SDL_Texture* tex = const_cast<SDL_Texture*>(flr.GetTexture());
+    SDL_Texture* tex = flr.GetTexture();
     SDL_RenderCopy(renderer, tex, NULL, &transformedFloor);
 }
 
