@@ -19,14 +19,10 @@ ProgramManager::~ProgramManager()
     delete consoleInterface;
 }
 
-void ProgramManager::Run(Action nextAction = Action::NONE, std::string room1 = "", std::string room2 = "")
+void ProgramManager::Run(Action nextAction, std::string room1, std::string room2)
 {
     do
     {
-        if(nextAction == Action::NONE){
-            nextAction = consoleInterface->GetNextAction();
-        }
-
         switch (nextAction)
         {
         case Action::SHOW_DESCRIPTION:
@@ -49,7 +45,7 @@ void ProgramManager::Run(Action nextAction = Action::NONE, std::string room1 = "
             break;
         }
 
-        nextAction = Action::NONE;
+        nextAction = consoleInterface->GetNextAction();
         room1, room2 = "";
     } while (nextAction != Action::QUIT);
 }

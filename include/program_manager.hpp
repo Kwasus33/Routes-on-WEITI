@@ -1,10 +1,11 @@
 #pragma once
 
+#include "logic_manager.hpp"
+#include "console_interface.hpp"
 #include "resource_manager.hpp"
 #include "input_manager.hpp"
-#include "logic_manager.hpp"
 #include "renderer.hpp"
-#include "console_interface.hpp"
+#include "user_action.hpp"
 
 class InputManager;
 class ConsoleInterface;
@@ -22,7 +23,7 @@ class ProgramManager
 public:
     ProgramManager();
     ~ProgramManager();
-    void Run(std::string startRoom1 = "", std::string startRoom2 = "");
+    void Run(Action nextAction = Action::NONE, std::string room1 = "", std::string room2 = "");
     void StopShowing();
 
 private:
