@@ -29,15 +29,17 @@ Action ConsoleInterface::GetNextAction() const
     }
 }
 
-void ConsoleInterface::SetNewPath() const
+void ConsoleInterface::SetNewPath(std::string room1 = "", std::string room2 = "") const
 {
     while (true)
     {
-        std::string room1, room2;
-        std::cout << "Type in the name of the first classroom:" << std::endl;
-        std::cin >> room1;
-        std::cout << "Type in the name of the second classroom:" << std::endl;
-        std::cin >> room2;
+        if(room1 == "" && room2 == "")
+        {
+            std::cout << "Type in the name of the first classroom:" << std::endl;
+            std::cin >> room1;
+            std::cout << "Type in the name of the second classroom:" << std::endl;
+            std::cin >> room2;
+        }
 
         try
         {
@@ -51,13 +53,15 @@ void ConsoleInterface::SetNewPath() const
     }
 }
 
-void ConsoleInterface::ShowDescription() const
+void ConsoleInterface::ShowDescription(std::string room = "") const
 {
     while (true)
     {
-        std::cout << "Type in the name of the classroom:" << std::endl;
-        std::string room;
-        std::cin >> room;
+        if(room == "")
+        {
+            std::cout << "Type in the name of the classroom:" << std::endl;
+            std::cin >> room;
+        }
         
         try
         {
@@ -68,6 +72,7 @@ void ConsoleInterface::ShowDescription() const
         catch(const std::invalid_argument& e)
         {
             std::cout << "Invalid input. Try again." << std::endl << std::endl;
+            room = ""
         }
     }
 }
