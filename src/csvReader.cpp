@@ -12,7 +12,7 @@ csvReader::csvReader() : FileReader(){};
 
 csvReader::csvReader(const std::vector<std::string>& pathsVec) : FileReader(pathsVec) {};
 
-Graph csvReader::ReadDataIntoGraph()
+Graph csvReader::ReadDataIntoGraph() const
 {
     Graph graph;
     std::string line1;
@@ -47,14 +47,14 @@ Graph csvReader::ReadDataIntoGraph()
     return graph;
 };
 
-Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3)
+Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3) const
 {
     Node node = createNode(line1, line2);
     createClassrooms(line3, node);
     return node;
 };
 
-Node csvReader::createNode(const std::string& line1, const std::string& line2)
+Node csvReader::createNode(const std::string& line1, const std::string& line2) const
 {
     std::vector<std::string> values;
     std::vector<int> distances, connected;
@@ -116,7 +116,7 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2)
     }
 }
 
-void csvReader::createClassrooms(const std::string& line3, Node& node)
+void csvReader::createClassrooms(const std::string& line3, Node& node) const
 {
     std::vector<std::string> values;
 

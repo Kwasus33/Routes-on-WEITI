@@ -9,10 +9,10 @@ class jsonReader: public FileReader {
     public:
         jsonReader();
         jsonReader(const std::vector<std::string>& pathsVec);
-        Graph ReadDataIntoGraph();
+        Graph ReadDataIntoGraph() const;
     private:
-        json LoadFromFile(const std::string& path);
+        json LoadFromFile(const std::string& path) const;
         void isReadPathValid(const std::ifstream& fp) const;
-        Node createNode(const json& obj);
-        void createClassrooms(const json& obj, Node& node);
+        Node createNode(const json& obj) const;
+        void createClassrooms(const json& obj, Node& node) const;
 };
