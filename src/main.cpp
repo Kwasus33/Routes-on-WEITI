@@ -26,6 +26,11 @@ int main(int argc, char *argv[])
                 //programManager.findClassroom(args.front());
                 programManager.Run();
             }
+
+            else if (argParser.getState() == TuiCommand::QUIT)
+            {
+                return 0;
+            }
         }
         break;
 

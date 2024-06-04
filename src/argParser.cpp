@@ -36,14 +36,13 @@ std::list<std::string> argParser::parseTUI()
             {
                 std::cout << "Usage: " << argv[0] << std::endl;
                 std::cout << "main.cpp [classroom1_number] [classroom2_number]";
-                return;
+                command = TuiCommand::QUIT;
             }
             
             else if (i == 1 && (arg == "-q" || arg == "--quit"))
             {
                 std::cout << "Thank you for your time. Please score us 5 stars on Google Play!";
                 command = TuiCommand::QUIT;
-                return;
             }
             
             else if (i == 1 && (arg == "-p" || arg == "--path"))
