@@ -41,7 +41,8 @@ TEST(GraphTest, CreateGraph)
 }
 
 TEST(GraphTest, TestDijkstraAlgorithm)
-{   std::vector<int> empty;
+{   
+    std::vector<int> empty;
     std::vector<int> distance0 = {5, 1, 8};
     std::vector<int> connected0 = {1, 3, 4};
     std::vector<int> distance1 = {3};
