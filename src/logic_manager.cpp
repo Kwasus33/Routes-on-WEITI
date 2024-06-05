@@ -61,3 +61,8 @@ void LogicManager::changeFloor(int change)
         return;
     }
 }
+
+int LogicManager::getCurrentFloor() 
+{ 
+    return currentFloor; 
+}

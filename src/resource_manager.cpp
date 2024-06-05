@@ -24,3 +24,23 @@ void ResourceManager::loadTextureFromBitmap(const char *filePath, const int flr,
     floors.emplace(flr, Floor(texture, transform));
     SDL_FreeSurface(surface);
 }
+
+const std::map<int,Floor>& ResourceManager::getFloors() const 
+{ 
+    return floors; 
+}
+
+const Floor& ResourceManager::getFloor(int floor) const 
+{ 
+    return floors.at(floor); 
+}
+
+const Path& ResourceManager::getPath() const 
+{ 
+    return path; 
+}
+
+void ResourceManager::setPathFromGraph(Graph* graph, const std::vector<int>& nodePath) 
+{
+    path.setFromGraph(graph, nodePath);
+}

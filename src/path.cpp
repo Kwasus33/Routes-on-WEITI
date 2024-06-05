@@ -26,3 +26,8 @@ void Path::setFromGraph(Graph *graph, const std::vector<int> &nodePath)
         pointsByFloor[node.getFloor()].push_back(point);
     }
 }
+
+const std::vector<SDL_Point>& Path::getPointsOnFloor(const int floor) const 
+{ 
+    return pointsByFloor.at(floor); 
+}
