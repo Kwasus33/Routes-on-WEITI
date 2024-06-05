@@ -13,7 +13,7 @@ Action ConsoleInterface::GetNextAction() const
         std::cout << "q: Quit." << std::endl << std::endl;
 
         std::string input;
-        std::cin >> input;
+        std::getline(std::cin, input);
 
         if (input == "p"){
             return Action::SHOW_PATH;
@@ -37,9 +37,9 @@ void ConsoleInterface::SetNewPath(std::string room1, std::string room2) const
         if(room1 == "" || room2 == "")
         {
             std::cout << "Type in the name of the first classroom:" << std::endl;
-            std::cin >> room1;
+            std::getline(std::cin, room1);
             std::cout << "Type in the name of the second classroom:" << std::endl;
-            std::cin >> room2;
+            std::getline(std::cin, room2);
         }
 
         try
