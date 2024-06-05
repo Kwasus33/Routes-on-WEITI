@@ -6,9 +6,9 @@
 LogicManager::LogicManager(ResourceManager *resourceManager)
     : currentFloor(0), resourceManager(resourceManager)
 {
-    std::vector<std::string> path{"../assets/Floor1.json", "../assets/Floor0.json", "../assets/Floor-1.json"};
-    JSONReader fh(path);
-    graph = fh.readDataIntoGraph();
+    std::vector<std::string> pathsVec{"../assets/Floor1.json", "../assets/Floor0.json", "../assets/Floor-1.json"};
+    std::unique_ptr<FileReader> fh = std::make_unique<JSONReader>(pathsVec);
+    graph = fh->readDataIntoGraph();
 }
 
 void LogicManager::updatePath(std::string &start, std::string &end)
