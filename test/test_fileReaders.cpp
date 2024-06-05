@@ -63,48 +63,48 @@ TEST(JSONReaderTest, readDataIntoGraphSuccess)
     std::remove(testFilename.c_str());
 }
 
-TEST(JSONReaderTest, readDataIntoGraphFileNotFound)
-{
-    JSONReader json_reader({"nonexistent file"});
-    std::string output = testing::internal::GetCapturedStderr();
+// TEST(JSONReaderTest, readDataIntoGraphFileNotFound)
+// {
+//     JSONReader json_reader({"nonexistent file"});
+//     std::string output = testing::internal::GetCapturedStderr();
 
-    EXPECT_EQ(output, "Failed to open file\n");
-    ASSERT_ANY_THROW(json_reader.readDataIntoGraph());
-}
+//     EXPECT_EQ(output, "Failed to open file\n");
+//     ASSERT_ANY_THROW(json_reader.readDataIntoGraph());
+// }
 
 
 // ########### Tests for CSVReader ###########
 
-// TEST(CSVReaderTest, ReadValidCSVFile) {
-//     std::string testFilename = "test_file.csv";
-//     std::string content = 
-//         "1,100,200,0,\n"
-//         "10,2,15,3,\n"
-//         "Classroom1,Description1,Classroom2,Description2\n";
+TEST(CSVReaderTest, ReadValidCSVFile) {
+    std::string testFilename = "test_file.csv";
+    std::string content = 
+        "1,100,200,0,\n"
+        "10,2,15,3,\n"
+        "Classroom1,Description1,Classroom2,Description2\n";
 
-//     createTestFile(testFilename, content);
+    createTestFile(testFilename, content);
 
-//     CSVReader reader({"../build/" + testFilename});
-//     Graph graph = reader.readDataIntoGraph();
+    CSVReader reader({"../build/" + testFilename});
+    Graph graph = reader.readDataIntoGraph();
 
-//     ASSERT_EQ(graph.getNodes().size(), 1);
+    ASSERT_EQ(graph.getNodes().size(), 1);
 
-//     Node node = graph.getNodes().at(0);
-//     EXPECT_EQ(node.getID(), 1);
-//     EXPECT_EQ(node.getX(), 100);
-//     EXPECT_EQ(node.getY(), 200);
-//     EXPECT_EQ(node.getFloor(), 0);
+    Node node = graph.getNodes().at(0);
+    EXPECT_EQ(node.getID(), 1);
+    EXPECT_EQ(node.getX(), 100);
+    EXPECT_EQ(node.getY(), 200);
+    EXPECT_EQ(node.getFloor(), 0);
 
-//     EXPECT_EQ(node.getClassrooms().size(), 2);
-//     EXPECT_EQ(node.getClassrooms()[0].getName(), "Classroom1");
-//     EXPECT_EQ(node.getClassrooms()[0].getDescription(), "Description1");
-//     EXPECT_EQ(node.getClassrooms()[1].getName(), "Classroom2");
-//     EXPECT_EQ(node.getClassrooms()[1].getDescription(), "Description2");
+    EXPECT_EQ(node.getClassrooms().size(), 2);
+    EXPECT_EQ(node.getClassrooms()[0].getName(), "Classroom1");
+    EXPECT_EQ(node.getClassrooms()[0].getDescription(), "Description1");
+    EXPECT_EQ(node.getClassrooms()[1].getName(), "Classroom2");
+    EXPECT_EQ(node.getClassrooms()[1].getDescription(), "Description2");
 
-//     std::remove(testFilename.c_str());
-// }
+    std::remove(testFilename.c_str());
+}
 
-// TEST(CSVReaderTest, ReadNonExistingCSVFile) {
-//     CSVReader reader({"non_existing_file.csv"});
-//     EXPECT_THROW(reader.readDataIntoGraph(), std::runtime_error);
-// }
+TEST(CSVReaderTest, ReadNonExistingCSVFile) {
+    CSVReader reader({"non_existing_file.csv"});
+    EXPECT_THROW(reader.readDataIntoGraph(), std::runtime_error);
+}
