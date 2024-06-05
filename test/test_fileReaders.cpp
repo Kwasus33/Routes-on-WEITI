@@ -84,14 +84,13 @@ R"(
 )";
 
 
-// Class to swap between JSONReader and CSVReader during tests
 class FileReaderTest : public ::testing::Test {
 protected:
     std::unique_ptr<FileReader> ptrJson;
     std::unique_ptr<FileReader> ptrCsv;
 
-    void SetUp() override {
-        // Initialize JSONReader with empty pathsVec
+    void SetUp() override
+    {
         std::vector<std::string> pathsVecJson;
         std::vector<std::string> pathsVecCsv;
         ptrJson = std::make_unique<JSONReader>(pathsVecJson);
@@ -102,15 +101,11 @@ protected:
 
 // ########### Tests for JSONReader ###########
 
-// TEST_F(JSONReaderTest, readDataIntoGraphSuccess) {
-TEST(JSONReaderTest, readDataIntoGraphSuccess) {
-
+TEST(JSONReaderTest, readDataIntoGraphSuccess)
+{
     TemporaryFile tempFile(mock_json_content);
 
-    // json_reader->pathsVec.push_back(tempFile.getFilename());
     JSONReader json_reader({tempFile.getFilename()});
-
-    // Graph graph = json_reader->readDataIntoGraph();
     Graph graph = json_reader.readDataIntoGraph();
 
     ASSERT_EQ(graph.getNodes().size(), 1);
@@ -129,26 +124,21 @@ TEST(JSONReaderTest, readDataIntoGraphSuccess) {
     ASSERT_EQ(classrooms[1].getDescription(), "PTCY");
 }
 
-// TEST_F(JSONReaderTest, readDataIntoGraphFileNotFound)
-TEST(JSONReaderTest, readDataIntoGraphFileNotFound) {
-
-    // json_reader->pathsVec.push_back("nonexistent_file.json");
+TEST(JSONReaderTest, readDataIntoGraphFileNotFound)
+{
     JSONReader json_reader({"nonexistent_file.json"});
     std::string output = testing::internal::GetCapturedStderr();
 
     EXPECT_EQ(output, "Failed to open file\n");
 }
 
-// TEST_F(JSONReaderTest, readDataIntoGraphInvalidJson)
 TEST(JSONReaderTest, readDataIntoGraphInvalidJson) {
 
     std::string invalid_json_content = "invalid json";
     TemporaryFile tempFile(invalid_json_content);
 
-    // json_reader->pathsVec.push_back(tempFile.getFilename());
     JSONReader json_reader({tempFile.getFilename()});
 
-    // ASSERT_ANY_THROW(json_reader->readDataIntoGraph());
     ASSERT_ANY_THROW(json_reader.readDataIntoGraph());
 }
 
