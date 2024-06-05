@@ -5,21 +5,21 @@
 
 Path::Path()
 {
-    for(int i = config::MIN_FLOOR; i <= config::MAX_FLOOR; ++i)
+    for (int i = config::MIN_FLOOR; i <= config::MAX_FLOOR; ++i)
     {
         pointsByFloor[i] = std::vector<SDL_Point>();
     }
 }
 
-void Path::setFromGraph(Graph* graph, const std::vector<int>& nodePath)
+void Path::setFromGraph(Graph *graph, const std::vector<int> &nodePath)
 {
-    for(auto& floor : pointsByFloor)
+    for (auto &floor : pointsByFloor)
     {
         floor.second.clear();
     }
 
     std::vector<Node> nodes = graph->getNodes();
-    for(const auto id : nodePath)
+    for (const auto id : nodePath)
     {
         Node node = nodes[id];
         SDL_Point point = {node.getX(), node.getY()};

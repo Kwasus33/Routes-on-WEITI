@@ -10,17 +10,16 @@ Renderer::Renderer()
     {
         throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
     }
-    window = std::unique_ptr<SDL_Window,SDLWindowDeleter>(SDL_CreateWindow(
-        "Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-        config::SCREEN_WIDTH, config::SCREEN_HEIGHT, SDL_WINDOW_HIDDEN
-        ));
+    window = std::unique_ptr<SDL_Window, SDLWindowDeleter>(SDL_CreateWindow(
+        "Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+        config::SCREEN_WIDTH, config::SCREEN_HEIGHT, SDL_WINDOW_HIDDEN));
     if (!window)
     {
         throw std::runtime_error(std::string("Window initialization failed: ") + SDL_GetError());
     }
 
     // Setup SDL renderer
-    renderer = std::unique_ptr<SDL_Renderer,SDLRendererDeleter>(SDL_CreateRenderer(
+    renderer = std::unique_ptr<SDL_Renderer, SDLRendererDeleter>(SDL_CreateRenderer(
         window.get(), -1, SDL_RENDERER_ACCELERATED));
     if (!renderer)
     {
@@ -31,27 +30,27 @@ Renderer::Renderer()
     SDL_RenderClear(renderer.get());
 }
 
-SDL_Renderer* Renderer::getSdlRenderer() const 
-{ 
-    return renderer.get(); 
+SDL_Renderer *Renderer::getSdlRenderer() const
+{
+    return renderer.get();
 }
 
 void Renderer::hideWindow() const
-{ 
-    SDL_HideWindow(window.get()); 
+{
+    SDL_HideWindow(window.get());
 }
 
 void Renderer::showWindow() const
-{ 
-    SDL_ShowWindow(window.get()); 
+{
+    SDL_ShowWindow(window.get());
 }
 
-void Renderer::render(const ResourceManager* resourceManager, const int currentFloor) const
+void Renderer::render(const ResourceManager *resourceManager, const int currentFloor) const
 {
     SDL_RenderClear(renderer.get());
 
     // Draw current floor
-    const Floor& floorObject = resourceManager->getFloor(currentFloor);
+    const Floor &floorObject = resourceManager->getFloor(currentFloor);
     addFloorToRender(floorObject);
 
     // Draw path on current floor
@@ -60,14 +59,14 @@ void Renderer::render(const ResourceManager* resourceManager, const int currentF
     SDL_RenderPresent(renderer.get());
 }
 
-void Renderer::addFloorToRender(const Floor& flr) const
+void Renderer::addFloorToRender(const Floor &flr) const
 {
     auto transformedFloor = flr.GetTransfrom();
-    SDL_Texture* tex = flr.GetTexture();
+    SDL_Texture *tex = flr.GetTexture();
     SDL_RenderCopy(renderer.get(), tex, NULL, &transformedFloor);
 }
 
-void Renderer::addPathToRender(const Path& pth, const int currentFloor) const
+void Renderer::addPathToRender(const Path &pth, const int currentFloor) const
 {
     SDL_SetRenderDrawColor(renderer.get(), 255, 0, 0, 255);
     auto points = pth.getPointsOnFloor(currentFloor);
