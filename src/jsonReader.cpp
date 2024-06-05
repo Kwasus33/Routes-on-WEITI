@@ -25,10 +25,9 @@ Graph JSONReader::readDataIntoGraph() const
 
 json JSONReader::loadFromFile(const std::string &path) const
 {
-    std::ifstream fp_in(path); // opens file
+    std::ifstream fp_in(path);
     isReadPathValid(fp_in);
 
-    // Read the JSON content into a json object
     json json_file;
     try
     {
@@ -42,125 +41,62 @@ json JSONReader::loadFromFile(const std::string &path) const
     return json_file;
 }
 
+template <class T, class Func>
+T JSONReader::getJsonValue(const json& obj, const std::string& key, Func func) const
+{
+    if (obj.find(key) != obj.end() && func(obj[key]))
+    {
+        return obj[key];
+    }
+    else
+    {
+        throw std::invalid_argument(key + " not found or not an integer in JSON file.");
+    }
+}
+
+template <class T, class Func>
+std::vector<T> JSONReader::getJsonVec(const json& obj, const std::string& key, Func func) const 
+{
+    std::vector<T> vec;
+    if (obj.find(key) != obj.end() && obj[key].is_array())
+    {
+        for (const auto &item : obj[key])
+        {
+            if (func(item))
+            {
+                vec.push_back(item);
+            }
+        }
+    }
+    else
+    {
+        throw std::invalid_argument(key + " not found or not an array in JSON file.");
+    }
+
+    return vec;
+}
+
 Node JSONReader::createNode(const json &obj) const
 {
-    int id, X, Y, floor;
-    std::vector<int> distancesVect, connectedNodes;
-    bool flag = true;
-
-    if (obj.find("ID") != obj.end() && obj["ID"].is_number_integer())
-    {
-        id = obj["ID"];
-    }
-    else
-    {
-        flag = false;
-    }
-
-    if (obj.find("X") != obj.end() && obj["X"].is_number_integer())
-    {
-        X = obj["X"];
-    }
-    else
-    {
-        flag = false;
-    }
-
-    if (obj.find("Y") != obj.end() && obj["Y"].is_number_integer())
-    {
-        Y = obj["Y"];
-    }
-    else
-    {
-        flag = false;
-    }
-
-    if (obj.find("floor") != obj.end() && obj["floor"].is_number_integer())
-    {
-        floor = obj["floor"];
-    }
-    else
-    {
-        flag = false;
-    }
-
-    if (obj.find("distances") != obj.end() && obj["distances"].is_array())
-    {
-        for (const auto &distance : obj["distances"])
-        {
-            if (distance.is_number_integer())
-            {
-                distancesVect.push_back(distance);
-            }
-        }
-    }
-    else
-    {
-        flag = false;
-    }
-
-    if (obj.find("connected") != obj.end() && obj["connected"].is_array())
-    {
-        for (const auto &connection : obj["connected"])
-        {
-            if (connection.is_number_integer())
-            {
-                connectedNodes.push_back(connection);
-            }
-        }
-    }
-    else
-    {
-        flag = false;
-    }
-
-    if (!flag)
-    {
-        throw std::invalid_argument("Invalid dict object in JSON file.");
-    }
+    int id = getJsonValue<int>(obj, "ID", [](const nlohmann::json& j){ return j.is_number_integer(); });
+    int X = getJsonValue<int>(obj, "X", [](const nlohmann::json& j){ return j.is_number_integer(); });
+    int Y = getJsonValue<int>(obj, "Y", [](const nlohmann::json& j){ return j.is_number_integer(); });
+    int floor = getJsonValue<int>(obj, "floor", [](const nlohmann::json& j){ return j.is_number_integer(); });
+    std::vector<int> distancesVect = getJsonVec<int>(obj, "distances", [](const nlohmann::json& j){ return j.is_number_integer(); });
+    std::vector<int> connectedNodes = getJsonVec<int>(obj, "connected", [](const nlohmann::json& j){ return j.is_number_integer(); });
 
     return Node(id, distancesVect, connectedNodes, floor, X, Y);
 }
 
 void JSONReader::createClassrooms(const json &obj, Node &node) const
 {
-    std::string name, description;
-    bool flag = true;
-
-    if (obj.find("classrooms") != obj.end() && obj["classrooms"].is_array())
+    std::vector<json> classroomsVec = getJsonVec<json>(obj, "classrooms", [](const nlohmann::json& j){ return j.is_object(); });
+    for (const auto &classroom : classroomsVec)
     {
-        for (const auto &classroom : obj["classrooms"])
-        {
-            if (classroom.find("name") != classroom.end() && classroom["name"].is_string())
-            {
-                name = classroom["name"];
-            }
-            else
-            {
-                flag = false;
-            }
-            if (classroom.find("description") != classroom.end() && classroom["description"].is_string())
-            {
-                description = classroom["description"];
-            }
-            else
-            {
-                flag = false;
-            }
-            if (flag)
-            {
-                Classroom Class(name, description);
-                node.addClassroom(Class);
-            }
-            else
-            {
-                flag = true;
-            }
-        }
-    }
-    else
-    {
-        throw std::invalid_argument("Invalid dict object in JSON file.");
+        std::string name = getJsonValue<std::string>(classroom, "name", [](const nlohmann::json& j){ return j.is_string(); });
+        std::string description = getJsonValue<std::string>(classroom, "description", [](const nlohmann::json& j){ return j.is_string(); });
+        Classroom Class(name, description);
+        node.addClassroom(Class);
     }
 }
 
