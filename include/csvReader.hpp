@@ -7,7 +7,8 @@ class csvReader: public FileReader {
         csvReader();
         csvReader(const std::vector<std::string>& pathsVec);
         Graph ReadDataIntoGraph() const;
-    private:
+    // private:
+    protected:
         Node addNode(std::string& line1, std::string& line2, std::string& line3) const;
         void isReadPathValid(const std::ifstream& fp) const;
         Node createNode(const std::string& line1, const std::string& line2) const;
