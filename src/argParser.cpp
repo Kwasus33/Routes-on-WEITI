@@ -2,10 +2,7 @@
 #include <vector>
 #include <iostream>
 
-
-
-argParser::argParser(int argc, char *argv[]): argc(argc), argv(argv), state(ParserState::BEGIN), command(TuiCommand::BEGIN) {}
-
+argParser::argParser(int argc, char *argv[]) : argc(argc), argv(argv), state(ParserState::BEGIN), command(TuiCommand::BEGIN) {}
 
 ParserState argParser::parseArguments(int argc, char *argv[])
 {
@@ -26,7 +23,7 @@ TuiCommand argParser::getState() const
     return command;
 }
 
-std::list<std::string> argParser::parseTUI() 
+std::list<std::string> argParser::parseTUI()
 {
     std::string id_1;
     std::string id_2;
@@ -49,11 +46,11 @@ std::list<std::string> argParser::parseTUI()
             }
             else if (i == 1 && (arg == "-p" || arg == "--path"))
             {
-               command = TuiCommand::FIND_PATH;
+                command = TuiCommand::FIND_PATH;
             }
             else if (i == 1 && (arg == "-c" || arg == "--classroom"))
             {
-               command = TuiCommand::FIND_CLASSROOM;
+                command = TuiCommand::FIND_CLASSROOM;
             }
             else if (i == 2 && command == TuiCommand::FIND_PATH)
             {
@@ -72,7 +69,8 @@ std::list<std::string> argParser::parseTUI()
                 continue;
             }
         }
-        catch(const std::exception& e) {
+        catch (const std::exception &e)
+        {
             std::cerr << e.what() << '\n';
         }
     }

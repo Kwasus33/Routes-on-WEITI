@@ -11,8 +11,8 @@ class LogicManager
     ResourceManager* resourceManager;
 public:
     LogicManager(ResourceManager* resourceManager);
-    void UpdatePath(std::string& start, std::string& end);
-    void ChangeFloor(const int change);
-    std::string GetDescription(std::string className);
-    int GetCurrentFloor() { return currentFloor; }
+    void updatePath(std::string& start, std::string& end);
+    void changeFloor(const int change);
+    std::string getDescription(std::string className);
+    int getCurrentFloor() { return currentFloor; }
 };

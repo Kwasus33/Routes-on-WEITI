@@ -2,11 +2,11 @@
 #include "file_handler.hpp"
 
 
-class csvReader: public FileReader {
+class CSVReader: public FileReader {
     public:
-        csvReader();
-        csvReader(const std::vector<std::string>& pathsVec);
-        Graph ReadDataIntoGraph() const;
+        CSVReader();
+        CSVReader(const std::vector<std::string>& pathsVec);
+        Graph readDataIntoGraph() const;
     // private:
     protected:
         Node addNode(std::string& line1, std::string& line2, std::string& line3) const;

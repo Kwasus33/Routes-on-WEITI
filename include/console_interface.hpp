@@ -11,7 +11,7 @@ class ConsoleInterface
 public:
     ConsoleInterface(LogicManager* logicManager);
 
-    Action GetNextAction() const;
+    Action getNextAction() const;
     void SetNewPath(std::string room1 = "", std::string room2 = "") const;
     void ShowDescription(std::string room1 = "") const;
 };

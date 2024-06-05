@@ -90,7 +90,7 @@ TEST(NodeTest, GetY)
     EXPECT_EQ(node.getY(), 10);
 }
 
-TEST(NodeTest, GetFloor)
+TEST(NodeTest, getFloor)
 {
     std::vector<int> distances = {1, 2, 3};
     std::vector<int> connected = {0, 1, 2};

@@ -10,6 +10,6 @@ class Path
     std::map<int,std::vector<SDL_Point>> pointsByFloor;
 public:
     Path();
-    void SetFromGraph(Graph* graph, const std::vector<int>& nodePath);
-    const std::vector<SDL_Point>& GetPointsOnFloor(const int floor) const { return pointsByFloor.at(floor); }
+    void setFromGraph(Graph* graph, const std::vector<int>& nodePath);
+    const std::vector<SDL_Point>& getPointsOnFloor(const int floor) const { return pointsByFloor.at(floor); }
 };

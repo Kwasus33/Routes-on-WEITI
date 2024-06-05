@@ -44,7 +44,6 @@ void Graph::addNode(Node &new_node)
     auto nodesQuantityCasted = static_cast<std::vector<int>::size_type>(nodesQuantity);
     if (new_node.getDistances().size() < nodesQuantityCasted)
     {
-        // new_node.setDistance(nodesQuantity - 1, __INT_MAX__);
         new_node.setDistance(nodesQuantity - 1, std::numeric_limits<int>::max());
         new_node.addRoute(new_node.getID(), 0, new_node.getID());
     }
@@ -92,7 +91,8 @@ void Graph::findRoutes(int nodeID)
         return;
     }
 
-    if (hasRoutes[nodeID]){
+    if (hasRoutes[nodeID])
+    {
         return;
     }
 

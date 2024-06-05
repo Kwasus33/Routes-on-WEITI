@@ -5,14 +5,14 @@
 
 using json = nlohmann::json;
 
-class jsonReader: public FileReader {
+class JSONReader: public FileReader {
     public:
-        jsonReader();
-        jsonReader(const std::vector<std::string>& pathsVec);
-        Graph ReadDataIntoGraph() const;
+        JSONReader();
+        JSONReader(const std::vector<std::string>& pathsVec);
+        Graph readDataIntoGraph() const;
     // private:
     protected:
-        json LoadFromFile(const std::string& path) const;
+        json loadFromFile(const std::string& path) const;
         void isReadPathValid(const std::ifstream& fp) const;
         Node createNode(const json& obj) const;
         void createClassrooms(const json& obj, Node& node) const;
