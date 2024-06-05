@@ -62,6 +62,8 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
     size_t start;
     size_t end;
 
+    int id, X, Y, floor;
+
     try
     {
         // reading first line
@@ -77,10 +79,10 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
         }
         values.push_back(line1.substr(start));
 
-        int id = stoi(values.at(0));
-        int X = stoi(values.at(1));
-        int Y = stoi(values.at(2));
-        int floor = stoi(values.at(3));
+        id = stoi(values.at(0));
+        X = stoi(values.at(1));
+        Y = stoi(values.at(2));
+        floor = stoi(values.at(3));
 
         // reading second line
         values.clear();
@@ -101,8 +103,6 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
             distances.push_back(stoi(values.at(i)));
             connected.push_back(stoi(values.at(++i)));
         }
-
-        return Node(id, distances, connected, floor, X, Y);
     }
 
     catch (const std::invalid_argument &error)
@@ -114,6 +114,8 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
     {
         throw error;
     }
+
+    return Node(id, distances, connected, floor, X, Y);
 }
 
 void csvReader::createClassrooms(const std::string& line3, Node& node) const
