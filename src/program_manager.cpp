@@ -10,7 +10,7 @@ ProgramManager::ProgramManager()
     consoleInterface = std::make_unique<ConsoleInterface>(logicManager.get());
 }
 
-void ProgramManager::Run(Action nextAction, std::string room1, std::string room2)
+void ProgramManager::run(Action nextAction, std::string room1, std::string room2)
 {
     do
     {
@@ -22,26 +22,26 @@ void ProgramManager::Run(Action nextAction, std::string room1, std::string room2
 
         case Action::SHOW_PATH:
             consoleInterface->SetNewPath(room1, room2);
-            renderer->ShowWindow();
+            renderer->showWindow();
             isShowing = true;
             while (isShowing)
             {
-                inputManager->Update();
-                renderer->Render(resourceManager.get(), logicManager->GetCurrentFloor());
+                inputManager->update();
+                renderer->render(resourceManager.get(), logicManager->getCurrentFloor());
             }
-            renderer->HideWindow();
+            renderer->hideWindow();
             break;
 
         default:
             break;
         }
 
-        nextAction = consoleInterface->GetNextAction();
+        nextAction = consoleInterface->getNextAction();
         room1, room2 = "";
     } while (nextAction != Action::QUIT);
 }
 
-void ProgramManager::StopShowing()
+void ProgramManager::stopShowing()
 {
     isShowing = false;
 }

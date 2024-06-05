@@ -18,12 +18,12 @@ int main(int argc, char *argv[])
 
             if (argParser.getState() == TuiCommand::FIND_PATH)
             {
-                programManager.Run(Action::SHOW_PATH, args.front(), args.back());
+                programManager.run(Action::SHOW_PATH, args.front(), args.back());
             }
 
             else if (argParser.getState() == TuiCommand::FIND_CLASSROOM)
             {
-                programManager.Run(Action::SHOW_DESCRIPTION, args.front());
+                programManager.run(Action::SHOW_DESCRIPTION, args.front());
             }
 
             else if (argParser.getState() == TuiCommand::QUIT)
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
         break;
 
     case ParserState::GUI:
-        programManager.Run();
+        programManager.run();
         break;
 
     default:

@@ -4,23 +4,23 @@
 QuitCommand::QuitCommand(ProgramManager* programManager)
     : programManager(programManager) {}
 
-void QuitCommand::Execute() 
+void QuitCommand::execute() 
 { 
-    programManager->StopShowing(); 
+    programManager->stopShowing(); 
 }
 
 FloorUpCommand::FloorUpCommand(LogicManager* logicManager)
     : logicManager(logicManager) {}
 
-void FloorUpCommand::Execute()
+void FloorUpCommand::execute()
 {
-    logicManager->ChangeFloor(1);
+    logicManager->changeFloor(1);
 }
 
 FloorDownCommand::FloorDownCommand(LogicManager* logicManager)
     : logicManager(logicManager) {}
 
-void FloorDownCommand::Execute()
+void FloorDownCommand::execute()
 {
-    logicManager->ChangeFloor(-1);
+    logicManager->changeFloor(-1);
 }

@@ -23,5 +23,5 @@ class InputManager
 public:
     InputManager(ProgramManager* programManager, LogicManager* LogicManager);
     ~InputManager();
-    void Update();
+    void update();
 };

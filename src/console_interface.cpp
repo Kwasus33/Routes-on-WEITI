@@ -3,7 +3,7 @@
 ConsoleInterface::ConsoleInterface(LogicManager* logicManager)
     : logicManager(logicManager) {}
 
-Action ConsoleInterface::GetNextAction() const
+Action ConsoleInterface::getNextAction() const
 {
     while (true)
     {
@@ -44,7 +44,7 @@ void ConsoleInterface::SetNewPath(std::string room1, std::string room2) const
 
         try
         {
-            logicManager->UpdatePath(room1, room2);
+            logicManager->updatePath(room1, room2);
             return;
         }
         catch(const std::invalid_argument& e)
@@ -68,7 +68,7 @@ void ConsoleInterface::ShowDescription(std::string room) const
         
         try
         {
-            std::string desc = logicManager->GetDescription(room);
+            std::string desc = logicManager->getDescription(room);
             std::cout << desc << std::endl;
             return;
         }

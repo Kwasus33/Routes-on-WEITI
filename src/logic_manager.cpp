@@ -7,11 +7,11 @@ LogicManager::LogicManager(ResourceManager* resourceManager)
     : currentFloor(0), resourceManager(resourceManager)
 {
     std::vector<std::string> path {"../assets/Floor1.json", "../assets/Floor0.json"};
-    jsonReader fh(path);
-    graph = fh.ReadDataIntoGraph();
+    JSONReader fh(path);
+    graph = fh.readDataIntoGraph();
 }
 
-void LogicManager::UpdatePath(std::string& start, std::string& end)
+void LogicManager::updatePath(std::string& start, std::string& end)
 {
     // Tries to find classrooms with given names
     std::vector<int> startSearches = graph.findClassrooms(start);
@@ -28,10 +28,10 @@ void LogicManager::UpdatePath(std::string& start, std::string& end)
               { return graph.getDistance(startID, nodeOne) < graph.getDistance(startID, nodeTwo); });
     int endID = endSearches[0];
     std::vector<int> path = graph.getRoute(startID, endID);
-    resourceManager->SetPathFromGraph(&graph, path);
+    resourceManager->setPathFromGraph(&graph, path);
 }
 
-std::string LogicManager::GetDescription(std::string className)
+std::string LogicManager::getDescription(std::string className)
 {
     std::vector<int> classIDs = graph.findClassrooms(className);
     if(classIDs.empty()){
@@ -46,7 +46,7 @@ std::string LogicManager::GetDescription(std::string className)
     throw std::invalid_argument("Classroom not found");
 }
 
-void LogicManager::ChangeFloor(int change)
+void LogicManager::changeFloor(int change)
 {
     currentFloor += change;
     if (currentFloor < config::MIN_FLOOR || currentFloor > config::MAX_FLOOR)

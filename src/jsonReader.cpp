@@ -1,17 +1,17 @@
 #include "jsonReader.hpp"
 
 
-jsonReader::jsonReader() : FileReader(){};
+JSONReader::JSONReader() : FileReader(){};
 
-jsonReader::jsonReader(const std::vector<std::string>& pathsVec) : FileReader(pathsVec){};
+JSONReader::JSONReader(const std::vector<std::string>& pathsVec) : FileReader(pathsVec){};
 
-Graph jsonReader::ReadDataIntoGraph() const
+Graph JSONReader::readDataIntoGraph() const
 {
     Graph graph;
 
     for (const std::string& path: pathsVec)
     {
-        json json_file = LoadFromFile(path);
+        json json_file = loadFromFile(path);
 
         for (const auto& obj : json_file)
         {
@@ -24,7 +24,7 @@ Graph jsonReader::ReadDataIntoGraph() const
     return graph;
 }
 
-json jsonReader::LoadFromFile(const std::string& path) const
+json JSONReader::loadFromFile(const std::string& path) const
 {
     std::ifstream fp_in(path); // opens file
     isReadPathValid(fp_in);
@@ -43,7 +43,7 @@ json jsonReader::LoadFromFile(const std::string& path) const
     return json_file;
 }
 
-Node jsonReader::createNode(const json &obj) const
+Node JSONReader::createNode(const json &obj) const
 {
     int id, X, Y, floor;
     std::vector<int> distancesVect, connectedNodes;
@@ -123,7 +123,7 @@ Node jsonReader::createNode(const json &obj) const
     return Node(id, distancesVect, connectedNodes, floor, X, Y);
 }
 
-void jsonReader::createClassrooms(const json& obj, Node& node) const
+void JSONReader::createClassrooms(const json& obj, Node& node) const
 {
     std::string name, description;
     bool flag = true;
@@ -165,7 +165,7 @@ void jsonReader::createClassrooms(const json& obj, Node& node) const
     }
 }
 
-void jsonReader::isReadPathValid(const std::ifstream &fp) const
+void JSONReader::isReadPathValid(const std::ifstream &fp) const
 {
     if (!fp.is_open())
     {

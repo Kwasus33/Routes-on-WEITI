@@ -11,7 +11,7 @@ class FileReader {
         FileReader();
         FileReader(const std::vector<std::string>& pathsVec);
         virtual ~FileReader();
-        virtual Graph ReadDataIntoGraph() const = 0;
+        virtual Graph readDataIntoGraph() const = 0;
     protected:
         std::vector<std::string> pathsVec;
 };

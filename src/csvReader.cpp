@@ -8,11 +8,11 @@
 //      distance,connected,distance,connected...
 //      name,description,name,description...    -classrooms
 
-csvReader::csvReader() : FileReader(){};
+CSVReader::CSVReader() : FileReader(){};
 
-csvReader::csvReader(const std::vector<std::string>& pathsVec) : FileReader(pathsVec) {};
+CSVReader::CSVReader(const std::vector<std::string>& pathsVec) : FileReader(pathsVec) {};
 
-Graph csvReader::ReadDataIntoGraph() const
+Graph CSVReader::readDataIntoGraph() const
 {
     Graph graph;
     std::string line1;
@@ -47,14 +47,14 @@ Graph csvReader::ReadDataIntoGraph() const
     return graph;
 };
 
-Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3) const
+Node CSVReader::addNode(std::string& line1, std::string& line2, std::string& line3) const
 {
     Node node = createNode(line1, line2);
     createClassrooms(line3, node);
     return node;
 };
 
-Node csvReader::createNode(const std::string& line1, const std::string& line2) const
+Node CSVReader::createNode(const std::string& line1, const std::string& line2) const
 {
     std::vector<std::string> values;
     std::vector<int> distances, connected;
@@ -116,7 +116,7 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
     return Node(id, distances, connected, floor, X, Y);
 }
 
-void csvReader::createClassrooms(const std::string& line3, Node& node) const
+void CSVReader::createClassrooms(const std::string& line3, Node& node) const
 {
     std::vector<std::string> values;
 
@@ -156,7 +156,7 @@ void csvReader::createClassrooms(const std::string& line3, Node& node) const
     }
 }
 
-void csvReader::isReadPathValid(const std::ifstream &fp) const
+void CSVReader::isReadPathValid(const std::ifstream &fp) const
 {
     if (!fp.is_open()){
         std::cerr << "Failed to open file" << std::endl;

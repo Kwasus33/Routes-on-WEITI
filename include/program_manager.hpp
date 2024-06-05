@@ -23,11 +23,6 @@ class ProgramManager
 
 public:
     ProgramManager();
-    void Run(Action nextAction = Action::NONE, std::string room1 = "", std::string room2 = "");
-    void StopShowing();
-
-private:
-    void Init();
-    
-
+    void run(Action nextAction = Action::NONE, std::string room1 = "", std::string room2 = "");
+    void stopShowing();
 };

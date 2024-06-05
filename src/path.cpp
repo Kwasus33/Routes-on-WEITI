@@ -11,7 +11,7 @@ Path::Path()
     }
 }
 
-void Path::SetFromGraph(Graph* graph, const std::vector<int>& nodePath)
+void Path::setFromGraph(Graph* graph, const std::vector<int>& nodePath)
 {
     for(auto& floor : pointsByFloor)
     {

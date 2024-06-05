@@ -10,7 +10,7 @@ class Command
 {
 public:
     virtual ~Command() {};
-    virtual void Execute() = 0; 
+    virtual void execute() = 0; 
 };
 
 class QuitCommand : public Command
@@ -18,7 +18,7 @@ class QuitCommand : public Command
     ProgramManager* programManager;
 public:
     QuitCommand(ProgramManager* programManager);
-    void Execute() override;
+    void execute() override;
 };
 
 class FloorUpCommand : public Command
@@ -26,7 +26,7 @@ class FloorUpCommand : public Command
     LogicManager* logicManager;
 public:
     FloorUpCommand(LogicManager* logicManager);
-    void Execute() override;
+    void execute() override;
 };
 
 class FloorDownCommand : public Command
@@ -34,5 +34,5 @@ class FloorDownCommand : public Command
     LogicManager* logicManager;
 public:
     FloorDownCommand(LogicManager* logicManager);
-    void Execute() override;
+    void execute() override;
 };

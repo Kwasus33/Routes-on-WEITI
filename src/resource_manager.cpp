@@ -5,14 +5,14 @@
 
 ResourceManager::ResourceManager(Renderer* renderer)
 {
-    SDL_Renderer* sdlRenderer = renderer->GetSdlRenderer();
+    SDL_Renderer* sdlRenderer = renderer->getSdlRenderer();
 
-    LoadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, -1, sdlRenderer);
-    LoadTextureFromBitmap(config::TEXTURE_PATH_PARTER, 0, sdlRenderer);
-    LoadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, 1, sdlRenderer);
+    loadTextureFromBitmap(config::TEXTURE_PATH_PIWNICA, -1, sdlRenderer);
+    loadTextureFromBitmap(config::TEXTURE_PATH_PARTER, 0, sdlRenderer);
+    loadTextureFromBitmap(config::TEXTURE_PATH_PIERWSZE, 1, sdlRenderer);
 }
 
-void ResourceManager::LoadTextureFromBitmap(const char* filePath, const int flr, SDL_Renderer* sdlRenderer)
+void ResourceManager::loadTextureFromBitmap(const char* filePath, const int flr, SDL_Renderer* sdlRenderer)
 {
     SDL_Surface* surface = SDL_LoadBMP(filePath);
     if (surface == nullptr)
