@@ -70,7 +70,6 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
         start = 0;
         end = line1.find(',');
 
-        // while (end != std::string::npos) {
         while (line1[end] != '\n')
         {
             values.push_back(line1.substr(start, end - start));
@@ -89,7 +88,6 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2) c
         start = 0;
         end = line2.find(',');
 
-        // while (end != std::string::npos) {
         while (line2[end] != '\n')
         {
             values.push_back(line2.substr(start, end - start));
@@ -131,7 +129,6 @@ void csvReader::createClassrooms(const std::string& line3, Node& node) const
         start = 0;
         end = line3.find(',');
 
-        // while (end != std::string::npos) {
         while (line3[end] != '\n')
         {
             values.push_back(line3.substr(start, end - start));
