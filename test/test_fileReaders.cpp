@@ -1,39 +1,68 @@
 #include <gtest/gtest.h>
 #include "jsonReader.hpp"
 #include "csvReader.hpp"
-#include <cstdio>
+#include <stdexcept>
 #include <string>
-#include <memory>
+#include <cstdio>
 
+class TemporaryFile 
+{
+    public:
+        TemporaryFile(const std::string& content) 
+        {
+            char tmpFilename[FILENAME_MAX];
 
-class TemporaryFile {
-public:
-    TemporaryFile(const std::string& content) {
-        char tmpFilename[] = "/tmp/tmpfile.XXXXXX";
-        int fd = mkstemp(tmpFilename);
+    #if defined(_WIN32) || defined(_WIN64)
+            if (tmpnam_s(tmpFilename) != 0)
+            {
+                throw std::runtime_error("Failed to create temporary file");
+            }
+    #elif defined(__unix__) || defined(__linux__) || defined(__APPLE__)
+            std::strcpy(tmpFilename, "/tmp/tmpfile.XXXXXX");
+            int fd = mkstemp(tmpFilename);
 
-        if (fd == -1) {
-            throw std::runtime_error("Failed to create temporary file");
+            if (fd == -1)
+            {
+                throw std::runtime_error("Failed to create temporary file");
+            }
+    #else
+            #error "TemporaryFile is not implemented for this platform"
+    #endif
+
+            filename = tmpFilename;
+            std::ofstream tmpFile(filename);
+
+            if (!tmpFile.is_open()) 
+            {
+    #if defined(__unix__) || defined(__linux__) || defined(__APPLE__)
+                close(fd);
+    #endif
+                throw std::runtime_error("Failed to open temporary file");
+            }
+
+            tmpFile << content;
+            tmpFile.close();
+
+    #if defined(__unix__) || defined(__linux__) || defined(__APPLE__)
+            close(fd);
+    #endif
         }
 
-        filename = tmpFilename;
-        std::ofstream tmpFile(filename);
-        tmpFile << content;
-        tmpFile.close();
+        ~TemporaryFile()
+        {
+            std::remove(filename.c_str());
+        }
 
-        close(fd);
-    }
+        const std::string& getFilename() const
+        {
+            return filename;
+        }
 
-    ~TemporaryFile() {
-        std::remove(filename.c_str());
-    }
+        TemporaryFile(const TemporaryFile&) = delete;
+        TemporaryFile& operator=(const TemporaryFile&) = delete;
 
-    const std::string& getFilename() const {
-        return filename;
-    }
-
-private:
-    std::string filename;
+    private:
+        std::string filename;
 };
 
 const static std::string mock_json_content =
