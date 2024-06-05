@@ -12,7 +12,7 @@ csvReader::csvReader() : FileReader(){};
 
 csvReader::csvReader(const std::vector<std::string>& pathsVec) : FileReader(pathsVec) {};
 
-Graph csvReader::ReadDataIntoGraph()
+Graph csvReader::ReadDataIntoGraph() const
 {
     Graph graph;
     std::string line1;
@@ -47,20 +47,22 @@ Graph csvReader::ReadDataIntoGraph()
     return graph;
 };
 
-Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3)
+Node csvReader::addNode(std::string& line1, std::string& line2, std::string& line3) const
 {
     Node node = createNode(line1, line2);
     createClassrooms(line3, node);
     return node;
 };
 
-Node csvReader::createNode(const std::string& line1, const std::string& line2)
+Node csvReader::createNode(const std::string& line1, const std::string& line2) const
 {
     std::vector<std::string> values;
     std::vector<int> distances, connected;
 
     size_t start;
     size_t end;
+
+    int id, X, Y, floor;
 
     try
     {
@@ -77,10 +79,10 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2)
         }
         values.push_back(line1.substr(start));
 
-        int id = stoi(values.at(0));
-        int X = stoi(values.at(1));
-        int Y = stoi(values.at(2));
-        int floor = stoi(values.at(3));
+        id = stoi(values.at(0));
+        X = stoi(values.at(1));
+        Y = stoi(values.at(2));
+        floor = stoi(values.at(3));
 
         // reading second line
         values.clear();
@@ -101,8 +103,6 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2)
             distances.push_back(stoi(values.at(i)));
             connected.push_back(stoi(values.at(++i)));
         }
-
-        return Node(id, distances, connected, floor, X, Y);
     }
 
     catch (const std::invalid_argument &error)
@@ -114,9 +114,11 @@ Node csvReader::createNode(const std::string& line1, const std::string& line2)
     {
         throw error;
     }
+
+    return Node(id, distances, connected, floor, X, Y);
 }
 
-void csvReader::createClassrooms(const std::string& line3, Node& node)
+void csvReader::createClassrooms(const std::string& line3, Node& node) const
 {
     std::vector<std::string> values;
 
