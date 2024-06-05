@@ -37,7 +37,8 @@ void ProgramManager::run(Action nextAction, std::string room1, std::string room2
         }
 
         nextAction = consoleInterface->getNextAction();
-        room1, room2 = "";
+        room1 = "";
+        room2 = "";
     } while (nextAction != Action::QUIT);
 }
 

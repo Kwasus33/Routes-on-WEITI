@@ -56,7 +56,8 @@ void ConsoleInterface::SetNewPath(std::string room1, std::string room2) const
         {
             std::cout << "Invalid input. Try again." << std::endl
                       << std::endl;
-            room1, room2 = "";
+            room1 = "";
+            room2 = "";
         }
     }
 }
