@@ -25,15 +25,15 @@ Graph CSVReader::readDataIntoGraph() const
 
         while (!fp_in.eof())
         {
-            fp_in >> line1;
+            getline(fp_in, line1);
             if (!fp_in.eof())
             {
-                fp_in >> line2;
+                getline(fp_in, line2);
             }
 
             if (!fp_in.eof())
             {
-                fp_in >> line3;
+                getline(fp_in, line3);
             }
 
             if (!line1.empty() && !line2.empty() && !line3.empty())
