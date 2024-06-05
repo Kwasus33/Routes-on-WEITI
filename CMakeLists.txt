@@ -4,7 +4,6 @@ project(RoutesOnWEITI)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-# add_compile_options(-Wall -Werror)
 
 add_library(graph ./src/node.cpp ./src/graph.cpp ./src/classroom.cpp)
 
@@ -28,6 +27,8 @@ add_library( file_handler
 add_library( parser
     ./src/argParser.cpp
 )
+
+set_target_properties(graph program_manager file_handler parser PROPERTIES COMPILE_FLAGS "-Wall -Wpedantic")
 
 target_include_directories(graph PRIVATE ./include)
 target_include_directories(parser PRIVATE ./include)
