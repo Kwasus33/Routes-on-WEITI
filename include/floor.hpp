@@ -14,9 +14,8 @@ class Floor
     SDL_Rect transform;
 public:
     Floor() = default;
-    Floor(SDL_Texture* texture, const SDL_Rect& transform)
-        : texture(texture), transform(transform) {}
+    Floor(SDL_Texture* texture, const SDL_Rect& transform);
     
-    SDL_Texture* GetTexture() const { return texture.get(); }
-    const SDL_Rect GetTransfrom() const { return transform; }
+    SDL_Texture* GetTexture() const;
+    const SDL_Rect GetTransfrom() const;
 };

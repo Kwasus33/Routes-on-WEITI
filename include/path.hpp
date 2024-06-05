@@ -11,5 +11,5 @@ class Path
 public:
     Path();
     void setFromGraph(Graph* graph, const std::vector<int>& nodePath);
-    const std::vector<SDL_Point>& getPointsOnFloor(const int floor) const { return pointsByFloor.at(floor); }
+    const std::vector<SDL_Point>& getPointsOnFloor(const int floor) const;
 };

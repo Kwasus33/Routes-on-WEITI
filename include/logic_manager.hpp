@@ -14,5 +14,5 @@ public:
     void updatePath(std::string& start, std::string& end);
     void changeFloor(const int change);
     std::string getDescription(std::string className);
-    int getCurrentFloor() { return currentFloor; }
+    int getCurrentFloor();
 };

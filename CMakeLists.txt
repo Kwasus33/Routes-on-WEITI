@@ -16,6 +16,7 @@ add_library( program_manager
     ./src/logic_manager.cpp
     ./src/console_interface.cpp
     ./src/path.cpp
+    ./src/floor.cpp
     )
 
 add_library( file_handler 
