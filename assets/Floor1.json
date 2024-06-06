@@ -375,8 +375,8 @@
               ],
               "classrooms": [
                      {
-                            "name": "Aula 161",
-                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                            "name": "161",
+                            "description": "Aula od MAKO, PROI, PTCY"
                      }
               ]
        },
@@ -437,8 +437,8 @@
               ],
               "classrooms": [
                      {
-                            "name": "Aula 161",
-                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                            "name": "161",
+                            "description": "Aula od MAKO, PROI, PTCY"
                      }
               ]
        },
@@ -1576,7 +1576,7 @@
               "classrooms": [
                      {
                             "name": "133",
-                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                            "description": "Aula od ANMY, PIPRu, AISDI"
                      }
               ]
        },
@@ -1620,7 +1620,7 @@
               "classrooms": [
                      {
                             "name": "133",
-                            "description": "NO DESCRIPTION FOR THIS CLASSROOM"
+                            "description": "Aula od ANMY, PIPRu, AISDI"
                      }
               ]
        },
