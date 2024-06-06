@@ -106,15 +106,15 @@ TEST(CSVReaderTest, ReadValidCSVFile) {
     std::remove(testFilename.c_str());
 }
 
-// TEST(CSVReaderTest, ReadNonExistingCSVFile) {
-//     std::stringstream buffer;
-//     std::streambuf* prevbuf = std::cerr.rdbuf(buffer.rdbuf());
+TEST(CSVReaderTest, ReadNonExistingCSVFile) {
+    std::stringstream buffer;
+    std::streambuf* prevbuf = std::cerr.rdbuf(buffer.rdbuf());
 
-//     CSVReader reader({"non_existing_file_2.csv"});
-//     reader.readDataIntoGraph();
+    CSVReader reader({"non_existing_file_2.csv"});
+    EXPECT_THROW(reader.readDataIntoGraph(), std::invalid_argument);
 
-//     std::cerr.rdbuf(prevbuf);
+    std::cerr.rdbuf(prevbuf);
     
-//     std::string output = buffer.str();
-//     EXPECT_NE(output.find("Failed to open file\n"), std::string::npos);
-// }
+    std::string output = buffer.str();
+    EXPECT_NE(output.find("Failed to open file\n"), std::string::npos);
+}
