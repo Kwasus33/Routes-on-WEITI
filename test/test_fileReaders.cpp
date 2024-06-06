@@ -34,6 +34,9 @@ R"(
     ]
 )";
 
+const static std::string CsvContent =
+    "1,100,200,0\n,\nClassroom1,Description1,Classroom2,Description2";
+
 
 // ########### Tests for JSONReader ###########
 
@@ -82,11 +85,10 @@ TEST(JSONReaderTest, readNonExistingJsonFile)
 
 TEST(CSVReaderTest, ReadValidCSVFile) {
     std::string testFilename = "test_file.csv";
-    std::string content = "1,100,200,0\n,\nClassroom1,Description1,Classroom2,Description2";
 
-    createTestFile(testFilename, content);
+    createTestFile(testFilename, CsvContent);
 
-    CSVReader reader({"../build/" + testFilename});
+    CSVReader reader({testFilename});
     Graph graph = reader.readDataIntoGraph();
 
     ASSERT_EQ(graph.getNodes().size(), 1);
