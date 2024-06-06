@@ -17,10 +17,10 @@ enum class TuiCommand {
 };
 
 
-class argParser
+class ArgParser
 {
 public:
-    argParser(int argc, char *argv[]);
+    ArgParser(int argc, char *argv[]);
     ParserState parseArguments(int argc, char *argv[]);
     std::list<std::string> parseTUI();
     TuiCommand getState() const;

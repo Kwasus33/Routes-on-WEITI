@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-    argParser argParser(argc, argv);
+    ArgParser argParser(argc, argv);
     ParserState state = argParser.parseArguments(argc, argv);
     ProgramManager programManager;
 

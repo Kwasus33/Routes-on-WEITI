@@ -2,9 +2,9 @@
 #include <vector>
 #include <iostream>
 
-argParser::argParser(int argc, char *argv[]) : argc(argc), argv(argv), state(ParserState::BEGIN), command(TuiCommand::BEGIN) {}
+ArgParser::ArgParser(int argc, char *argv[]) : argc(argc), argv(argv), state(ParserState::BEGIN), command(TuiCommand::BEGIN) {}
 
-ParserState argParser::parseArguments(int argc, char *argv[])
+ParserState ArgParser::parseArguments(int argc, char *argv[])
 {
     if (argc == 1)
     {
@@ -18,12 +18,12 @@ ParserState argParser::parseArguments(int argc, char *argv[])
     return state;
 }
 
-TuiCommand argParser::getState() const
+TuiCommand ArgParser::getState() const
 {
     return command;
 }
 
-std::list<std::string> argParser::parseTUI()
+std::list<std::string> ArgParser::parseTUI()
 {
     std::string id_1;
     std::string id_2;
