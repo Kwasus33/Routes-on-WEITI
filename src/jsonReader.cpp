@@ -41,7 +41,7 @@ json JSONReader::loadFromFile(const std::string &path) const
     return json_file;
 }
 
-template <class T, class Func>
+template <typename T, typename Func>
 T JSONReader::getJsonValue(const json& obj, const std::string& key, Func func) const
 {
     if (obj.find(key) != obj.end() && func(obj[key]))
@@ -54,7 +54,7 @@ T JSONReader::getJsonValue(const json& obj, const std::string& key, Func func) c
     }
 }
 
-template <class T, class Func>
+template <typename T, typename Func>
 std::vector<T> JSONReader::getJsonVec(const json& obj, const std::string& key, Func func) const 
 {
     std::vector<T> vec;
