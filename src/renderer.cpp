@@ -66,7 +66,7 @@ void Renderer::addFloorToRender(const Floor &flr) const
     SDL_RenderCopy(renderer.get(), tex, NULL, &transformedFloor);
 }
 
-void Renderer::addPathToRender(const Path &pth, const int currentFloor) const
+void Renderer::addPathToRender(const MapPath &pth, const int currentFloor) const
 {
     SDL_SetRenderDrawColor(renderer.get(), 255, 0, 0, 255);
     auto points = pth.getPointsOnFloor(currentFloor);

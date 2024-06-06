@@ -35,7 +35,7 @@ const Floor& ResourceManager::getFloor(int floor) const
     return floors.at(floor); 
 }
 
-const Path& ResourceManager::getPath() const 
+const MapPath& ResourceManager::getPath() const 
 { 
     return path; 
 }

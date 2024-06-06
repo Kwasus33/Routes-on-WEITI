@@ -51,7 +51,7 @@ TEST(PathTest, SetFromGraph)
     testGraph.addNode(node9);
 
 
-    Path path;
+    MapPath path;
 
     std::vector<int> nodePath = {0, 1, 2};
 
@@ -63,9 +63,9 @@ TEST(PathTest, SetFromGraph)
     EXPECT_EQ(path.getPointsOnFloor(1)[0].x, 1);
     EXPECT_EQ(path.getPointsOnFloor(1)[0].y, 10);
 
-    EXPECT_EQ(path.getPointsOnFloor(2)[0].x, 2);
-    EXPECT_EQ(path.getPointsOnFloor(2)[0].y, 20);
+    EXPECT_EQ(path.getPointsOnFloor(0)[0].x, 2);
+    EXPECT_EQ(path.getPointsOnFloor(0)[0].y, 20);
 
-    EXPECT_EQ(path.getPointsOnFloor(3)[0].x, 3);
-    EXPECT_EQ(path.getPointsOnFloor(3)[0].y, 30);
+    EXPECT_EQ(path.getPointsOnFloor(0)[1].x, 3);
+    EXPECT_EQ(path.getPointsOnFloor(0)[1].y, 30);
 }

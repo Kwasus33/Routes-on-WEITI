@@ -27,5 +27,5 @@ public:
     void showWindow() const;
 private:
     void addFloorToRender(const Floor& flr) const;
-    void addPathToRender(const Path& pth, const int currentFloor) const;
+    void addPathToRender(const MapPath& pth, const int currentFloor) const;
 };

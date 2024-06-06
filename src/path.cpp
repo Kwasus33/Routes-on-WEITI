@@ -3,7 +3,7 @@
 #include "config.hpp"
 #include "iostream"
 
-Path::Path()
+MapPath::MapPath()
 {
     for (int i = config::MIN_FLOOR; i <= config::MAX_FLOOR; ++i)
     {
@@ -11,7 +11,7 @@ Path::Path()
     }
 }
 
-void Path::setFromGraph(Graph *graph, const std::vector<int> &nodePath)
+void MapPath::setFromGraph(Graph *graph, const std::vector<int> &nodePath)
 {
     for (auto &floor : pointsByFloor)
     {
@@ -27,7 +27,7 @@ void Path::setFromGraph(Graph *graph, const std::vector<int> &nodePath)
     }
 }
 
-const std::vector<SDL_Point>& Path::getPointsOnFloor(const int floor) const 
+const std::vector<SDL_Point>& MapPath::getPointsOnFloor(const int floor) const 
 { 
     return pointsByFloor.at(floor); 
 }
