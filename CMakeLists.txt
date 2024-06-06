@@ -48,8 +48,6 @@ if(BUILD_TESTS)
     FetchContent_MakeAvailable(googletest)
 endif()
 
-# add_executable(runTests ./test/test_node.cpp ./test/test_graph.cpp ./test/test_classroom.cpp)
-
 FetchContent_Declare(
     SDL2
     URL  https://github.com/libsdl-org/SDL/releases/download/release-2.30.3/SDL2-2.30.3.tar.gz
