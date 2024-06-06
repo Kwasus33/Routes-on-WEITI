@@ -54,28 +54,33 @@ Node CSVReader::addNode(std::string &line1, std::string &line2, std::string &lin
     return node;
 };
 
-Node CSVReader::createNode(const std::string &line1, const std::string &line2) const
+std::vector<std::string> CSVReader::readLine(const std::string& line) const
 {
     std::vector<std::string> values;
-    std::vector<int> distances, connected;
 
-    size_t start;
-    size_t end;
+    std::size_t start = 0;
+    std::size_t end = line.find(',');
 
-    int id, X, Y, floor;
-
-    try
+    while (end != std::string::npos)
     {
-        start = 0;
-        end = line1.find(',');
+        values.push_back(line.substr(start, end - start));
+        start = end + 1;
+        end = line.find(',', start);
+    }
+    values.push_back(line.substr(start));
 
-        while (end != std::string::npos)
-        {
-            values.push_back(line1.substr(start, end - start));
-            start = end + 1;
-            end = line1.find(',', start);
-        }
-        values.push_back(line1.substr(start));
+    return values;
+}
+
+Node CSVReader::createNode(const std::string &line1, const std::string &line2) const
+{
+    int id, X, Y, floor;
+    std::vector<int> distances;
+    std::vector<int> connected; 
+    
+    try
+    {   
+        std::vector<std::string> values = readLine(line1);
 
         id = stoi(values.at(0));
         X = stoi(values.at(1));
@@ -83,26 +88,20 @@ Node CSVReader::createNode(const std::string &line1, const std::string &line2) c
         floor = stoi(values.at(3));
 
         values.clear();
-        start = 0;
-        end = line2.find(',');
+        values = readLine(line2);
 
-        while (end != std::string::npos)
+        for (std::size_t i = 0; i < values.size(); i += 1)
         {
-            values.push_back(line2.substr(start, end - start));
-            start = end + 1;
-            end = line2.find(',', start);
-        }
-        values.push_back(line2.substr(start));
-
-        for (size_t i = 0; i < values.size(); i += 1)
-        {
-            if (values.at(i).empty())
+            int key = i+1;
+            if (values.at(i).empty() || values.at(key).empty())
             {
                 continue;
             }
-            int key = i+1;
-            distances.push_back(stoi(values.at(i)));
-            connected.push_back(stoi(values.at(key)));
+            else
+            {
+                distances.push_back(stoi(values.at(i)));
+                connected.push_back(stoi(values.at(key)));
+            }
         }
     }
 
@@ -121,23 +120,9 @@ Node CSVReader::createNode(const std::string &line1, const std::string &line2) c
 
 void CSVReader::createClassrooms(const std::string &line3, Node &node) const
 {
-    std::vector<std::string> values;
-
-    size_t start;
-    size_t end;
-
     try
     {
-        start = 0;
-        end = line3.find(',');
-
-        while (end != std::string::npos)
-        {
-            values.push_back(line3.substr(start, end - start));
-            start = end + 1;
-            end = line3.find(',', start);
-        }
-        values.push_back(line3.substr(start));
+        std::vector<std::string> values = readLine(line3);
 
         for (size_t i = 0; i < values.size(); i += 2)
         {
