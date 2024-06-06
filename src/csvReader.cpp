@@ -22,7 +22,6 @@ Graph CSVReader::readDataIntoGraph() const
     {
         std::ifstream fp_in(path);
         isReadPathValid(fp_in);
-
         while (!fp_in.eof())
         {
             getline(fp_in, line1);
@@ -164,5 +163,6 @@ void CSVReader::isReadPathValid(const std::ifstream &fp) const
     if (!fp.is_open())
     {
         std::cerr << "Failed to open file" << std::endl;
+        throw std::invalid_argument("Invalid file path");
     }
 }
